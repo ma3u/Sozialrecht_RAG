@@ -70,11 +70,15 @@ ORDER BY d.type_priority ASC, d.trust_score DESC
 // Zeigt Chunks mit Paragraph-Kontext
 MATCH (d:Document {sgb_nummer: 'II'})-[:HAS_CHUNK]->(c:Chunk)
 WHERE c.paragraph_nummer IS NOT NULL
+WITH d.document_type as Dokumenttyp,
+     c.paragraph_nummer as Paragraph,
+     c,
+     SIZE(c.text) as text_länge
 RETURN
-  d.document_type as Dokumenttyp,
-  c.paragraph_nummer as Paragraph,
+  Dokumenttyp,
+  Paragraph,
   COUNT(c) as Anzahl_Chunks,
-  AVG(LENGTH(c.text)) as Durchschnitt_Länge,
+  AVG(text_länge) as Durchschnitt_Länge,
   COLLECT(c.paragraph_context)[0] as Beispiel_Kontext
 ORDER BY Anzahl_Chunks DESC
 LIMIT 15
