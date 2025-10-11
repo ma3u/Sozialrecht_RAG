@@ -1,0 +1,34 @@
+graph TD
+    Start_1([Antrag auf Bürgergeld eingegangen])
+    Task_2[Antrag formal prüfen]
+    Gateway_4{Antrag vollständig?}
+    Task_6[Unterlagen nachfordern]
+    Task_9[Leistungsberechtigung prüfen]
+    ParallelGW_11{Parallele Prüfungen}
+    Task_13[Erwerbsfähigkeit prüfen]
+    Task_15[Hilfebedürftigkeit prüfen]
+    Service_17[[Einkommen/Vermögen berechnen]]
+    ParallelGW_19{Prüfungen abgeschlossen}
+    Gateway_23{Leistungsberechtigt?}
+    Task_25[Leistung berechnen und bewilligen]
+    Task_27[Bewilligungsbescheid erstellen]
+    Task_29[Ablehnungsbescheid erstellen]
+    End_31([Bescheid versandt])
+    Start_1 --> Task_2
+    Task_2 --> Gateway_4
+    Gateway_4 -->|Nein - Unvollständig| Task_6
+    Task_6 -->|Unterlagen eingegangen| Task_2
+    Gateway_4 -->|Ja - Vollständig| Task_9
+    Task_9 --> ParallelGW_11
+    ParallelGW_11 --> Task_13
+    ParallelGW_11 --> Task_15
+    ParallelGW_11 --> Service_17
+    Task_13 --> ParallelGW_19
+    Task_15 --> ParallelGW_19
+    Service_17 --> ParallelGW_19
+    ParallelGW_19 --> Gateway_23
+    Gateway_23 -->|Ja - Berechtigt| Task_25
+    Task_25 --> Task_27
+    Gateway_23 -->|Nein - Nicht berechtigt| Task_29
+    Task_27 --> End_31
+    Task_29 --> End_31

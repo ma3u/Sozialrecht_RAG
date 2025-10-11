@@ -1,0 +1,18 @@
+graph TD
+    Start_1([Arbeitslos gemeldet])
+    Task_2[Profiling / Kompetenzfeststellung]
+    Gateway_4{Vermittlungshemmnisse?}
+    Task_6[Fördermaßnahme auswählen]
+    Task_8[Eingliederungsvereinbarung abschließen]
+    Task_10[Stellenangebote vermitteln]
+    Gateway_13{Vermittelt?}
+    End_15([Arbeitsverhältnis aufgenommen])
+    Start_1 --> Task_2
+    Task_2 --> Gateway_4
+    Gateway_4 -->|Ja - Hemmnisse vorhanden| Task_6
+    Task_6 --> Task_8
+    Gateway_4 -->|Nein - Vermittelbar| Task_10
+    Task_8 --> Task_10
+    Task_10 --> Gateway_13
+    Gateway_13 -->|Ja - Vermittelt| End_15
+    Gateway_13 -->|Nein - Weiter suchen| Task_2

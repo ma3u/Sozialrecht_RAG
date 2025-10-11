@@ -1,0 +1,21 @@
+graph TD
+    Start_1([Pflichtverletzung festgestellt])
+    Task_2[Anhörung durchführen]
+    Gateway_4{Triftiger Grund vorhanden?}
+    End_6([Keine Sanktion - Triftiger Grund])
+    Task_8[Sanktionshöhe berechnen]
+    Gateway_10{Wiederholte Pflichtverletzung?}
+    Service_12[[Erstmalige Minderung festsetzen]]
+    Service_14[[Verschärfte Minderung festsetzen]]
+    Task_16[Sanktionsbescheid erlassen]
+    End_19([Sanktion verhängt])
+    Start_1 --> Task_2
+    Task_2 --> Gateway_4
+    Gateway_4 -->|Ja| End_6
+    Gateway_4 -->|Nein| Task_8
+    Task_8 --> Gateway_10
+    Gateway_10 -->|Erstmalig| Service_12
+    Gateway_10 -->|Wiederholt| Service_14
+    Service_12 --> Task_16
+    Service_14 --> Task_16
+    Task_16 --> End_19

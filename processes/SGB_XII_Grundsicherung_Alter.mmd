@@ -1,0 +1,25 @@
+graph TD
+    Start_1([Antrag auf Grundsicherung im Alter])
+    Gateway_2{Mindestalter erreicht?}
+    Task_4[Verweis auf SGB II (Bürgergeld)]
+    End_5([Antrag abgegeben an Jobcenter])
+    Task_8[Bedarfsermittlung durchführen]
+    ParallelGW_10{Parallel prüfen}
+    Service_12[[Renteneinkommen abfragen]]
+    Task_14[Vermögen prüfen]
+    ParallelGW_16{Prüfungen abgeschlossen}
+    Service_19[[Grundsicherung berechnen]]
+    Task_21[Bescheid erstellen und versenden]
+    End_23([Grundsicherung bewilligt])
+    Start_1 --> Gateway_2
+    Gateway_2 -->|Nein - Unter 67| Task_4
+    Task_4 --> End_5
+    Gateway_2 -->|Ja - Über 67| Task_8
+    Task_8 --> ParallelGW_10
+    ParallelGW_10 --> Service_12
+    ParallelGW_10 --> Task_14
+    Service_12 --> ParallelGW_16
+    Task_14 --> ParallelGW_16
+    ParallelGW_16 --> Service_19
+    Service_19 --> Task_21
+    Task_21 --> End_23
