@@ -72,7 +72,7 @@ def main():
         print("✅ Verbunden mit Neo4j")
 
         stats_before = rag.get_stats()
-        print(f"📊 Datenbank: {stats_before['documents']} Dokumente, {stats_before['chunks']} Chunks")
+        print(f"📊 Datenbank: {stats_before.get('documents', 0)} Dokumente, {stats_before.get('chunks', 0)} Chunks")
 
     except Exception as e:
         logger.error(f"❌ Neo4j Verbindung fehlgeschlagen: {e}")
@@ -124,8 +124,8 @@ def main():
     print(f"  📄 Gesamt: {len(results)}")
 
     print(f"\n📈 Datenbank Änderungen:")
-    print(f"  Dokumente: {stats_before['documents']} → {stats_after['documents']} (+{stats_after['documents'] - stats_before['documents']})")
-    print(f"  Chunks: {stats_before['chunks']} → {stats_after['chunks']} (+{stats_after['chunks'] - stats_before['chunks']})")
+    print(f"  Dokumente: {stats_before.get('documents', 0)} → {stats_after.get('documents', 0)} (+{stats_after.get('documents', 0) - stats_before.get('documents', 0)})")
+    print(f"  Chunks: {stats_before.get('chunks', 0)} → {stats_after.get('chunks', 0)} (+{stats_after.get('chunks', 0) - stats_before.get('chunks', 0)})")
     print(f"  Paragraphen: {stats_after.get('paragraphs', 0)}")
     print(f"  SGBs abgedeckt: {', '.join(stats_after.get('sgbs_covered', []))}")
 

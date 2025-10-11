@@ -27,11 +27,15 @@ ORDER BY SGB
 // 3. Chunks pro SGB (Detailliert)
 // Zeigt Chunk-Verteilung über SGBs
 MATCH (d:Document)-[:HAS_CHUNK]->(c:Chunk)
+WITH d.sgb_nummer as SGB,
+     d.document_type as Typ,
+     c,
+     SIZE(c.text) as text_länge
 RETURN
-  d.sgb_nummer as SGB,
-  d.document_type as Typ,
+  SGB,
+  Typ,
   COUNT(c) as Anzahl_Chunks,
-  AVG(LENGTH(c.text)) as Durchschnitt_Chunk_Länge
+  AVG(text_länge) as Durchschnitt_Chunk_Länge
 ORDER BY Anzahl_Chunks DESC
 ;
 
