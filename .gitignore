@@ -72,9 +72,16 @@ secrets/
 .env.local
 credentials.json
 
-# Downloaded archives (optional - if you want to exclude large files)
-# *.zip
-# *.tar.gz
+# === CONTENT SEPARATION ===
+# PDFs are NOT tracked in Git (too large, use content management separately)
+# Users should download PDFs using provided scripts
+
+# Exclude all PDFs from Git
+*.pdf
+
+# Downloaded archives
+*.zip
+*.tar.gz
 
 # Backup directories (if you create them)
 backup/
