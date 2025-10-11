@@ -480,15 +480,80 @@ Keine Rechtsberatung - bei Rechtsfragen Behörde konsultieren!
 
 ---
 
+## 🔧 Neo4j RAG System
+
+**Vollständige Integration mit Neo4j Graph-Datenbank und Docling PDF-Extraktion**
+
+### Quick Start
+
+```bash
+# 1. Neo4j starten
+docker-compose up -d
+
+# 2. Dependencies installieren
+pip install -r requirements.txt
+
+# 3. PDFs zu Neo4j hochladen (alle 50 Dokumente)
+python scripts/upload_sozialrecht_to_neo4j.py
+
+# 4. Testen
+python scripts/test_sozialrecht_rag.py
+```
+
+**Neo4j Browser**: http://localhost:7474 (neo4j/password)
+
+### Features
+- ✅ Paragraph-basiertes Chunking (800 Zeichen)
+- ✅ Deutsche Embeddings (paraphrase-multilingual-mpnet-base-v2)
+- ✅ Quellen-Vertrauenswürdigkeits-Tracking (70-100%)
+- ✅ Hybrid-Strategie (Gesetz für Beträge + Weisung für Verfahren)
+- ✅ Graph-Schema: Document → Chunk → Paragraph
+
+**Siehe**: `NEO4J_SETUP.md` für Details
+
+---
+
+## 📊 BPMN Prozess-Visualisierung
+
+**BPMN 2.0 Prozessdiagramme für Sachbearbeiter**
+
+### Verfügbare Prozesse
+1. **SGB II Antragstellung** - Vollständiger Bewilligungsprozess
+2. **SGB II Sanktionsverfahren** - Mit Anhörung und Wiederholungs-Logik
+3. **SGB XII Grundsicherung Alter** - Mit DRV-Schnittstelle
+4. **SGB III Arbeitsvermittlung** - Iterativer Vermittlungsprozess
+
+### Verwendung
+
+```bash
+# Prozesse generieren
+python src/bpmn_prozess_generator.py
+
+# Öffne in Camunda Modeler
+open processes/SGB_II_Antragstellung.bpmn
+
+# Oder Mermaid-Diagramm ansehen
+cat processes/SGB_II_Antragstellung.mmd
+```
+
+### Integration mit Neo4j
+- Prozess-Schritte verknüpft mit Dokumenten
+- Click auf Schritt → Zeigt relevante Gesetze/Weisungen
+- Fall-Tracking für echte Sachbearbeitungs-Vorgänge
+
+**Siehe**: `BPMN_PROZESSE.md` für Details
+
+---
+
 ## 🚀 Nächste Schritte
 
 ### Für RAG-Entwicklung
 
-1. **PDF-zu-Text Extraktion**: pdfplumber, PyPDF2
-2. **Chunking**: Paragraph-basiert mit Kontext
-3. **Embeddings**: Deutsche Sprachmodelle
-4. **Vector DB**: Chroma, Weaviate, Pinecone
-5. **RAG-Pipeline**: Mit Quellen-Hierarchie und Disclaimer
+1. ✅ **Neo4j Integration**: Vollständig implementiert
+2. ✅ **PDF-Extraktion**: Docling-basiert
+3. ✅ **Embeddings**: Deutsche Sprachmodelle
+4. ✅ **BPMN Prozesse**: 4 Templates verfügbar
+5. ⏳ **Frontend**: Web-UI mit bpmn.io (geplant)
 
 ### Für Datenbank-Wartung
 
