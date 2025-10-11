@@ -1,0 +1,54 @@
+# ZUSTÄNDIGKEITEN FÜR SGB FACHLICHE WEISUNGEN
+
+## BUNDESAGENTUR FÜR ARBEIT (BA)
+✅ SGB I   - Allgemeiner Teil (Verfahrensvorschriften)
+✅ SGB II  - Bürgergeld/Grundsicherung für Arbeitsuchende
+✅ SGB III - Arbeitsförderung
+
+## BUNDESMINISTERIUM FÜR ARBEIT UND SOZIALES (BMAS)
+✅ SGB XII - Sozialhilfe (Rundschreiben zur Grundsicherung im Alter)
+✅ SGB XIV - Soziale Entschädigung (Rundschreiben)
+
+## ANDERE TRÄGER (Keine zentralen Fachlichen Weisungen)
+
+❌ SGB IV  - Gemeinsame Vorschriften für Sozialversicherung
+   Zuständig: DRV, Spitzenverbände
+   Keine öffentlichen Fachlichen Weisungen
+
+❌ SGB V   - Gesetzliche Krankenversicherung
+   Zuständig: GKV-Spitzenverband, Krankenkassen
+   Keine öffentlichen Fachlichen Weisungen
+   Alternative: Gemeinsamer Bundesausschuss (G-BA) Richtlinien
+
+❌ SGB VI  - Gesetzliche Rentenversicherung
+   Zuständig: Deutsche Rentenversicherung (DRV)
+   Interne Geschäftsanweisungen (nicht öffentlich)
+
+❌ SGB VII - Gesetzliche Unfallversicherung
+   Zuständig: DGUV, Berufsgenossenschaften
+   Keine zentralen öffentlichen Weisungen
+
+❌ SGB VIII - Kinder- und Jugendhilfe
+   Zuständig: Jugendämter (kommunal)
+   Länderregelungen, keine bundesweiten Weisungen
+
+❌ SGB IX  - Rehabilitation und Teilhabe
+   Zuständig: Verschiedene Rehabilitationsträger
+   Gemeinsame Empfehlungen, keine Fachlichen Weisungen
+
+❌ SGB X   - Sozialverwaltungsverfahren und Sozialdatenschutz
+   Zuständig: Alle Sozialleistungsträger
+   Keine zentralen Fachlichen Weisungen
+
+❌ SGB XI  - Soziale Pflegeversicherung
+   Zuständig: Pflegekassen, GKV-Spitzenverband
+   Pflegeversicherungs-Richtlinien, keine Fachlichen Weisungen
+
+## FAZIT:
+Offizielle "Fachliche Weisungen" im BA-Stil existieren NUR für:
+- SGB I, II, III (Bundesagentur für Arbeit)
+- SGB XII, XIV (BMAS Rundschreiben)
+
+Für andere SGBs: Richtlinien, Geschäftsanweisungen, Gemeinsame Empfehlungen
+(meist nicht öffentlich oder dezentral organisiert)
+

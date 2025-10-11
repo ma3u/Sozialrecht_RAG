@@ -1,0 +1,232 @@
+# QUELLENVERZEICHNIS - Sozialrecht RAG Datenbank
+# Erstellt: 2025-10-10
+# Alle offiziellen Quellen für Sozialgesetzbücher und zugehörige Dokumente
+
+## GESETZESTEXTE (SGB I-XIV)
+
+### Primäre Quelle: Gesetze-im-Internet (BMJV)
+Basis-URL: https://www.gesetze-im-internet.de/
+Betreiber: Bundesministerium der Justiz
+Lizenz: § 5 UrhG - Gemeinfrei
+Update-Frequenz: Bei Gesetzesänderungen
+RSS-Feed: https://www.gesetze-im-internet.de/RSS-Feed
+
+SGB I   - Sozialgesetzbuch Erstes Buch - Allgemeiner Teil
+URL:      https://www.gesetze-im-internet.de/sgb_1/
+PDF:      https://www.gesetze-im-internet.de/sgb_1/SGB_1.pdf
+Stand:    Download 2025-10-10
+Größe:    154K
+
+SGB II  - Sozialgesetzbuch Zweites Buch - Bürgergeld, Grundsicherung für Arbeitsuchende
+URL:      https://www.gesetze-im-internet.de/sgb_2/
+PDF:      https://www.gesetze-im-internet.de/sgb_2/SGB_2.pdf
+Stand:    Download 2025-10-10
+Größe:    349K
+
+SGB III - Sozialgesetzbuch Drittes Buch - Arbeitsförderung
+URL:      https://www.gesetze-im-internet.de/sgb_3/
+PDF:      https://www.gesetze-im-internet.de/sgb_3/SGB_3.pdf
+Stand:    Download 2025-10-10
+Größe:    752K
+
+SGB IV  - Sozialgesetzbuch Viertes Buch - Gemeinsame Vorschriften
+URL:      https://www.gesetze-im-internet.de/sgb_4/
+PDF:      https://www.gesetze-im-internet.de/sgb_4/SGB_4.pdf
+Stand:    Download 2025-10-10
+Größe:    545K
+
+SGB V   - Sozialgesetzbuch Fünftes Buch - Gesetzliche Krankenversicherung
+URL:      https://www.gesetze-im-internet.de/sgb_5/
+PDF:      https://www.gesetze-im-internet.de/sgb_5/SGB_5.pdf
+Stand:    Download 2025-10-10
+Größe:    2.5M
+
+SGB VI  - Sozialgesetzbuch Sechstes Buch - Gesetzliche Rentenversicherung
+URL:      https://www.gesetze-im-internet.de/sgb_6/
+PDF:      https://www.gesetze-im-internet.de/sgb_6/SGB_6.pdf
+Stand:    Download 2025-10-10
+Größe:    1.3M
+
+SGB VII - Sozialgesetzbuch Siebtes Buch - Gesetzliche Unfallversicherung
+URL:      https://www.gesetze-im-internet.de/sgb_7/
+PDF:      https://www.gesetze-im-internet.de/sgb_7/SGB_7.pdf
+Stand:    Download 2025-10-10
+Größe:    510K
+
+SGB VIII - Sozialgesetzbuch Achtes Buch - Kinder- und Jugendhilfe
+URL:       https://www.gesetze-im-internet.de/sgb_8/
+PDF:       https://www.gesetze-im-internet.de/sgb_8/SGB_8.pdf
+Stand:     Download 2025-10-10
+Größe:     394K
+
+SGB IX  - Sozialgesetzbuch Neuntes Buch - Rehabilitation und Teilhabe von Menschen mit Behinderungen
+URL:      https://www.gesetze-im-internet.de/sgb_9_2018/
+PDF:      https://www.gesetze-im-internet.de/sgb_9_2018/SGB_IX.pdf
+Stand:    Download 2025-10-10
+Größe:    564K
+
+SGB X   - Sozialgesetzbuch Zehntes Buch - Sozialverwaltungsverfahren und Sozialdatenschutz
+URL:      https://www.gesetze-im-internet.de/sgb_10/
+PDF:      https://www.gesetze-im-internet.de/sgb_10/SGB_10.pdf
+Stand:    Download 2025-10-10
+Größe:    306K
+
+SGB XI  - Sozialgesetzbuch Elftes Buch - Soziale Pflegeversicherung
+URL:      https://www.gesetze-im-internet.de/sgb_11/
+PDF:      https://www.gesetze-im-internet.de/sgb_11/SGB_11.pdf
+Stand:    Download 2025-10-10
+Größe:    810K
+
+SGB XII - Sozialgesetzbuch Zwölftes Buch - Sozialhilfe
+URL:      https://www.gesetze-im-internet.de/sgb_12/
+PDF:      https://www.gesetze-im-internet.de/sgb_12/SGB_12.pdf
+Stand:    Download 2025-10-10
+Größe:    419K
+
+SGB XIII - Existiert nicht (Lücke in der Nummerierung)
+
+SGB XIV - Sozialgesetzbuch Vierzehntes Buch - Soziale Entschädigung
+URL:      https://www.gesetze-im-internet.de/sgb_14/
+PDF:      https://www.gesetze-im-internet.de/sgb_14/SGB_XIV.pdf
+Stand:    Download 2025-10-10
+Größe:    408K
+
+## FACHLICHE WEISUNGEN
+
+### SGB II - Bundesagentur für Arbeit
+Primärquelle: https://www.arbeitsagentur.de/ueber-uns/veroeffentlichungen/gesetze-und-weisungen/sgbii-grundsicherung
+Lizenz:    Nicht-kommerzielle Nutzung erlaubt
+Update:    Kontinuierlich, Newsletter verfügbar
+
+Alternative Quelle: Harald Thome
+URL:       https://harald-thome.de/informationen/sgb-ii-dienstanweisungen.html
+Hinweis:   Historische Versionen, wenn BA-Links ändern
+
+Beispiele (Vollständige Liste siehe sgb2_fw_urls.txt):
+§ 5  | Verhältnis zu anderen Leistungen
+§ 7  | Leistungsberechtigte
+§ 9  | Hilfebedürftigkeit
+§ 11 | Zu berücksichtigendes Einkommen
+§ 22 | Bedarfe für Unterkunft und Heizung
+§ 28 | Bedarfe für Bildung und Teilhabe
+§ 31 | Pflichtverletzungen
+
+### SGB III - Bundesagentur für Arbeit
+Primärquelle: https://www.arbeitsagentur.de/ueber-uns/veroeffentlichungen/gesetze-und-weisungen
+Lizenz:    Nicht-kommerzielle Nutzung erlaubt
+
+### SGB I - Bundesagentur für Arbeit
+Primärquelle: https://www.arbeitsagentur.de/ueber-uns/veroeffentlichungen/gesetze-und-weisungen
+Wichtige §§: § 14 (Beratung), § 16 (Antrag), § 36 (Ausschlussfristen), § 42 (Fristen)
+
+## RUNDSCHREIBEN
+
+### BMAS - SGB XII Grundsicherung
+Primärquelle: https://www.bmas.de/DE/Soziales/Sozialhilfe/Leistungen-fuer-den-Lebensunterhalt/Rundschreiben-zur-Grundsicherung/rundschreiben-zur-grundsicherung.html
+Betreiber:  Bundesministerium für Arbeit und Soziales
+Lizenz:     Öffentlich, Quellenangabe erforderlich
+Zweck:      Einheitliche Rechtsanwendung der Grundsicherung im Alter und bei Erwerbsminderung
+
+Verfügbare Rundschreiben:
+2024/01 | § 35  | PDF, 413KB
+2023/01 | § 30  | PDF, 265KB
+2021/11 | § 27c | PDF, 171KB
+2021/10 | § 27b | PDF, 186KB
+2021/09 | § 27a | PDF, 293KB
+2021/08 | § 42b | PDF, 189KB
+2021/07 | § 41a | PDF, 192KB
+2021/06 | § 33  | PDF, 214KB
+2021/03 | § 31  | PDF, 203KB
+2020/03 | § 45  | PDF, 178KB
+2020/01 | § 41  | PDF, 286KB
+
+### BMAS - SGB XIV Soziale Entschädigung
+Primärquelle: https://www.bmas.de/DE/Soziales/Soziale-Entschaedigung/Rundschreiben/rundschreiben.html
+Betreiber:  Bundesministerium für Arbeit und Soziales
+Inkrafttreten: 01.01.2024
+Hinweis:    Chronologisch sortiert (neueste zuerst)
+
+## WISSENSDATENBANK
+
+### SGB II - FAQ und Anwendungshinweise
+Quelle: https://www.arbeitsagentur.de/ (Wissensdatenbank-Bereich)
+Format: HTML/PDF-Extraktion
+Inhalt: Praktische Anwendungsfälle, häufige Fragen, Beispielrechnungen
+
+## WEITERE QUELLEN
+
+### Kommunale Weisungen (Beispielhaft)
+Kreis Kleve: https://www.kreis-kleve.de/aufgaben/jobcenter/zahlen-daten-fakten/fachliche-weisungen-sgb-ii
+Hinweis:    Lokale Besonderheiten, nicht bundesweit gültig
+
+### Einzelweisungen BA
+URL: https://www.arbeitsagentur.de/ueber-uns/veroeffentlichungen/weisungen
+Inhalt: Spezifische operative Anweisungen
+
+## UPDATE-MECHANISMEN
+
+### RSS-Feeds
+Gesetze-im-Internet: https://www.gesetze-im-internet.de/RSS-Feed
+Format: XML/RSS 2.0
+Inhalt: Neue und geänderte Gesetze
+
+### Newsletter-Abos
+BA Newsletter: https://www.arbeitsagentur.de/newsletter
+BMAS Newsletter: https://www.bmas.de/DE/Service/Newsletter/newsletter.html
+
+### Automatische Prüfung
+Wöchentlich:  BA Fachliche Weisungen (SGB I, II, III)
+Monatlich:    BMAS Rundschreiben
+Täglich:      RSS-Feed Monitoring
+Quartalsweise: Vollständige Integritätsprüfung
+
+## ARCHIVIERUNG
+
+### Historische Versionen
+Quelle:   https://harald-thome.de/
+Zweck:    Nachvollziehbarkeit von Rechtsänderungen
+Format:   PDF mit Datum im Dateinamen
+Speicher: /Archiv/YYYY-MM-DD/
+
+### Versionskontrolle
+Tool:     Git (geplant)
+Branch:   main (aktuelle), archive/* (historische)
+Tags:     Nach Datum und Gesetzesänderungen
+
+## RECHTLICHE HINWEISE
+
+### Urheberrecht
+- Gesetzestexte: § 5 UrhG - Gemeinfrei
+- Fachliche Weisungen BA: Nicht-kommerzielle Nutzung, Quellenangabe erforderlich
+- BMAS Rundschreiben: Öffentlich zugänglich, Quellenangabe erforderlich
+
+### Haftungsausschluss
+Keine Gewähr für:
+- Vollständigkeit
+- Aktualität
+- Richtigkeit
+- Rechtsverbindlichkeit
+
+Bei Rechtsfragen immer aktuelle amtliche Quellen konsultieren!
+
+### Zitierweise für RAG-Outputs
+Format:
+```
+Quelle: [SGB Nummer] [Paragraph] [Art des Dokuments]
+Herausgeber: [BA/BMAS/BMJ]
+Stand: [Datum]
+URL: [Original-URL]
+```
+
+Beispiel:
+```
+Quelle: SGB II § 11 - Fachliche Weisung
+Herausgeber: Bundesagentur für Arbeit
+Stand: 2025-10-10
+URL: https://www.arbeitsagentur.de/datei/fw-sgb-ii-11_ba015230.pdf
+```
+
+---
+Letzte Aktualisierung: 2025-10-10
+Verantwortlich: [Ihr Name]
+Kontakt: [Ihre Email]

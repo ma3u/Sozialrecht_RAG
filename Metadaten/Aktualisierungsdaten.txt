@@ -1,0 +1,208 @@
+# AKTUALISIERUNGSDATEN - Sozialrecht RAG Datenbank
+
+## LETZTE UPDATES
+
+### Gesetze (SGB I-XIV)
+Quelle: https://www.gesetze-im-internet.de/
+Letzter Download: 2025-10-10 17:00:00
+
+SGB I   | 2025-10-10 | 154K  | ✅ Vollständig
+SGB II  | 2025-10-10 | 349K  | ✅ Vollständig
+SGB III | 2025-10-10 | 752K  | ✅ Vollständig
+SGB IV  | 2025-10-10 | 545K  | ✅ Vollständig
+SGB V   | 2025-10-10 | 2.5M  | ✅ Vollständig
+SGB VI  | 2025-10-10 | 1.3M  | ✅ Vollständig
+SGB VII | 2025-10-10 | 510K  | ✅ Vollständig
+SGB VIII| 2025-10-10 | 394K  | ✅ Vollständig
+SGB IX  | 2025-10-10 | 564K  | ✅ Vollständig
+SGB X   | 2025-10-10 | 306K  | ✅ Vollständig
+SGB XI  | 2025-10-10 | 810K  | ✅ Vollständig
+SGB XII | 2025-10-10 | 419K  | ✅ Vollständig
+SGB XIV | 2025-10-10 | 408K  | ✅ Vollständig
+
+Gesamt: 13 Dateien, ~8.8 MB
+
+### Fachliche Weisungen SGB II
+Quelle: https://www.arbeitsagentur.de/
+Letzter Download: 2025-10-10 17:03:00
+
+Status: 🔄 Teilweise
+Heruntergeladen: 6 Dokumente
+- § 5  | Verhältnis zu anderen Leistungen    | 210K
+- § 6  | Träger - Außendienst                | 201K
+- § 7  | Leistungsberechtigte                | 1.2M
+- § 8  | Erwerbsfähigkeit                    | 219K
+- § 9  | Hilfebedürftigkeit                  | 461K
+- § 10 | Zumutbarkeit                        | 324K
+
+Ausstehend: ~74 weitere Paragraphen
+Geschätzter Umfang: ~120 MB
+
+### Fachliche Weisungen SGB III
+Status: ⏳ Ausstehend
+Geschätzte Anzahl: ~50 Dokumente
+Geschätzter Umfang: ~80 MB
+
+### Fachliche Weisungen SGB I
+Status: ⏳ Ausstehend
+Geschätzte Anzahl: ~30 Dokumente
+Geschätzter Umfang: ~40 MB
+
+### BMAS Rundschreiben SGB XII
+Quelle: https://www.bmas.de/
+Status: ⏳ Ausstehend
+Verfügbar: 11 Dokumente
+Geschätzter Umfang: ~3 MB
+
+Verfügbare Rundschreiben:
+2024/01 | § 35  | 413KB
+2023/01 | § 30  | 265KB
+2021/11 | § 27c | 171KB
+2021/10 | § 27b | 186KB
+2021/09 | § 27a | 293KB
+2021/08 | § 42b | 189KB
+2021/07 | § 41a | 192KB
+2021/06 | § 33  | 214KB
+2021/03 | § 31  | 203KB
+2020/03 | § 45  | 178KB
+2020/01 | § 41  | 286KB
+
+### BMAS Rundschreiben SGB XIV
+Quelle: https://www.bmas.de/
+Status: ⏳ Ausstehend
+Geschätzte Anzahl: ~20 Dokumente
+Geschätzter Umfang: ~5 MB
+
+## UPDATE-ZEITPLAN
+
+### Wöchentlich (Jeden Montag, 09:00)
+- [ ] Prüfung auf neue BA Fachliche Weisungen SGB II
+- [ ] Prüfung auf neue BA Fachliche Weisungen SGB III
+- [ ] Prüfung auf neue BA Fachliche Weisungen SGB I
+- [ ] Download und Integration neuer Dokumente
+- [ ] Update Download_Log.txt
+
+### Monatlich (Erster des Monats, 10:00)
+- [ ] Prüfung auf neue BMAS Rundschreiben SGB XII
+- [ ] Prüfung auf neue BMAS Rundschreiben SGB XIV
+- [ ] Download und Integration neuer Dokumente
+- [ ] Update Quellenverzeichnis.txt
+
+### Täglich (00:00)
+- [ ] RSS-Feed Monitoring für Gesetzesänderungen
+- [ ] Bei Änderungen: Automatischer Download
+- [ ] Diff-Report erstellen
+- [ ] Email-Benachrichtigung versenden
+
+### Quartalsweise (01.01, 01.04, 01.07, 01.10)
+- [ ] Vollständige Integritätsprüfung aller Dateien
+- [ ] Hash-Vergleich (SHA256)
+- [ ] Größenvergleich
+- [ ] Archivierung alter Versionen
+- [ ] Bereinigung redundanter Dateien
+- [ ] Dokumentations-Update
+
+## ÄNDERUNGSHISTORIE
+
+### 2025-10-10 - Initial Setup
+- ✅ Ordnerstruktur erstellt
+- ✅ Alle 13 SGB PDFs heruntergeladen (8.8 MB)
+- ✅ SGB II Fachliche Weisungen teilweise (6 Dokumente)
+- ✅ Download-Skripte erstellt
+- ✅ Metadaten-System eingerichtet
+- ✅ README.md erstellt
+- ✅ Quellenverzeichnis.txt erstellt
+
+### Geplante Updates
+- 2025-10-11: Vollständiger Download SGB II Fachliche Weisungen
+- 2025-10-12: BMAS Rundschreiben SGB XII
+- 2025-10-13: BMAS Rundschreiben SGB XIV
+- 2025-10-14: SGB III Fachliche Weisungen
+- 2025-10-15: SGB I Fachliche Weisungen
+- 2025-10-16: Integritätsprüfung und Validierung
+
+## WICHTIGE ÄNDERUNGEN IN GESETZGEBUNG
+
+### 2025
+- **01.01.2025**: Bürgergeld-Erhöhung (SGB II)
+- **01.01.2025**: Neue Regelsätze (SGB XII)
+
+### 2024
+- **01.01.2024**: SGB XIV Soziale Entschädigung in Kraft getreten
+- **01.07.2024**: Anpassung Unterkunftskosten (SGB II § 22)
+
+### 2023
+- **01.01.2023**: Bürgergeld ersetzt Hartz IV (SGB II)
+- **01.07.2023**: Anpassung Mehrbedarfe (SGB II § 21)
+
+## MONITORING-PROTOKOLL
+
+### RSS-Feed Checks (Täglich)
+Log-Datei: /Logs/rss_monitoring.log
+Format: [Datum] [Zeit] [Status] [Änderungen]
+
+### Download-Fehler
+Log-Datei: /Logs/download_errors.log
+Format: [Datum] [Zeit] [Quelle] [URL] [Fehlercode] [Fehlermeldung]
+
+Beispiel:
+```
+2025-10-10 17:03:37 | BA | fw-sgb-ii-7a_ba146798.pdf | 404 | Dokument nicht gefunden
+```
+
+### Erfolgreiche Updates
+Log-Datei: /Metadaten/download_log_*.txt
+Format: SUCCESS|[Paragraph]|[Titel]|[URL]|[Größe]|[Datum]
+
+## QUALITÄTSSICHERUNG
+
+### Integritätsprüfung
+- [ ] PDF-Validität (pdfinfo check)
+- [ ] Dateigrößen-Vergleich (±10% Toleranz)
+- [ ] Lesbarkeit-Test (PyPDF2/pdfplumber)
+- [ ] Metadaten-Vollständigkeit
+- [ ] URL-Erreichbarkeit (HTTP Status 200)
+
+### Vollständigkeits-Check
+Aktueller Status:
+- Gesetze (SGB):         13/13   (100%) ✅
+- FW SGB II:             6/~80   (7.5%) 🔄
+- FW SGB III:            0/~50   (0%)   ⏳
+- FW SGB I:              0/~30   (0%)   ⏳
+- BMAS RS SGB XII:       0/11    (0%)   ⏳
+- BMAS RS SGB XIV:       0/~20   (0%)   ⏳
+
+Gesamtfortschritt: ~9% (19/~204 Dokumente)
+
+### Nächste Schritte
+1. ⏳ Vollständiger Download SGB II Fachliche Weisungen
+2. ⏳ BMAS Rundschreiben systematisch herunterladen
+3. ⏳ SGB III & I Weisungen
+4. ⏳ Automatisierung aktivieren
+5. ⏳ RAG-Integration vorbereiten
+
+## BACKUP-STRATEGIE
+
+### Lokale Backups
+Frequenz: Täglich (nach Updates)
+Pfad: /Backups/YYYY-MM-DD/
+Aufbewahrung: 90 Tage
+Format: ZIP-Archiv mit Metadaten
+
+### Cloud-Backup (Geplant)
+Anbieter: [TBD]
+Frequenz: Wöchentlich
+Versionierung: 12 Monate
+Verschlüsselung: AES-256
+
+### Git-Versionskontrolle (Geplant)
+Repository: [GitHub/GitLab URL]
+Branch-Strategie:
+- main: Aktuelle Version
+- archive/*: Historische Versionen nach Datum
+- develop: Test-Updates vor Integration
+
+---
+Letzte Aktualisierung: 2025-10-10 17:05:00
+Nächste geplante Aktualisierung: 2025-10-11 09:00:00
+Verantwortlich: [Ihr Name]
