@@ -9,6 +9,8 @@ MATCH (gesetz:Document {sgb_nummer: 'II', document_type: 'Gesetz'})
 MATCH (gesetz)-[:CONTAINS_PARAGRAPH]->(p:Paragraph {paragraph_nummer: '20'})
 MATCH (weisung:Document)-[:CONTAINS_PARAGRAPH]->(p)
 WHERE weisung.document_type IN ['BA_Weisung', 'Harald_Thome', 'BMAS_Rundschreiben']
+WITH p, gesetz, weisung
+ORDER BY weisung.trust_score DESC
 RETURN
   p.paragraph_nummer as Paragraph,
   gesetz.filename as Gesetz,
@@ -18,7 +20,6 @@ RETURN
     trust: weisung.trust_score,
     stand: weisung.stand_datum
   }) as Weisungen
-ORDER BY weisung.trust_score DESC
 ;
 
 // 2. Hybrid-Strategie Analyse
