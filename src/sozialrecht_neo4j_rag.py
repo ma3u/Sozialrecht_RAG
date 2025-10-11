@@ -18,6 +18,10 @@ from concurrent.futures import ThreadPoolExecutor
 import threading
 from datetime import datetime
 import hashlib
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -496,24 +500,31 @@ class SozialrechtNeo4jRAG:
                 MATCH (d:Document)
                 OPTIONAL MATCH (d)-[:HAS_CHUNK]->(c:Chunk)
                 OPTIONAL MATCH (d)-[:CONTAINS_PARAGRAPH]->(p:Paragraph)
-                WITH COUNT(DISTINCT d) as doc_count,
-                     COUNT(DISTINCT c) as chunk_count,
-                     COUNT(DISTINCT p) as paragraph_count,
-                     d.sgb_nummer as sgb,
-                     d.document_type as type
-                RETURN doc_count, chunk_count, paragraph_count,
-                       COLLECT(DISTINCT sgb) as sgbs,
-                       COLLECT(DISTINCT type) as types
+                RETURN COUNT(DISTINCT d) as doc_count,
+                       COUNT(DISTINCT c) as chunk_count,
+                       COUNT(DISTINCT p) as paragraph_count,
+                       COLLECT(DISTINCT d.sgb_nummer) as sgbs,
+                       COLLECT(DISTINCT d.document_type) as types
             """)
 
             record = result.single()
 
+            if not record:
+                return {
+                    'documents': 0,
+                    'chunks': 0,
+                    'paragraphs': 0,
+                    'sgbs_covered': [],
+                    'document_types': [],
+                    'cache_size': 0
+                }
+
             return {
-                'documents': record['doc_count'],
-                'chunks': record['chunk_count'],
-                'paragraphs': record['paragraph_count'],
-                'sgbs_covered': record['sgbs'],
-                'document_types': record['types'],
+                'documents': record['doc_count'] or 0,
+                'chunks': record['chunk_count'] or 0,
+                'paragraphs': record['paragraph_count'] or 0,
+                'sgbs_covered': [s for s in record['sgbs'] if s],
+                'document_types': [t for t in record['types'] if t],
                 'cache_size': len(self._query_cache)
             }
 
