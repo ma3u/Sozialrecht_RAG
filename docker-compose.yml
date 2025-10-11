@@ -1,11 +1,9 @@
 # Sozialrecht RAG - Neo4j Setup
 # Docker Compose für lokale Entwicklung
 
-version: '3.8'
-
 services:
   neo4j:
-    image: neo4j:5.25.0-community
+    image: neo4j:community
     container_name: sozialrecht-neo4j
     ports:
       - "7474:7474"  # HTTP Browser
