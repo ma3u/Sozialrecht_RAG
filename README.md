@@ -508,8 +508,12 @@ python scripts/test_sozialrecht_rag.py
 - ✅ Quellen-Vertrauenswürdigkeits-Tracking (70-100%)
 - ✅ Hybrid-Strategie (Gesetz für Beträge + Weisung für Verfahren)
 - ✅ Graph-Schema: Document → Chunk → Paragraph
+- ✅ 34 vorgefertigte Cypher-Queries für Analysen
 
-**Siehe**: `NEO4J_SETUP.md` für Details
+**Dokumentation**:
+- `NEO4J_SETUP.md` - Setup und Architektur
+- `cypher/ANLEITUNG_NEO4J_BROWSER.md` - Queries im Browser speichern
+- `AURA_DEPLOYMENT.md` - Cloud-Deployment
 
 ---
 
