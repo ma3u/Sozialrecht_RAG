@@ -1,0 +1,70 @@
+graph TD
+    Start_7([Antrag stellen])
+    Task_8[Antrag ausfüllen und einreichen]
+    Task_10[Antrag registrieren]
+    Task_12[Formale Vollständigkeit prüfen]
+    Gateway_14{Antrag vollständig?}
+    Task_16[Nachforderung versenden]
+    Task_18[Fehlende Unterlagen nachreichen]
+    Task_21[Antrag an Leistungssachbearbeiter zuweisen]
+    ParallelGW_23{Parallele Datenabfragen}
+    Task_25[Rentenstatus abfragen]
+    Service_27[[Rentendaten bereitstellen]]
+    Task_29[Versicherungsstatus prüfen]
+    Service_31[[KV-Status mitteilen]]
+    Task_33[Persönliches Gespräch führen]
+    ParallelGW_35{Daten vollständig}
+    Task_39[Leistungsberechtigung prüfen (§ 7)]
+    ParallelGW_41{Parallele Sachprüfungen}
+    Task_43[Erwerbsfähigkeit prüfen (§ 8)]
+    Task_45[Hilfebedürftigkeit feststellen (§ 9)]
+    Service_47[[Einkommen berechnen (§ 11)]]
+    Task_49[Vermögen prüfen (§ 12)]
+    ParallelGW_51{Prüfungen abgeschlossen}
+    Gateway_56{Leistungsberechtigt?}
+    Task_58[Ablehnungsbescheid erstellen]
+    End_60([Antrag abgelehnt])
+    Service_62[[Regelbedarf berechnen (§ 20)]]
+    Task_64[Mehrbedarfe prüfen (§ 21)]
+    Task_66[Unterkunftskosten prüfen (§ 22)]
+    Service_68[[Gesamtbedarf berechnen]]
+    Task_70[Bewilligungsbescheid erstellen]
+    Service_72[[Zahlung veranlassen]]
+    End_74([Leistung bewilligt])
+    Start_7 --> Task_8
+    Task_8 --> Task_10
+    Task_10 --> Task_12
+    Task_12 --> Gateway_14
+    Gateway_14 -->|Nein| Task_16
+    Task_16 --> Task_18
+    Task_18 --> Task_12
+    Gateway_14 -->|Ja| Task_21
+    Task_21 --> ParallelGW_23
+    ParallelGW_23 --> Task_25
+    Task_25 --> Service_27
+    ParallelGW_23 --> Task_29
+    Task_29 --> Service_31
+    ParallelGW_23 --> Task_33
+    Service_27 --> ParallelGW_35
+    Service_31 --> ParallelGW_35
+    Task_33 --> ParallelGW_35
+    ParallelGW_35 --> Task_39
+    Task_39 --> ParallelGW_41
+    ParallelGW_41 --> Task_43
+    ParallelGW_41 --> Task_45
+    ParallelGW_41 --> Service_47
+    ParallelGW_41 --> Task_49
+    Task_43 --> ParallelGW_51
+    Task_45 --> ParallelGW_51
+    Service_47 --> ParallelGW_51
+    Task_49 --> ParallelGW_51
+    ParallelGW_51 --> Gateway_56
+    Gateway_56 -->|Nein| Task_58
+    Task_58 --> End_60
+    Gateway_56 -->|Ja| Service_62
+    Service_62 --> Task_64
+    Task_64 --> Task_66
+    Task_66 --> Service_68
+    Service_68 --> Task_70
+    Task_70 --> Service_72
+    Service_72 --> End_74
