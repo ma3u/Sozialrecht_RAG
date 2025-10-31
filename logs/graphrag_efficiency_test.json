@@ -1,0 +1,59 @@
+{
+  "timestamp": "2025-10-31 21:44:19",
+  "tests": [
+    {
+      "test": "Graph Statistics",
+      "time_ms": 269014.71,
+      "records": 1,
+      "status": "\u274c"
+    },
+    {
+      "test": "XML Graph Statistics",
+      "time_ms": 195.41,
+      "records": 1,
+      "status": "\u2705"
+    },
+    {
+      "test": "\u00a720 SGB II Direct Lookup",
+      "time_ms": 127.65,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "\u00a7\u00a77-9 SGB II Batch Lookup",
+      "time_ms": 74.12,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "Semantic Search 'Regelbedarfe'",
+      "time_ms": 62.55,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "Antragspr\u00fcfung Workflow",
+      "time_ms": 39.13,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "Cross-SGB Income Analysis",
+      "time_ms": 83.64,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "PDF Handlungsanweisungen Query",
+      "time_ms": 30.29,
+      "records": 0,
+      "status": "\u2705"
+    },
+    {
+      "test": "Quality Check - Missing Chunks",
+      "time_ms": 43.74,
+      "records": 13,
+      "status": "\u2705"
+    }
+  ]
+}
