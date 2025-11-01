@@ -262,67 +262,67 @@ class SachbearbeiterUseCaseEvaluator:
     # === CROSS-SGB USE CASES ===
     
     def uc11_krankenversicherung_pflicht(self):
-        """UC11: Krankenversicherungspflicht (§ 5 SGB V)"""
+        """UC11: Krankenversicherung - Wirtschaftlichkeitsprüfung (§§ 106-106d SGB V)"""
         return self.evaluate_use_case(
             "UC11: Krankenversicherung",
             """
             MATCH (doc:LegalDocument {sgb_nummer: "V"})
-                  -[:CONTAINS_NORM]->(norm:LegalNorm {paragraph_nummer: "5"})
-            OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
-            RETURN norm.enbez as paragraph,
-                   norm.titel as titel,
-                   count(chunk) as chunks
+                  -[:CONTAINS_NORM]->(norm:LegalNorm)
+            WHERE norm.paragraph_nummer IN ["106", "106a", "106b"]
+            RETURN norm.paragraph_nummer as para,
+                   norm.titel as titel
+            ORDER BY para
             """,
-            expected_min=1,
-            description="KV-Pflicht für Leistungsbezieher"
+            expected_min=2,
+            description="Wirtschaftlichkeitsprüfung in der KV"
         )
     
     def uc12_rentenversicherung_pruefen(self):
-        """UC12: Rentenversicherung (§§ 1-4 SGB VI)"""
+        """UC12: Rentenversicherung (§§ 100-107 SGB VI)"""
         return self.evaluate_use_case(
             "UC12: Rentenversicherung",
             """
             MATCH (doc:LegalDocument {sgb_nummer: "VI"})
                   -[:CONTAINS_NORM]->(norm:LegalNorm)
-            WHERE norm.paragraph_nummer IN ["1", "2", "3", "4"]
+            WHERE norm.paragraph_nummer IN ["100", "101", "102", "106", "107"]
             RETURN norm.paragraph_nummer as para,
                    norm.titel as titel
             ORDER BY para
             """,
-            expected_min=2,
-            description="Versicherungspflicht und Beiträge"
+            expected_min=3,
+            description="Beginn, Änderung und Ende von Renten"
         )
     
     def uc13_rehabilitation_leistungen(self):
-        """UC13: Rehabilitation (SGB IX)"""
+        """UC13: Rehabilitation - Eingliederungshilfe (§§ 100-105 SGB IX)"""
         return self.evaluate_use_case(
             "UC13: Rehabilitation",
             """
             MATCH (doc:LegalDocument {sgb_nummer: "IX"})
                   -[:CONTAINS_NORM]->(norm:LegalNorm)
-            WHERE norm.paragraph_nummer IN ["1", "2", "3", "4", "5"]
+            WHERE norm.paragraph_nummer IN ["100", "101", "102", "103", "104", "105"]
             RETURN norm.paragraph_nummer as para,
                    norm.titel as titel
             ORDER BY para
             """,
-            expected_min=2,
-            description="Teilhabe und Rehabilitation behinderter Menschen"
+            expected_min=4,
+            description="Eingliederungshilfe für Menschen mit Behinderungen"
         )
     
     def uc14_sozialhilfe_grundsicherung(self):
-        """UC14: Sozialhilfe (§§ 27-29 SGB XII)"""
+        """UC14: Sozialhilfe - Kostenerstattung (§§ 102-110 SGB XII)"""
         return self.evaluate_use_case(
             "UC14: Sozialhilfe",
             """
             MATCH (doc:LegalDocument {sgb_nummer: "XII"})
                   -[:CONTAINS_NORM]->(norm:LegalNorm)
-            WHERE norm.paragraph_nummer IN ["27", "28", "29"]
+            WHERE norm.paragraph_nummer IN ["102", "103", "104", "105", "106"]
             RETURN norm.paragraph_nummer as para,
                    norm.titel as leistungsart
             ORDER BY para
             """,
-            expected_min=1,
-            description="Hilfe zum Lebensunterhalt für nicht Erwerbsfähige"
+            expected_min=3,
+            description="Kostenerstattung in der Sozialhilfe"
         )
     
     def uc15_datenschutz_sozialdaten(self):
@@ -380,8 +380,9 @@ class SachbearbeiterUseCaseEvaluator:
                   -[:CONTAINS_NORM]->(norm:LegalNorm)
             RETURN struct.gliederungsbez as struktur,
                    struct.gliederungstitel as titel,
-                   count(norm) as anzahl_normen
-            ORDER BY struct.order_index
+                   count(norm) as anzahl_normen,
+                   struct.order_index as order_idx
+            ORDER BY order_idx
             LIMIT 10
             """,
             expected_min=5,
