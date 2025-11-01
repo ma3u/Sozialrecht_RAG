@@ -1,0 +1,304 @@
+INFO:__main__:✅ Connected to Neo4j: bolt://localhost:7687
+INFO:__main__:
+======================================================================
+INFO:__main__:📥 TASK 1: RE-IMPORT ALL SGBs WITH FULL CHUNKS
+INFO:__main__:======================================================================
+INFO:__main__:Found 14 SGB directories to import
+
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 1
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_1
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 10
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_10
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 11
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_11
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 12
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_12
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 14
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_14
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 2
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  📄 File: BJNR295500003.xml
+INFO:xml_legal_parser:✅ Legal XML Parser initialized
+INFO:xml_legal_parser:✅ Parsed 175 norms
+INFO:xml_legal_parser:✅ Parsed document: SGB 2 (175 norms, 21 structures)
+INFO:__main__:  ✅ Parsed: SGB 2
+INFO:__main__:     - Norms: 175
+INFO:__main__:     - Build date: 2025-02-27 22:30:15
+INFO:__main__:  🔨 Building knowledge graph with chunks...
+INFO:graphrag_legal_extractor:Loading German embedding model...
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-mpnet-base-v2
+INFO:graphrag_legal_extractor:✅ Legal Knowledge Graph Builder initialized
+INFO:graphrag_legal_extractor:Created 21 structural units
+INFO:graphrag_legal_extractor:Created 175 legal norms with content
+INFO:graphrag_legal_extractor:✅ Built knowledge graph for SGB 2
+INFO:__main__:  ✅ Imported: 0 norms, 0 chunks
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 3
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_3
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 4
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_4
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 5
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_5
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 6
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_6
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 7
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_7
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 8
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_8
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 9
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_9
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:📖 Processing SGB 9_2018
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+WARNING:__main__:  ⚠️  No XML files found in /Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/xml_cache/sgb_9_2018
+INFO:__main__:
+======================================================================
+INFO:__main__:📊 TASK 1 SUMMARY: 1/14 SGBs imported
+WARNING:__main__:⚠️  Failed imports:
+WARNING:__main__:   - SGB 1: No XML files
+WARNING:__main__:   - SGB 10: No XML files
+WARNING:__main__:   - SGB 11: No XML files
+WARNING:__main__:   - SGB 12: No XML files
+WARNING:__main__:   - SGB 14: No XML files
+WARNING:__main__:   - SGB 3: No XML files
+WARNING:__main__:   - SGB 4: No XML files
+WARNING:__main__:   - SGB 5: No XML files
+WARNING:__main__:   - SGB 6: No XML files
+WARNING:__main__:   - SGB 7: No XML files
+WARNING:__main__:   - SGB 8: No XML files
+WARNING:__main__:   - SGB 9: No XML files
+WARNING:__main__:   - SGB 9_2018: No XML files
+INFO:__main__:======================================================================
+INFO:__main__:
+======================================================================
+INFO:__main__:📚 TASK 2: IMPORT ALL FACHLICHE WEISUNGEN PDFs
+INFO:__main__:======================================================================
+INFO:__main__:Found 36 PDF files
+
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_I: 5 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_I_Par_36_Handlungsfaehigkeit.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_I_Par_16_Antragstellung.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_I_Par_46_Verzicht.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_I_Par_46_Verzicht.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_I_Par_14_Beratung.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_I_Par_14_Beratung.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_I_Par_42_Vorschuesse.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_II: 13 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:     Processing PDF chunks for FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_12_Vermoegen.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_19_Buergergeld_2023.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_II_Par_11_11a_11b_Einkommen.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_II_Par_11_11a_11b_Einkommen.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_07_Leistungsberechtigte.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_II_Par_16_Stand_26_03_2025.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_II_Par_16_Stand_26_03_2025.pdf
+INFO:__main__:     Processing PDF chunks for FW_SGB_II_Par_20_Regelbedarfe_2023.pdf...
+INFO:__main__:     Document node created (full chunking requires OpenAI API)
+INFO:__main__:  ✅ Imported: FW_SGB_II_Par_20_Regelbedarfe_2023.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_10_Zumutbarkeit.pdf
+INFO:__main__:  ⏭️  Skip (exists): SGB_II_Folien_Thome_20_09_2025_AKTUELLSTE.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_21_Mehrbedarfe.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_06_Traeger_Aussendienst.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_II_Par_09_Hilfebeduerftigkeit.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_III: 7 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_165_Insolvenzgeld.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_88-92_Eingliederungszuschuss.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_176_Zulassung_Traeger.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_45_Massnahmen_bei_Arbeitgeber.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_19_Menschen_mit_Behinderung.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_44_Vermittlungsbudget.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_III_Par_106a_Weiterbildung_Kurzarbeit.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_IV: 2 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_IV_RV_Versicherungspflicht.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_IV_RV_Gesetzliche.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_IX: 2 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_IX_Par_6a_Behinderung.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_IX_Uebersicht_BIH.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_V: 2 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_V_KV_PV_Harald_Thome.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_V_KV_PV_Geschaeftsanweisungen.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_VI: 2 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_VI_RV_Leistungsberechtigte_ALG2.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_VI_RV_Ersatz_2024.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_VII: 2 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_VII_UV_Leistungsempfaenger.pdf
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_VII_Aerztevertrag_Par_34.pdf
+INFO:__main__:
+──────────────────────────────────────────────────────────────────────
+INFO:__main__:📂 SGB_X: 1 PDFs
+INFO:__main__:──────────────────────────────────────────────────────────────────────
+INFO:__main__:  ⏭️  Skip (exists): FW_SGB_X_Sozialgerichtsgesetz.pdf
+INFO:__main__:
+======================================================================
+INFO:__main__:📊 TASK 2 SUMMARY:
+INFO:__main__:   ✅ Imported: 7
+INFO:__main__:   ⏭️  Already existed: 29
+INFO:__main__:======================================================================
+INFO:__main__:
+======================================================================
+INFO:__main__:🔗 TASK 3: CREATE VERSION RELATIONSHIPS
+INFO:__main__:======================================================================
+WARNING:neo4j.notifications:Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: fundstelle_periodikum)} {position: line: 9, column: 39, offset: 420} for query: '\n                MATCH (norm:LegalNorm)-[:HAS_AMENDMENT]->(amend:Amendment)\n                WHERE amend.amendment_date IS NOT NULL\n                RETURN norm.enbez as paragraph,\n                       norm.paragraph_nummer as para_nr,\n                       collect({\n                           date: amend.amendment_date,\n                           comment: amend.standkommentar,\n                           ref: amend.fundstelle_periodikum\n                       }) as amendments\n                ORDER BY paragraph\n            '
+INFO:__main__:Found 1 norms with amendment data
+
+INFO:__main__:  📜 Norm 0: 2 versions
+INFO:__main__:     2011-05-13 → 2025-02-24
+INFO:__main__:
+======================================================================
+INFO:__main__:📊 TASK 3 SUMMARY:
+INFO:__main__:   Found 1 norms with version data
+INFO:__main__:   Identified 1 version transitions
+INFO:__main__:   Note: Full version tracking requires historical XML snapshots
+INFO:__main__:======================================================================
+INFO:__main__:
+======================================================================
+INFO:__main__:📅 TASK 4: BUILD AMENDMENT HISTORY LINKS
+INFO:__main__:======================================================================
+INFO:__main__:Current state:
+INFO:__main__:  - Amendment relationships: 2
+INFO:__main__:  - Norms with amendments: 1
+INFO:__main__:  - Unique amendments: 2
+
+INFO:__main__:Enhancing amendment metadata...
+
+WARNING:neo4j.notifications:Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: parsed_date)} {position: line: 4, column: 29, offset: 124} for query: '\n                MATCH (amend:Amendment)\n                WHERE amend.standkommentar IS NOT NULL\n                  AND amend.parsed_date IS NULL\n                RETURN amend.standkommentar as comment, \n                       elementId(amend) as id\n                LIMIT 100\n            '
+INFO:__main__:  ✅ Parsed: Mittelbare Änderung durch Art. 154a Nr. 3 Buchst. a G v. 20.11.2019 I 1626 ist nicht ausführbar, da das geänderte G v. 21.6.2019 I 846 zum Zeitpunkt des Inkrafttretens des mittelbaren Änderungsgesetzes bereits zum 1.11.2019 in Kraft getreten war → 2019-11-20
+INFO:__main__:  ✅ Parsed: Zuletzt geändert durch Art. 60 G v. 23.10.2024 I Nr. 323 → 2024-10-23
+INFO:__main__:  ✅ Parsed: Neugefasst durch Bek. v. 12.11.2009 I 3710, 3973; 2011 I 363; → 2009-11-12
+INFO:__main__:  ✅ Parsed: zuletzt geändert durch Art. 11 G v. 18.12.2024 I Nr. 423 → 2024-12-18
+INFO:__main__:  ✅ Parsed: Mittelbare Änderung durch Art. 15 Nr. 3 G v. 18.12.2024 I Nr. 423 ist berücksichtigt → 2024-12-18
+INFO:__main__:
+Creating amendment cross-references...
+INFO:__main__:
+======================================================================
+INFO:__main__:📊 TASK 4 SUMMARY:
+INFO:__main__:   ✅ Enhanced 9 amendment nodes with parsed dates
+INFO:__main__:   🔗 Created 0 cross-reference links between amendments
+INFO:__main__:======================================================================
+INFO:__main__:
+================================================================================
+INFO:__main__:🎉 COMPLETE KNOWLEDGE GRAPH IMPORT FINISHED
+INFO:__main__:================================================================================
+INFO:__main__:
+📦 NODE STATISTICS:
+INFO:__main__:Node Type                           Count
+INFO:__main__:----------------------------------------
+INFO:__main__:Chunk                              33,163
+INFO:__main__:TextUnit                           11,145
+INFO:__main__:Paragraph                           4,254
+INFO:__main__:LegalNorm                           3,505
+INFO:__main__:StructuralUnit                        458
+INFO:__main__:Document                               50
+INFO:__main__:Amendment                              21
+INFO:__main__:LegalDocument                          13
+INFO:__main__:
+🔗 RELATIONSHIP STATISTICS:
+INFO:__main__:Relationship Type                             Count
+INFO:__main__:--------------------------------------------------
+INFO:__main__:HAS_CHUNK                                    33,163
+INFO:__main__:HAS_CONTENT                                  11,145
+INFO:__main__:CONTAINS_PARAGRAPH                            5,050
+INFO:__main__:CONTAINS_NORM                                 1,135
+INFO:__main__:HAS_STRUCTURE                                   717
+INFO:__main__:HAS_AMENDMENT                                     2
+INFO:__main__:
+📚 SGB COVERAGE:
+INFO:__main__:SGB             Norms     Chunks    Avg Chunks/Norm
+INFO:__main__:------------------------------------------------
+INFO:__main__:I                   0          0                0.0
+INFO:__main__:II              1,114      4,568                4.1
+INFO:__main__:III                 0          0                0.0
+INFO:__main__:IV                  0          0                0.0
+INFO:__main__:IX                  0          0                0.0
+INFO:__main__:V                   0          0                0.0
+INFO:__main__:VI                  0          0                0.0
+INFO:__main__:VII                 0          0                0.0
+INFO:__main__:VIII                0          0                0.0
+INFO:__main__:X                   0          0                0.0
+INFO:__main__:XI                  0          0                0.0
+INFO:__main__:XII                 0          0                0.0
+INFO:__main__:XIV                 0          0                0.0
+INFO:__main__:------------------------------------------------
+INFO:__main__:TOTAL           1,114      4,568                4.1
+INFO:__main__:
+📄 DOCUMENT (PDF) COVERAGE:
+INFO:__main__:Document Type                       Count
+INFO:__main__:----------------------------------------
+INFO:__main__:BA_Weisung                             25
+INFO:__main__:Gesetz                                 13
+INFO:__main__:Fachliche Weisung                       7
+INFO:__main__:Fachverband                             2
+INFO:__main__:Harald_Thome                            2
+INFO:__main__:BMAS_Rundschreiben                      1
+INFO:__main__:
+📅 AMENDMENT HISTORY:
+INFO:__main__:   Amendments with dates: 9
+INFO:__main__:   Date range: 2009-11-12 to 2024-12-23
+INFO:__main__:
+================================================================================
+INFO:__main__:✅ Knowledge Graph is ready for production use!
+INFO:__main__:================================================================================
+
+🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 
+COMPLETE KNOWLEDGE GRAPH IMPORT PIPELINE
+🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 
+
+✅ All tasks completed successfully!

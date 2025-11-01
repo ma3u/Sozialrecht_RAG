@@ -1,0 +1,511 @@
+{
+  "timestamp": "2025-11-01 16:27:39",
+  "summary": {
+    "total": 20,
+    "passed": 12,
+    "failed": 7,
+    "errors": 1,
+    "pass_rate": 60.0,
+    "avg_quality": 60.0,
+    "avg_time_ms": 21.906745433807373
+  },
+  "results": [
+    {
+      "use_case": "UC01: Regelbedarf ermitteln",
+      "description": "Sachbearbeiter muss Regelbedarf f\u00fcr Alleinstehende/Familie pr\u00fcfen",
+      "found": 13,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 41.095733642578125,
+      "status": "PASS",
+      "records": [
+        [
+          "\u00a7 20",
+          "Regelbedarf zur Sicherung des Lebensunterhalts",
+          32,
+          "(1) Der Regelbedarf zur Sicherung des Lebensunterhalts umfasst insbesondere Ern\u00e4hrung, Kleidung, K\u00f6rperpflege, Hausrat, Haushaltsenergie ohne die auf die Heizung und Erzeugung von Warmwasser entfallenden Anteile sowie pers\u00f6nliche Bed\u00fcrfnisse des t\u00e4glichen Lebens. Zu den pers\u00f6nlichen Bed\u00fcrfnissen des t\u00e4glichen Lebens geh\u00f6rt in vertretbarem Umfang eine Teilhabe am sozialen und kulturellen Leben in der Gemeinschaft. Der Regelbedarf wird als monatlicher Pauschalbetrag ber\u00fccksichtigt. \u00dcber die Verwendung der zur Deckung des Regelbedarfs erbrachten Leistungen entscheiden die Leistungsberechtigten eigenverantwortlich; dabei haben sie das Eintreten unregelm\u00e4\u00dfig anfallender Bedarfe zu ber\u00fccksichtigen. (1a) Der Regelbedarf wird in H\u00f6he der jeweiligen Regelbedarfsstufe entsprechend \u00a7 28 des Zw\u00f6lften Buches in Verbindung mit dem Regelbedarfs-Ermittlungsgesetz und den \u00a7\u00a7 28a und 40 des Zw\u00f6lften Buches in Verbindung mit der f\u00fcr das jeweilige Jahr geltenden Regelbedarfsstufen-Fortschreibungsverordnung anerkannt. Soweit in diesem Buch auf einen Regelbedarf oder eine Regelbedarfsstufe verwiesen wird, ist auf den Betrag der f\u00fcr den jeweiligen Zeitraum geltenden Neuermittlung entsprechend \u00a7 28 des Zw\u00f6lften Buches in Verbindung mit dem Regelbedarfs-Ermittlungsgesetz abzustellen. In Jahren, in denen keine Neuermittlung nach \u00a7 28 des Zw\u00f6lften Buches erfolgt, ist auf den Betrag abzustellen, der sich f\u00fcr den jeweiligen Zeitraum entsprechend der Regelbedarfsstufen-Fortschreibungsverordnung nach den \u00a7\u00a7 28a und 40 des Zw\u00f6lften Buches ergibt. (2) Als Regelbedarf wird bei Personen, die alleinstehend oder alleinerziehend sind oder deren Partnerin oder Partner minderj\u00e4hrig ist, monatlich ein Betrag in H\u00f6he der Regelbedarfsstufe 1 anerkannt. F\u00fcr sonstige erwerbsf\u00e4hige Angeh\u00f6rige der Bedarfsgemeinschaft wird als Regelbedarf anerkannt:  1. monatlich ein Betrag in H\u00f6he der Regelbedarfsstufe 4, sofern sie das 18. Lebensjahr noch nicht vollendet haben, 2. monatlich ein Betrag in H\u00f6he der Regelbedarfsstufe 3 in den \u00fcbrigen F\u00e4llen. (3) Abweichend von Absatz 2 Satz 1 ist bei Personen, die das 25. Lebensjahr noch nicht vollendet haben und ohne Zusicherung des zust\u00e4ndigen kommunalen Tr\u00e4gers nach \u00a7 22 Absatz 5 umziehen, bis zur Vollendung des 25. Lebensjahres der in Absatz 2 Satz 2 Nummer 2 genannte Betrag als Regelbedarf anzuerkennen. (4) Haben zwei Partner der Bedarfsgemeinschaft das 18. Lebensjahr vollendet, ist als Regelbedarf f\u00fcr jede dieser Personen monatlich ein Betrag in H\u00f6he der Regelbedarfsstufe 2 anzuerkennen. (5) (weggefallen)"
+        ],
+        [
+          "\u00a7 20",
+          "",
+          2,
+          "(weggefallen)"
+        ],
+        [
+          "\u00a7 20",
+          "Berufsr\u00fcckkehrende",
+          2,
+          "Berufsr\u00fcckkehrende sind Frauen und M\u00e4nner, die  1. ihre Erwerbst\u00e4tigkeit oder Arbeitslosigkeit oder eine betriebliche Berufsausbildung wegen der Betreuung und Erziehung von aufsichtsbed\u00fcrftigen Kindern oder der Betreuung pflegebed\u00fcrftiger Personen unterbrochen haben und 2. in angemessener Zeit danach in die Erwerbst\u00e4tigkeit zur\u00fcckkehren wollen."
+        ],
+        [
+          "\u00a7 20",
+          "Aufbringung der Mittel, \u00dcbergangsbereich",
+          6,
+          "(1) Die Mittel der Sozialversicherung einschlie\u00dflich der Arbeitsf\u00f6rderung werden nach Ma\u00dfgabe der besonderen Vorschriften f\u00fcr die einzelnen Versicherungszweige durch Beitr\u00e4ge der Versicherten, der Arbeitgeber und Dritter, durch staatliche Zusch\u00fcsse und durch sonstige Einnahmen aufgebracht. (2) Der \u00dcbergangsbereich im Sinne dieses Gesetzbuches umfasst Arbeitsentgelte aus mehr als geringf\u00fcgigen Besch\u00e4ftigungen nach \u00a7 8 Absatz 1 Nummer 1, die regelm\u00e4\u00dfig 2\u00a0000 Euro im Monat nicht \u00fcbersteigen; bei mehreren Besch\u00e4ftigungsverh\u00e4ltnissen ist das insgesamt erzielte Arbeitsentgelt ma\u00dfgebend. (2a) Bei Besch\u00e4ftigten, deren monatliches Arbeitsentgelt aus einer mehr als geringf\u00fcgigen Besch\u00e4ftigung den oberen Grenzbetrag des \u00dcbergangsbereichs nach Absatz 2 nicht \u00fcbersteigt, ist die beitragspflichtige Einnahme BE der Betrag in Euro, der sich nach folgender Formel berechnet:       Dabei ist AE das Arbeitsentgelt in Euro, G die Geringf\u00fcgigkeitsgrenze und F der Faktor, der sich berechnet, indem der Wert 28 Prozent geteilt wird durch den Gesamtsozialversicherungsbeitragssatz des Kalenderjahres, in dem der Anspruch auf das Arbeitsentgelt entstanden ist. Der Gesamtsozialversicherungsbeitragssatz eines Kalenderjahres ist die Summe der zum 1. Januar desselben Kalenderjahres geltenden Beitragss\u00e4tze in der allgemeinen Rentenversicherung, in der sozialen Pflegeversicherung sowie zur Arbeitsf\u00f6rderung und des um den durchschnittlichen Zusatzbeitragssatz erh\u00f6hten allgemeinen Beitragssatzes in der gesetzlichen Krankenversicherung. F\u00fcr die Zeit vom 1. Oktober 2022 bis zum 31. Dezember 2022 betr\u00e4gt der Faktor F 0,7009. Der Gesamtsozialversicherungsbeitragssatz und der Faktor F sind vom Bundesministerium f\u00fcr Arbeit und Soziales bis zum 31. Dezember eines Jahres f\u00fcr das folgende Kalenderjahr im Bundesanzeiger bekannt zu geben. Zur Bestimmung des vom Arbeitnehmer zu tragenden Anteils am Sozialversicherungsbeitrag wird als beitragspflichtige Einnahme der Betrag zu Grunde gelegt, der sich nach folgender Formel berechnet:       Dabei ist BE die beitragspflichtige Einnahme in Euro, AE das Arbeitsentgelt in Euro und G die Geringf\u00fcgigkeitsgrenze. Die \u00a7\u00a7 121 und 123 des Sechsten Buches sind anzuwenden. Die S\u00e4tze 1 und 6 gelten nicht f\u00fcr Personen, die zu ihrer Berufsausbildung besch\u00e4ftigt sind. (3) Der Arbeitgeber tr\u00e4gt abweichend von den besonderen Vorschriften f\u00fcr Besch\u00e4ftigte f\u00fcr die einzelnen Versicherungszweige den Gesamtsozialversicherungsbeitrag allein, wenn  1. Versicherte, die zu ihrer Berufsausbildung besch\u00e4ftigt sind, ein Arbeitsentgelt erzielen, das auf den Monat bezogen 325 Euro nicht \u00fcbersteigt, oder 2. Versicherte ein freiwilliges soziales Jahr oder ein freiwilliges \u00f6kologisches Jahr im Sinne des Jugendfreiwilligendienstegesetzes oder einen Bundesfreiwilligendienst nach dem Bundesfreiwilligendienstgesetz leisten. Wird infolge einmalig gezahlten Arbeitsentgelts die in Satz 1 genannte Grenze \u00fcberschritten, tragen die Versicherten und die Arbeitgeber den Gesamtsozialversicherungsbeitrag von dem diese Grenze \u00fcbersteigenden Teil des Arbeitsentgelts jeweils zur H\u00e4lfte; in der gesetzlichen Krankenversicherung gilt dies nur f\u00fcr den um den Beitragsanteil, der allein vom Arbeitnehmer zu tragen ist, reduzierten Beitrag."
+        ],
+        [
+          "\u00a7 20",
+          "Prim\u00e4re Pr\u00e4vention und Gesundheitsf\u00f6rderung",
+          12,
+          "(1) Die Krankenkasse sieht in der Satzung Leistungen zur Verhinderung und Verminderung von Krankheitsrisiken (prim\u00e4re Pr\u00e4vention) sowie zur F\u00f6rderung des selbstbestimmten gesundheitsorientierten Handelns der Versicherten (Gesundheitsf\u00f6rderung) vor. Die Leistungen sollen insbesondere zur Verminderung sozial bedingter sowie geschlechtsbezogener Ungleichheit von Gesundheitschancen beitragen und kind- und jugendspezifische Belange ber\u00fccksichtigen. Die Krankenkasse legt dabei die Handlungsfelder und Kriterien nach Absatz 2 zugrunde. (2) Der Spitzenverband Bund der Krankenkassen legt unter Einbeziehung unabh\u00e4ngigen, insbesondere gesundheitswissenschaftlichen, \u00e4rztlichen, arbeitsmedizinischen, psychotherapeutischen, psychologischen, pflegerischen, ern\u00e4hrungs-, sport-, sucht-, erziehungs- und sozialwissenschaftlichen Sachverstandes sowie des Sachverstandes der Menschen mit Behinderung einheitliche Handlungsfelder und Kriterien f\u00fcr die Leistungen nach Absatz 1 fest, insbesondere hinsichtlich Bedarf, Zielgruppen, Zugangswegen, Inhalt, Methodik, Qualit\u00e4t, intersektoraler Zusammenarbeit, wissenschaftlicher Evaluation und der Messung der Erreichung der mit den Leistungen verfolgten Ziele. Er bestimmt au\u00dferdem die Anforderungen und ein einheitliches Verfahren f\u00fcr die Zertifizierung von Leistungsangeboten durch die Krankenkassen, um insbesondere die einheitliche Qualit\u00e4t von Leistungen nach Absatz 4 Nummer 1 und 3 sicherzustellen. Der Spitzenverband Bund der Krankenkassen stellt sicher, dass seine Festlegungen nach den S\u00e4tzen 1 und 2 sowie eine \u00dcbersicht der nach Satz 2 zertifizierten Leistungen der Krankenkassen auf seiner Internetseite ver\u00f6ffentlicht werden. Die Krankenkassen erteilen dem Spitzenverband Bund der Krankenkassen hierf\u00fcr sowie f\u00fcr den nach \u00a7 20d Absatz 2 Nummer 2 zu erstellenden Bericht die erforderlichen Ausk\u00fcnfte und \u00fcbermitteln ihm nicht versichertenbezogen die erforderlichen Daten. (3) Bei der Aufgabenwahrnehmung nach Absatz 2 Satz 1 ber\u00fccksichtigt der Spitzenverband Bund der Krankenkassen auch die folgenden Gesundheitsziele im Bereich der Gesundheitsf\u00f6rderung und Pr\u00e4vention:  1. Diabetes mellitus Typ 2: Erkrankungsrisiko senken, Erkrankte fr\u00fch erkennen und behandeln, 2. Brustkrebs: Mortalit\u00e4t vermindern, Lebensqualit\u00e4t erh\u00f6hen, 3. Tabakkonsum reduzieren, 4. gesund aufwachsen: Lebenskompetenz, Bewegung, Ern\u00e4hrung, 5. gesundheitliche Kompetenz erh\u00f6hen, Souver\u00e4nit\u00e4t der Patientinnen und Patienten st\u00e4rken, 6. depressive Erkrankungen: verhindern, fr\u00fch erkennen, nachhaltig behandeln, 7. gesund \u00e4lter werden und 8. Alkoholkonsum reduzieren. Bei der Ber\u00fccksichtigung des in Satz 1 Nummer 1 genannten Ziels werden auch die Ziele und Teilziele beachtet, die in der Bekanntmachung \u00fcber die Gesundheitsziele und Teilziele im Bereich der Pr\u00e4vention und Gesundheitsf\u00f6rderung vom 21. M\u00e4rz 2005 (BAnz. S. 5304) festgelegt sind. Bei der Ber\u00fccksichtigung der in Satz 1 Nummer 2, 3 und 8 genannten Ziele werden auch die Ziele und Teilziele beachtet, die in der Bekanntmachung \u00fcber die Gesundheitsziele und Teilziele im Bereich der Pr\u00e4vention und Gesundheitsf\u00f6rderung vom 27. April 2015 (BAnz. AT 19.05.2015 B3) festgelegt sind. Bei der Ber\u00fccksichtigung der in Satz 1 Nummer 4 bis 7 genannten Ziele werden auch die Ziele und Teilziele beachtet, die in der Bekanntmachung \u00fcber die Gesundheitsziele und Teilziele im Bereich der Pr\u00e4vention und Gesundheitsf\u00f6rderung vom 26. Februar 2013 (BAnz. AT 26.03.2013 B3) festgelegt sind. Der Spitzenverband Bund der Krankenkassen ber\u00fccksichtigt auch die von der Nationalen Arbeitsschutzkonferenz im Rahmen der gemeinsamen deutschen Arbeitsschutzstrategie nach \u00a7 20a Absatz 2 Nummer 1 des Arbeitsschutzgesetzes entwickelten Arbeitsschutzziele. (4) Leistungen nach Absatz 1 werden erbracht als  1. Leistungen zur verhaltensbezogenen Pr\u00e4vention nach Absatz 5, 2. Leistungen zur Gesundheitsf\u00f6rderung und Pr\u00e4vention in Lebenswelten f\u00fcr in der gesetzlichen Krankenversicherung Versicherte nach \u00a7 20a und 3. Leistungen zur Gesundheitsf\u00f6rderung in Betrieben (betriebliche Gesundheitsf\u00f6rderung) nach \u00a7 20b. (5) Die Krankenkasse kann eine Leistung zur verhaltensbezogenen Pr\u00e4vention nach Absatz 4 Nummer 1 erbringen, wenn diese nach Absatz 2 Satz 2 von einer Krankenkasse oder von einem mit der Wahrnehmung dieser Aufgabe beauftragten Dritten in ihrem Namen zertifiziert ist. Bei ihrer Entscheidung \u00fcber eine Leistung zur verhaltensbezogenen Pr\u00e4vention ber\u00fccksichtigt die Krankenkasse eine Pr\u00e4ventionsempfehlung nach \u00a7 25 Absatz 1 Satz 2, nach \u00a7 26 Absatz 1 Satz 3 oder eine im Rahmen einer arbeitsmedizinischen Vorsorge oder einer sonstigen \u00e4rztlichen Untersuchung schriftlich abgegebene Empfehlung. Die Krankenkasse darf die sich aus der Pr\u00e4ventionsempfehlung ergebenden personenbezogenen Daten nur mit schriftlicher oder elektronischer Einwilligung und nach vorheriger schriftlicher oder elektronischer Information des Versicherten verarbeiten. Die Krankenkassen d\u00fcrfen ihre Aufgaben nach dieser Vorschrift an andere Krankenkassen, deren Verb\u00e4nde oder Arbeitsgemeinschaften \u00fcbertragen. F\u00fcr Leistungen zur verhaltensbezogenen Pr\u00e4vention, die die Krankenkasse wegen besonderer beruflicher oder famili\u00e4rer Umst\u00e4nde wohnortfern erbringt, gilt \u00a7 23 Absatz 2 Satz 2 entsprechend. (6) Die Ausgaben der Krankenkassen f\u00fcr die Wahrnehmung ihrer Aufgaben nach dieser Vorschrift und nach den \u00a7\u00a7 20a bis 20c sollen ab dem Jahr 2019 insgesamt f\u00fcr jeden ihrer Versicherten einen Betrag in H\u00f6he von 7,52 Euro umfassen. Von diesem Betrag wenden die Krankenkassen f\u00fcr jeden ihrer Versicherten mindestens 2,15 Euro f\u00fcr Leistungen nach \u00a7 20a und mindestens 3,15 Euro f\u00fcr Leistungen nach \u00a7 20b auf. Von dem Betrag f\u00fcr Leistungen nach \u00a7 20b wenden die Krankenkassen f\u00fcr Leistungen nach \u00a7 20b, die in Einrichtungen nach \u00a7 107 Absatz 1 und in Einrichtungen nach \u00a7 71 Absatz 1 und 2 des Elften Buches erbracht werden, f\u00fcr jeden ihrer Versicherten mindestens 1 Euro auf. Unterschreiten die j\u00e4hrlichen Ausgaben einer Krankenkasse den Betrag nach Satz 2 f\u00fcr Leistungen nach \u00a7 20a, so stellt die Krankenkasse diese nicht ausgegebenen Mittel im Folgejahr zus\u00e4tzlich f\u00fcr Leistungen nach \u00a7 20a zur Verf\u00fcgung. Die Ausgaben nach den S\u00e4tzen 1 bis 3 sind in den Folgejahren entsprechend der prozentualen Ver\u00e4nderung der monatlichen Bezugsgr\u00f6\u00dfe nach \u00a7 18 Absatz 1 des Vierten Buches anzupassen. Unbeschadet der Verpflichtung nach Absatz 1 m\u00fcssen die Ausgaben der Krankenkassen f\u00fcr die Wahrnehmung ihrer Aufgaben nach dieser Vorschrift und nach den \u00a7\u00a7 20a bis 20c im Jahr 2020 nicht den in den S\u00e4tzen 1 bis 3 genannten Betr\u00e4gen entsprechen. Im Jahr 2019 nicht ausgegebene Mittel f\u00fcr Leistungen nach \u00a7 20a hat die Krankenkasse nicht im Jahr 2020 f\u00fcr zus\u00e4tzliche Leistungen nach \u00a7 20a zur Verf\u00fcgung zu stellen."
+        ]
+      ]
+    },
+    {
+      "use_case": "UC02: Leistungsberechtigung pr\u00fcfen",
+      "description": "Pr\u00fcfung: Alter (15-67), Erwerbsf\u00e4higkeit (3h/Tag), Hilfebed\u00fcrftigkeit",
+      "found": 39,
+      "expected_min": 3,
+      "quality_score": 100,
+      "time_ms": 26.874065399169922,
+      "status": "PASS",
+      "records": [
+        [
+          "7",
+          "\u00a7 7",
+          "Leistungsberechtigte",
+          8
+        ],
+        [
+          "7",
+          "\u00a7 7",
+          "Zuschu\u00df f\u00fcr eine angemessene Wohnung",
+          1
+        ],
+        [
+          "7",
+          "\u00a7 7",
+          "Auswahl von Leistungen der aktiven Arbeitsf\u00f6rderung",
+          1
+        ],
+        [
+          "7",
+          "\u00a7 7",
+          "Besch\u00e4ftigung",
+          6
+        ],
+        [
+          "7",
+          "\u00a7 7",
+          "Versicherungsfreiheit bei geringf\u00fcgiger Besch\u00e4ftigung",
+          3
+        ]
+      ]
+    },
+    {
+      "use_case": "UC03: Einkommen berechnen",
+      "description": "Einkommensanrechnung inkl. \u00a7 11a (Freibetr\u00e4ge), \u00a7 11b (Absetzbetr\u00e4ge)",
+      "found": 15,
+      "expected_min": 5,
+      "quality_score": 100,
+      "time_ms": 17.7609920501709,
+      "status": "PASS",
+      "records": [
+        [
+          "11",
+          "Zu ber\u00fccksichtigendes Einkommen",
+          "\u00a7 11"
+        ],
+        [
+          "11",
+          "Leistungsarten",
+          "\u00a7 11"
+        ],
+        [
+          "11",
+          "(weggefallen)",
+          "\u00a7 11"
+        ],
+        [
+          "11",
+          "T\u00e4tigkeitsort",
+          "\u00a7 11"
+        ],
+        [
+          "11",
+          "Leistungsarten",
+          "\u00a7 11"
+        ]
+      ]
+    },
+    {
+      "use_case": "UC04: Verm\u00f6gen pr\u00fcfen",
+      "description": "Verm\u00f6genspr\u00fcfung und Freibetr\u00e4ge",
+      "found": 15,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 18.854856491088867,
+      "status": "PASS",
+      "records": [
+        [
+          "12",
+          "Zu ber\u00fccksichtigendes Verm\u00f6gen",
+          40
+        ],
+        [
+          "12",
+          "Leistungstr\u00e4ger",
+          2
+        ],
+        [
+          "12",
+          "Geltung der Begriffsbestimmungen",
+          2
+        ],
+        [
+          "12",
+          "Hausgewerbetreibende, Heimarbeiter und Zwischenmeister",
+          4
+        ],
+        [
+          "12",
+          "Wirtschaftlichkeitsgebot",
+          4
+        ]
+      ]
+    },
+    {
+      "use_case": "UC05: Mehrbedarf Alleinerziehende",
+      "description": "Mehrbedarfe: Alleinerziehende, Behinderung, kostenaufw\u00e4ndige Ern\u00e4hrung",
+      "found": 16,
+      "expected_min": 2,
+      "quality_score": 100,
+      "time_ms": 14.62411880493164,
+      "status": "PASS",
+      "records": [
+        [
+          "21",
+          "Mehrbedarfe"
+        ],
+        [
+          "21",
+          "Leistungen der gesetzlichen Krankenversicherung"
+        ],
+        [
+          "21",
+          "Tr\u00e4ger"
+        ],
+        [
+          "21",
+          "Bemessung der Beitr\u00e4ge"
+        ],
+        [
+          "21",
+          "Verh\u00fctung von Zahnerkrankungen (Gruppenprophylaxe)"
+        ]
+      ]
+    },
+    {
+      "use_case": "UC06: Kosten der Unterkunft",
+      "description": "Mietkosten, Heizkosten, Warmwasser",
+      "found": 17,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 17.531156539916992,
+      "status": "PASS",
+      "records": [
+        [
+          "22",
+          "Bedarfe f\u00fcr Unterkunft und Heizung",
+          96
+        ],
+        [
+          "22",
+          "Leistungen der gesetzlichen Unfallversicherung",
+          4
+        ],
+        [
+          "22",
+          "Verh\u00e4ltnis zu anderen Leistungen",
+          10
+        ],
+        [
+          "22",
+          "Entstehen der Beitragsanspr\u00fcche, Zusammentreffen mehrerer Versicherungsverh\u00e4ltnisse",
+          4
+        ],
+        [
+          "22",
+          "Verh\u00fctung von Zahnerkrankungen (Individualprophylaxe)",
+          4
+        ]
+      ]
+    },
+    {
+      "use_case": "UC07: Sanktionen pr\u00fcfen",
+      "description": "Pflichtverletzungen und Minderung der Leistung",
+      "found": 32,
+      "expected_min": 3,
+      "quality_score": 100,
+      "time_ms": 14.247894287109375,
+      "status": "PASS",
+      "records": [
+        [
+          "31",
+          "Pflichtverletzungen"
+        ],
+        [
+          "31",
+          "Vorbehalt des Gesetzes"
+        ],
+        [
+          "31",
+          "Grunds\u00e4tze der Berufsberatung"
+        ],
+        [
+          "31",
+          "Organe"
+        ],
+        [
+          "31",
+          "Arznei- und Verbandmittel, Verordnungserm\u00e4chtigung"
+        ]
+      ]
+    },
+    {
+      "use_case": "UC08: Eingliederungsvereinbarung",
+      "description": "EGV-Abschluss und Pflichten des Leistungsberechtigten",
+      "found": 13,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 18.69797706604004,
+      "status": "PASS",
+      "records": [
+        [
+          "\u00a7 15",
+          "Potenzialanalyse und Kooperationsplan",
+          6
+        ],
+        [
+          "\u00a7 15",
+          "Auskunft",
+          4
+        ],
+        [
+          "\u00a7 15",
+          "Ausbildung- und Arbeitsuchende",
+          1
+        ],
+        [
+          "\u00a7 15",
+          "Arbeitseinkommen",
+          1
+        ],
+        [
+          "\u00a7 15",
+          "\u00c4rztliche Behandlung, elektronische Gesundheitskarte",
+          6
+        ]
+      ]
+    },
+    {
+      "use_case": "UC09: ALG I Anspruchspr\u00fcfung",
+      "description": "Anspruchsvoraussetzungen f\u00fcr ALG I (Arbeitslosigkeit, Verf\u00fcgbarkeit)",
+      "found": 0,
+      "expected_min": 2,
+      "quality_score": 0.0,
+      "time_ms": 15.604972839355469,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC10: Zust\u00e4ndigkeit kl\u00e4ren",
+      "description": "\u00d6rtliche Zust\u00e4ndigkeit und Antragserfordernis",
+      "found": 38,
+      "expected_min": 2,
+      "quality_score": 100,
+      "time_ms": 2.6178359985351562,
+      "status": "PASS",
+      "records": [
+        [
+          "37",
+          "Antragserfordernis"
+        ],
+        [
+          "37",
+          "Vorbehalt abweichender Regelungen"
+        ],
+        [
+          "37",
+          "Potenzialanalyse und Eingliederungsvereinbarung"
+        ],
+        [
+          "37",
+          "Verhinderung von Organen"
+        ],
+        [
+          "37",
+          "H\u00e4usliche Krankenpflege"
+        ]
+      ]
+    },
+    {
+      "use_case": "UC11: Krankenversicherung",
+      "description": "KV-Pflicht f\u00fcr Leistungsbezieher",
+      "found": 0,
+      "expected_min": 1,
+      "quality_score": 0.0,
+      "time_ms": 21.981000900268555,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC12: Rentenversicherung",
+      "description": "Versicherungspflicht und Beitr\u00e4ge",
+      "found": 0,
+      "expected_min": 2,
+      "quality_score": 0.0,
+      "time_ms": 3.595113754272461,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC13: Rehabilitation",
+      "description": "Teilhabe und Rehabilitation behinderter Menschen",
+      "found": 0,
+      "expected_min": 2,
+      "quality_score": 0.0,
+      "time_ms": 3.3757686614990234,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC14: Sozialhilfe",
+      "description": "Hilfe zum Lebensunterhalt f\u00fcr nicht Erwerbsf\u00e4hige",
+      "found": 0,
+      "expected_min": 1,
+      "quality_score": 0.0,
+      "time_ms": 18.20683479309082,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC15: Sozialdatenschutz",
+      "description": "Schutz von Sozialdaten bei Antragsbearbeitung",
+      "found": 0,
+      "expected_min": 2,
+      "quality_score": 0.0,
+      "time_ms": 25.902748107910156,
+      "status": "FAIL",
+      "records": []
+    },
+    {
+      "use_case": "UC16: Vollst\u00e4ndiger Antrag",
+      "description": "Alle Pr\u00fcfschritte f\u00fcr B\u00fcrgergeld-Antrag",
+      "found": 128,
+      "expected_min": 8,
+      "quality_score": 100,
+      "time_ms": 27.750015258789062,
+      "status": "PASS",
+      "records": [
+        [
+          "7",
+          "Leistungsberechtigte"
+        ],
+        [
+          "7",
+          "Zuschu\u00df f\u00fcr eine angemessene Wohnung"
+        ],
+        [
+          "7",
+          "Auswahl von Leistungen der aktiven Arbeitsf\u00f6rderung"
+        ],
+        [
+          "7",
+          "Besch\u00e4ftigung"
+        ],
+        [
+          "7",
+          "Versicherungsfreiheit bei geringf\u00fcgiger Besch\u00e4ftigung"
+        ]
+      ]
+    },
+    {
+      "use_case": "UC17: Strukturnavigation",
+      "status": "ERROR",
+      "error": "{code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: struct (line 8, column 22 (offset: 349))\n\"            ORDER BY struct.order_index\"\n                      ^}"
+    },
+    {
+      "use_case": "UC18: Semantische Suche",
+      "description": "Textsuche \u00fcber alle Chunks zu 'Regelbedarfe'",
+      "found": 5,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 100.66890716552734,
+      "status": "PASS",
+      "records": [
+        [
+          null,
+          null,
+          259
+        ],
+        [
+          "\u00a7 21",
+          "Mehrbedarfe",
+          40
+        ],
+        [
+          "\u00a7 20",
+          "Regelbedarf zur Sicherung des Lebensunterhalts",
+          32
+        ],
+        [
+          "\u00a7 31a",
+          "Rechtsfolgen bei Pflichtverletzungen",
+          24
+        ],
+        [
+          "\u00a7 24",
+          "Abweichende Erbringung von Leistungen",
+          24
+        ]
+      ]
+    },
+    {
+      "use_case": "UC19: Fachliche Weisungen",
+      "description": "PDF-Handlungsanweisungen mit Verkn\u00fcpfung zum Gesetzestext",
+      "found": 5,
+      "expected_min": 1,
+      "quality_score": 100,
+      "time_ms": 29.893875122070312,
+      "status": "PASS",
+      "records": [
+        [
+          "FW_SGB_I_Par_46_Verzicht.pdf",
+          0.9,
+          0
+        ],
+        [
+          "FW_SGB_I_Par_14_Beratung.pdf",
+          0.9,
+          0
+        ],
+        [
+          "FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf",
+          0.9,
+          0
+        ],
+        [
+          "FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf",
+          0.9,
+          0
+        ],
+        [
+          "FW_SGB_II_Par_11_11a_11b_Einkommen.pdf",
+          0.9,
+          0
+        ]
+      ]
+    },
+    {
+      "use_case": "UC20: \u00c4nderungshistorie",
+      "description": "BGBl-\u00c4nderungen mit Datum nachvollziehen",
+      "found": 0,
+      "expected_min": 1,
+      "quality_score": 0.0,
+      "time_ms": 18.851041793823242,
+      "status": "FAIL",
+      "records": []
+    }
+  ]
+}
