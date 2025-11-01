@@ -1,0 +1,29 @@
+{
+  "critical": [
+    {
+      "issue": "151 orphaned nodes found",
+      "impact": "Nodes not accessible via normal queries",
+      "solution": "Run cleanup query to connect or delete orphaned nodes"
+    }
+  ],
+  "high_priority": [
+    {
+      "issue": "8 SGBs have >100 norms without chunks",
+      "impact": "RAG queries will fail for these paragraphs",
+      "solution": "Re-run chunk generation for affected SGBs"
+    },
+    {
+      "issue": "13 documents have no chunks",
+      "impact": "These SGBs cannot be used for semantic search",
+      "solution": "Verify import pipeline for affected SGBs"
+    }
+  ],
+  "medium_priority": [
+    {
+      "issue": "Only 0.5% of norms have amendment data",
+      "impact": "Cannot track legal changes over time",
+      "solution": "Parse BGBl references from XML metadata"
+    }
+  ],
+  "low_priority": []
+}
