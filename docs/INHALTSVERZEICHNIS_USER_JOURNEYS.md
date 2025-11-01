@@ -1,15 +1,15 @@
 # Inhaltsverzeichnis: Benutzer-Journeys
 
 **Dokument**: [BENUTZER_JOURNEYS_DE.md](BENUTZER_JOURNEYS_DE.md)  
-**Status**: 13/20 produktionsreif ✅ (+UC10 nach Phase 1)
+**Status**: 14/20 produktionsreif ✅ (+UC10 & UC14 nach Phase 1+2)
 
 ---
 
 ## Schnellnavigation
 
 ### Nach Status
-- [✅ Produktionsreife Journeys (13)](#produktionsreife-journeys)
-- [⚠️ Eingeschränkte Journeys (5)](#eingeschränkte-journeys)
+- [✅ Produktionsreife Journeys (14)](#produktionsreife-journeys)
+- [⚠️ Eingeschränkte Journeys (4)](#eingeschränkte-journeys)
 - [❌ Nicht verfügbare Journeys (2)](#nicht-verfügbare-journeys)
 
 ### Nach Zielgruppe
@@ -25,7 +25,7 @@
 
 ## Produktionsreife Journeys
 
-### ✅ MVP-Ready: Sofort einsetzbar (13 Journeys)
+### ✅ MVP-Ready: Sofort einsetzbar (14 Journeys)
 
 #### Regelbedarfe & Leistungen
 1. **[UC01: Regelbedarfsermittlung für Familie](#uc01-regelbedarfsermittlung)** ⭐⭐⭐⭐⭐
@@ -121,6 +121,14 @@
     - **SGB**: II (§§ 7, 11, 11b, 12, 37, 33)
     - **Tool**: Neo4j Browser + BPMN Modeler
 
+#### Prozessberater: Compliance & Governance
+14. **[UC14: Compliance-Check Datenschutz](#uc14-compliance)** ⭐⭐⭐⭐⭐ 🆕
+    - **Status**: Vollständig funktionsfähig
+    - **SGB**: X (§§ 67-76, 78-85)
+    - **Daten**: 18 Normen, 73 Chunks (100% Coverage)
+    - **Tool**: Neo4j Browser + Compliance-Dashboard
+    - **Note**: ✅ Nach Phase 2 verfügbar!
+
 ---
 
 ## Eingeschränkte Journeys
@@ -134,14 +142,6 @@
    - **Tool**: Neo4j Browser (eingeschränkt)
    - **Fix**: SGB V Chunks importieren
 
-14. **[UC14: Compliance-Check Datenschutz](#uc14-compliance)** ⭐⭐
-    - **Status**: Teilweise funktionsfähig
-    - **SGB**: X ⚠️ (§§ 78-85 verfügbar, §§ 67-69, 76 fehlen)
-    - **Daten**: 8 Normen, 48 Chunks (42% Coverage)
-    - **Problem**: Kern-Paragraphen fehlen (Sozialdaten-Grundlagen)
-    - **Priorität**: **P1 - HIGH**
-    - **Tool**: Neo4j Browser (eingeschränkt)
-    - **Fix**: §§ 67-69, 76 importieren
 
 15. **[UC15: Schnittstellenanalyse SGB II ↔ III](#uc15-schnittstellen)** ⭐⭐⭐
     - **Status**: Manuelle Analyse möglich
@@ -202,7 +202,7 @@
 | # | Journey | SGB | Status | Tool |
 |---|---------|-----|--------|------|
 | 13 | [Prozessanalyse Durchlaufzeiten](#uc13-prozessanalyse) | II | ✅ | Analytics |
-|| 14 | [Compliance Datenschutz](#uc14-compliance) | X | ⚠️ | Partial |
+|| 14 | [Compliance Datenschutz](#uc14-compliance) | X | ✅ | 18N / 73C |
 | 15 | [Schnittstellenanalyse II↔III](#uc15-schnittstellen) | II+III | ⚠️ | Manual |
 | 16 | [Qualitätssicherung Fehlerquellen](#uc16-qualitätssicherung) | II | ✅ | Analytics |
 | 17 | [Benchmark Ablehnungsgründe](#uc17-benchmark) | II | ✅ | BI |
@@ -225,10 +225,10 @@
 - UC20 (II + X): SGB X fehlt
 
 ### SGB X Verfahrensrecht
-✅ **Teilweise funktionsfähig** (270 Chunks, 68.6% Coverage):
+✅ **Vollständig funktionsfähig** (304 Chunks, 71.9% Coverage):
 - ✅ UC10: Widerspruchsverfahren (100% Coverage - produktionsreif!)
-- ⚠️ UC14: Datenschutz-Compliance (42% Coverage - teilweise funktionsfähig)
-- **Phase 1 Update**: UC10 jetzt verfügbar! 🎉
+- ✅ UC14: Datenschutz-Compliance (100% Coverage - produktionsreif!) 🆕
+- **Phase 1+2 Update**: Beide Use Cases verfügbar! 🎉
 
 ---
 
@@ -260,8 +260,9 @@
 13. ✅ UC16: Qualitätssicherung
 14. ✅ UC13: Prozessanalyse
 15. ✅ UC17: Benchmark
+16. ✅ UC14: Datenschutz-Compliance 🆕 (Nach Phase 2 verfügbar!)
 
-→ **15 Use Cases = Erweiterter MVP (75% aller Use Cases!)**
+→ **16 Use Cases = Erweiterter MVP (80% aller Use Cases!)**
 
 ---
 
@@ -287,14 +288,15 @@
 - Python-Integration aufbauen
 - UI-Prototyp entwickeln
 
-### 2. SGB X Chunks für UC14 vervollständigen 🟡 P1
-**Status nach Phase 1**: ✅ UC10 vollständig, ⚠️ UC14 teilweise
+### 2. SGB X vollständig ✅✅ ABGESCHLOSSEN
+**Status nach Phase 2**: ✅ UC10 vollständig, ✅ UC14 vollständig
 
-**Noch erforderlich für**:
-- UC14: Datenschutz-Compliance (§§ 67-69, 76 fehlen)
-- UC20: Risikomanagement (vollständig)
+**Ergebnis**:
+- ✅ UC10: Widerspruchsverfahren (100% Coverage)
+- ✅ UC14: Datenschutz-Compliance (100% Coverage)
+- ✅ SGB X: 96 Normen, 304 Chunks (71.9% Coverage)
 
-**Action**: Siehe [AKTIONSPLAN_NACH_ANALYSE.md](AKTIONSPLAN_NACH_ANALYSE.md) Phase 2
+**Nächste Priorität**: UC20 Risikomanagement
 
 ### 3. Amendment-Daten für Schulungen erfassen 🟡 P1
 **Erforderlich für**:
