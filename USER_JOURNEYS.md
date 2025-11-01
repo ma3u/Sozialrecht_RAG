@@ -11,9 +11,36 @@
 **Actor:** Sachbearbeiter (SB)  
 **Goal:** Complete processing of new Bürgergeld application
 
+```mermaid
+graph TB
+    Start([Antrag eingegangen]) --> Query1[Abrufen §§ 7-9 SGB II]
+    Query1 --> Check1{Leistungsberechtigt?}
+    Check1 -->|Nein| Reject[Ablehnungsbescheid]
+    Check1 -->|Ja| Query2[Abrufen §§ 11-12 SGB II]
+    Query2 --> Calc1[Einkommen berechnen]
+    Calc1 --> Calc2[Vermögen prüfen]
+    Calc2 --> Query3[Abrufen § 20 SGB II]
+    Query3 --> Calc3[Regelbedarf ermitteln]
+    Calc3 --> Query4[Abrufen § 21 SGB II]
+    Query4 --> Check2{Mehrbedarf?}
+    Check2 -->|Ja| Calc4[Mehrbedarf hinzufügen]
+    Check2 -->|Nein| Query5[Abrufen § 22 SGB II]
+    Calc4 --> Query5
+    Query5 --> Calc5[KdU hinzufügen]
+    Calc5 --> Generate[Bescheid generieren]
+    Generate --> Log[Änderungsdaten loggen]
+    Log --> End([Bescheid versenden])
+    Reject --> End
+    
+    style Start fill:#e1f5e1
+    style End fill:#ffe1e1
+    style Check1 fill:#fff4e1
+    style Check2 fill:#fff4e1
+```
+
 **Steps:**
 1. SB receives new application for Bürgergeld
-2. Opens RAG system and initiates "Antragspr ung" workflow
+2. Opens RAG system and initiates "Antragsprüfung" workflow
 3. System retrieves §§ 7, 8, 9 SGB II (eligibility criteria)
 4. SB checks: Age (15-67), work capacity (3h/day), need for assistance
 5. System provides chunks from § 7-9 with semantic highlights
@@ -36,6 +63,33 @@ LegalDocument(SGB II) → StructuralUnit → LegalNorm(§7-9,11,12,20,21,22) →
 ### Journey 2: Sanktion wegen Pflichtverletzung
 **Actor:** Sachbearbeiter  
 **Goal:** Apply sanctions according to § 31-32 SGB II
+
+```mermaid
+graph TB
+    Start([Pflichtverletzung gemeldet]) --> Query1[Abrufen § 31 SGB II]
+    Query1 --> Check1{Erste Verletzung?}
+    Check1 -->|Ja| Query2[Abrufen § 31a SGB II]
+    Check1 -->|Nein| Query3[Abrufen § 31b SGB II]
+    Query2 --> Sanction1[30% Minderung]
+    Query3 --> Check2{Wie oft?}
+    Check2 -->|2. Mal| Sanction2[60% Minderung]
+    Check2 -->|3+ Mal| Sanction3[100% Minderung]
+    Sanction1 --> QueryAmend[Prüfe Änderungen]
+    Sanction2 --> QueryAmend
+    Sanction3 --> QueryAmend
+    QueryAmend --> QueryFW[Fachliche Weisungen]
+    QueryFW --> Compare[Vergleich Gesetz/Weisung]
+    Compare --> Document[Dokumentation]
+    Document --> QueryX[Abrufen § 39 SGB X]
+    QueryX --> Generate[Sanktionsbescheid]
+    Generate --> Semantic[Ähnliche Fälle suchen]
+    Semantic --> End([Bescheid versenden])
+    
+    style Start fill:#ffe1e1
+    style End fill:#e1f5e1
+    style Check1 fill:#fff4e1
+    style Check2 fill:#fff4e1
+```
 
 **Steps:**
 1. SB receives report of missed appointment
@@ -62,6 +116,28 @@ Document(BA_Weisung) → Chunk (cross-reference)
 ### Journey 3: Einkommensanrechnung bei komplexem Fall
 **Actor:** Sachbearbeiter  
 **Goal:** Correctly calculate income deductions
+
+```mermaid
+graph TB
+    Start([Mehrere Einkommensquellen]) --> Query1[Abrufen § 11 SGB II]
+    Query1 --> Define[Einkommen definieren]
+    Define --> Query2[Abrufen §§ 11a, 11b]
+    Query2 --> Allowance[Freibeträge § 11a]
+    Allowance --> Deduction[Absetzbeträge § 11b]
+    Deduction --> Examples[Berechnungsbeispiele<br/>aus Chunks]
+    Examples --> CrossRef[Cross-Ref § 82 SGB XII]
+    CrossRef --> Semantic[Semantic Search<br/>ähnliche Fälle]
+    Semantic --> Apply[Einkommensabhängige<br/>KdU-Aufteilung]
+    Apply --> Validate[Formeln validieren]
+    Validate --> Document[Quellen dokumentieren]
+    Document --> SystemCheck[System validiert<br/>Berechnungslogik]
+    SystemCheck --> End([Berechnung abgeschlossen])
+    
+    style Start fill:#e1f5e1
+    style End fill:#e1ffe5
+    style CrossRef fill:#fff4e1
+    style Semantic fill:#e1e5ff
+```
 
 **Steps:**
 1. Applicant has multiple income sources (employment + child benefit)
@@ -140,6 +216,27 @@ Related: LegalNorm(§28) for child-specific benefits
 ### Journey 6: Rehabilitation statt Rente
 **Actor:** Sachbearbeiter  
 **Goal:** Coordinate rehabilitation benefits
+
+```mermaid
+graph TB
+    Start([Antragsteller 60+ Jahre]) --> Query1[Semantic Search:<br/>"Rehabilitation vor Rente"]
+    Query1 --> QueryIX[Abrufen § 8 SGB IX]
+    QueryIX --> Principle[Rehabilitations-<br/>Vorrang-Prinzip]
+    Principle --> QueryVI[Abrufen § 9 SGB VI]
+    QueryVI --> Compare[Renten-Anforderungen<br/>vergleichen]
+    Compare --> Semantic[Semantic: Fallbeispiele<br/>finden]
+    Semantic --> Coordinate[Koordination mit<br/>Rentenversicherung]
+    Coordinate --> CheckAmend[Amendment History:<br/>Gesetzesänderungen?]
+    CheckAmend --> Assess[Rehabilitations-<br/>Potenzial bewerten]
+    Assess --> Link[Verlinkung SGB IX + VI]
+    Link --> Initiate[Rehabilitations-<br/>Maßnahmen einleiten]
+    Initiate --> End([Cross-SGB Dokumentation])
+    
+    style Start fill:#e1f5e1
+    style End fill:#e1ffe5
+    style Semantic fill:#e1e5ff
+    style CheckAmend fill:#fff4e1
+```
 
 **Steps:**
 1. Older applicant (60+) potentially eligible for disability pension
@@ -375,6 +472,28 @@ Amendment tracking to check for law changes
 **Actor:** Sachbearbeiter  
 **Goal:** Manage ALG I to Bürgergeld transition
 
+```mermaid
+graph TB
+    Start([ALG I läuft aus]) --> QueryIII[Abrufen §§ 136-143 SGB III]
+    QueryIII --> Duration[ALG I Dauer prüfen]
+    Duration --> QueryII[Übergangsregeln<br/>SGB III → SGB II]
+    QueryII --> Query24[Abrufen § 24 SGB II]
+    Query24 --> Transition[Übergangsfreibetrag]
+    Transition --> CalcALG[ALG I Betrag]
+    CalcALG --> CalcBG[Bürgergeld Betrag]
+    CalcBG --> Compare[Vergleich berechnen]
+    Compare --> Diff{Differenz<br/>erklären}
+    Diff --> Explain[Unterschied dokumentieren]
+    Explain --> DocBoth[Beide SGB-Referenzen<br/>dokumentieren]
+    DocBoth --> Gap[Lückenlose Zahlung<br/>sicherstellen]
+    Gap --> Initiate[Bürgergeld-Antrag<br/>initiieren]
+    Initiate --> End([Nahtloser Übergang])
+    
+    style Start fill:#ffe1e1
+    style End fill:#e1ffe5
+    style Diff fill:#fff4e1
+```
+
 **Steps:**
 1. ALG I recipient's entitlement expires
 2. SB queries § 136-143 SGB III (ALG I duration)
@@ -403,6 +522,26 @@ Semantic search for "transition" rules
 **Actor:** Prozessberater (PB)  
 **Goal:** Create standardized application review process
 
+```mermaid
+graph TB
+    Start([Prozessanalyse starten]) --> Analyze[Manuelle Workflows analysieren]
+    Analyze --> Query[Abrufen §§ 7-40 SGB II]
+    Query --> Structure[Hierarchie visualisieren]
+    Structure --> Map[Legal Requirements → BPMN Tasks]
+    Map --> Gateway{Decision Points<br/>identifizieren}
+    Gateway --> Extract[Prozessschritte aus<br/>Fachlichen Weisungen]
+    Extract --> Swimlane[Swimlanes erstellen]
+    Swimlane --> Actors["Actors: SB, Antragsteller,<br/>Arzt, Krankenkasse"]
+    Actors --> Validate[Validierung gegen<br/>§ 20-22 SGB X]
+    Validate --> Document[Prozessdokumentation<br/>mit Legal References]
+    Document --> Export[BPMN Export mit<br/>embedded Graph Paths]
+    Export --> End([BPMN Modell fertig])
+    
+    style Start fill:#e1e5ff
+    style End fill:#e1ffe5
+    style Gateway fill:#fff4e1
+```
+
 **Steps:**
 1. PB analyzes current manual workflows
 2. Queries system for all relevant §§ 7-40 SGB II
@@ -429,6 +568,28 @@ Prozessberater views complete legal structure
 **Actor:** Prozessberater  
 **Goal:** Reduce application processing time
 
+```mermaid
+graph TB
+    Start([Optimierung initiieren]) --> Measure[Aktuelle Zeit messen:<br/>45 Tage]
+    Measure --> Analyze[Graph-Analyse<br/>Bottleneck-Paragraphen]
+    Analyze --> Identify["Identifiziert:<br/>§§ 11, 12, 22"]
+    Identify --> QueryFW[Fachliche Weisungen:<br/>Vereinfachungen]
+    QueryFW --> Auto{Automatisierung<br/>möglich?}
+    Auto -->|Ja| Implement[Einkommensberechnung<br/>automatisieren]
+    Auto -->|Nein| Optimize[Manuell optimieren]
+    Implement --> MapDep[Dependencies mappen:<br/>§ 11 blockiert § 20]
+    Optimize --> MapDep
+    MapDep --> Redesign[Parallele Verarbeitung<br/>ermöglichen]
+    Redesign --> Validate[Validierung gegen<br/>§ 20 SGB X 4-Wochen-Frist]
+    Validate --> Templates[Decision Templates<br/>mit Legal Texts]
+    Templates --> Simulate[Simulation:<br/>28 Tage]
+    Simulate --> End([30% schneller])
+    
+    style Start fill:#e1e5ff
+    style End fill:#e1ffe5
+    style Auto fill:#fff4e1
+```
+
 **Steps:**
 1. PB reviews current average processing time: 45 days
 2. Analyzes graph for bottleneck paragraphs (most queried)
@@ -454,6 +615,26 @@ Dependency mapping: Norm → Norm relationships
 ### Journey 18: Schulung für neue Sachbearbeiter
 **Actor:** Prozessberater  
 **Goal:** Create comprehensive training program
+
+```mermaid
+graph TB
+    Start([Schulungsprogramm<br/>entwickeln]) --> Design[Curriculum basierend<br/>auf Graph-Struktur]
+    Design --> Export[SGB II Hierarchie<br/>als Lernpfad]
+    Export --> Mod1[Modul 1: §§ 7-9<br/>Leistungsberechtigung]
+    Mod1 --> Mod2[Modul 2: §§ 11-12<br/>Einkommen/Vermögen]
+    Mod2 --> Mod3[Modul 3: §§ 20-22<br/>Leistungsberechnung]
+    Mod3 --> Quiz[Quiz-Fragen aus<br/>TextUnits generieren]
+    Quiz --> DecTree[Decision Trees aus<br/>Graph-Relationships]
+    DecTree --> LinkFW[Links zu Fachlichen<br/>Weisungen]
+    LinkFW --> TrackAmend[Amendment-Tracking<br/>für Aktualität]
+    TrackAmend --> ExportMat[Interaktive<br/>Lernmaterialien exportieren]
+    ExportMat --> Measure[Lernfortschritt<br/>messen]
+    Measure --> End([6 → 4 Wochen<br/>Onboarding])
+    
+    style Start fill:#e1e5ff
+    style End fill:#e1ffe5
+    style Quiz fill:#fff4e1
+```
 
 **Steps:**
 1. PB designs curriculum based on graph structure
@@ -506,6 +687,26 @@ Amendment tracking for compliance monitoring
 ### Journey 20: Cross-SGB Kooperation gestalten
 **Actor:** Prozessberater  
 **Goal:** Optimize multi-SGB case handling
+
+```mermaid
+graph TB
+    Start([Multi-SGB Analyse]) --> Analyze[Fälle mit mehreren<br/>SGBs analysieren]
+    Analyze --> Semantic[Semantic Similarity<br/>Cross-SGB]
+    Semantic --> Pattern["Muster identifiziert:<br/>SGB II+V, SGB II+IX"]
+    Pattern --> Map[Organisations-Interfaces<br/>mappen]
+    Map --> Orgs["Jobcenter, Krankenkasse,<br/>Rentenversicherung"]
+    Orgs --> Query[Cross-References<br/>zwischen SGBs]
+    Query --> Workflow[Kooperations-Workflows<br/>mit Legal Basis]
+    Workflow --> Protocol[Datenaustausch-<br/>Protokolle]
+    Protocol --> ValidateDSGVO[Validierung gegen<br/>§§ 67-85 SGB X]
+    ValidateDSGVO --> Conference[Case Conference<br/>Procedures]
+    Conference --> Monitor[Cross-SGB<br/>Resolution Times]
+    Monitor --> End([50% schnellere<br/>Auflösung])
+    
+    style Start fill:#e1e5ff
+    style End fill:#e1ffe5
+    style ValidateDSGVO fill:#ffe1e1
+```
 
 **Steps:**
 1. PB analyzes cases touching multiple SGBs
@@ -560,6 +761,73 @@ Cross-SGB relationship analysis via Chunk similarity
 - Relationship analysis tools for process mining
 - Bulk query capabilities for training material generation
 - Statistical analysis of graph usage patterns
+
+---
+
+## 📐 BPMN Diagram Legend
+
+The Mermaid diagrams above follow BPMN 2.0 conventions:
+
+### Node Types
+
+| Symbol | Type | Description | Example |
+|--------|------|-------------|----------|
+| `([text])` | Event | Start/End points | `([Antrag eingegangen])` |
+| `[text]` | Task | Actions to perform | `[Abrufen § 20 SGB II]` |
+| `{text}` | Gateway | Decision points | `{Leistungsberechtigt?}` |
+
+### Color Coding
+
+```mermaid
+graph LR
+    Start([Start Event]) --> Task[Regular Task]
+    Task --> Decision{Decision Gateway}
+    Decision -->|Ja| Success[Success Path]
+    Decision -->|Nein| Error[Error Path]
+    Success --> End([End Event])
+    Error --> End
+    
+    style Start fill:#e1f5e1
+    style End fill:#ffe1e1
+    style Decision fill:#fff4e1
+    style Task fill:#e1e5ff
+```
+
+- **Green** `#e1f5e1`: Start events, positive outcomes
+- **Red** `#ffe1e1`: End events, rejection paths
+- **Yellow** `#fff4e1`: Decision gateways, conditional checks
+- **Blue** `#e1e5ff`: Process consultant tasks, analysis steps
+
+### Graph Integration
+
+Each BPMN task maps to specific Neo4j graph operations:
+
+| BPMN Task | Graph Operation | Cypher Pattern |
+|-----------|----------------|----------------|
+| `Abrufen § X SGB Y` | Query legal norm | `MATCH (doc:LegalDocument {sgb_nummer: "Y"})-[:HAS_STRUCTURE\|CONTAINS_NORM*1..3]->(norm:LegalNorm {paragraph_nummer: "X"})` |
+| `Semantic Search` | Vector similarity | `CALL db.index.vector.queryNodes('chunk_embeddings', 10, $embedding)` |
+| `Cross-Ref § X` | Cross-SGB lookup | `MATCH (norm1)-[:HAS_CHUNK]->(c1), (norm2)-[:HAS_CHUNK]->(c2)` |
+| `Amendment History` | Track changes | `MATCH (norm)-[:HAS_AMENDMENT]->(amend:Amendment)` |
+| `Fachliche Weisungen` | PDF guidelines | `MATCH (d:Document {document_type: "BA_Weisung"})` |
+
+### Journey Categories
+
+**Sachbearbeiter Journeys (Green/Yellow):**
+- Focus on legal queries and decision-making
+- Direct interaction with legal norms and chunks
+- Time-sensitive operations (<500ms)
+
+**Prozessberater Journeys (Blue/Yellow):**
+- Focus on process analysis and optimization
+- Graph structure analysis and relationship mapping
+- Bulk operations and statistical analysis
+
+### Performance Indicators
+
+Each journey includes:
+- **Success Criteria**: Measurable outcomes (e.g., "<30 min processing")
+- **Graph Paths**: Specific Neo4j relationship traversals
+- **Technical Requirements**: Query performance expectations
 
 ---
 
