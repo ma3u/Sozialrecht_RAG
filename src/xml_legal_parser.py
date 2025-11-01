@@ -156,10 +156,8 @@ class LegalXMLParser:
         # Construct source URL
         xml_source_url = None
         if sgb_nummer:
-            from xml_downloader import GIIXMLDownloader
-            gii_id = GIIXMLDownloader.SGB_MAPPING.get(sgb_nummer, "").replace("_", " ")
-            if gii_id:
-                xml_source_url = f"{GIIXMLDownloader.BASE_URL}/{gii_id.replace(' ', '_')}/xml.zip"
+            # Construct URL directly without xml_downloader dependency
+            xml_source_url = f"https://www.gesetze-im-internet.de/sgb_{sgb_nummer.lower()}/xml.zip"
         
         document = LegalDocument(
             id=doc_id,

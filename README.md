@@ -1,10 +1,12 @@
 # Sozialrecht RAG - German Social Law Knowledge Graph
 
-**Status:** ✅ Production Ready  
-**Version:** 2.0  
-**Last Updated:** November 1, 2025
+**Status:** ⚠️ MVP Ready (Production requires SGB X import)  
+**Version:** 2.1  
+**Last Updated:** January 2025
 
 Comprehensive Knowledge Graph and RAG (Retrieval-Augmented Generation) system for German Social Law (Sozialgesetzbuch I-XIV) with over 61,000 nodes and 60,000 relationships.
+
+🎉 **Latest Achievement:** Orphaned norms repaired! Chunk coverage increased from 17.5% to 40.5% (16,922 chunks now accessible).
 
 ---
 
@@ -16,30 +18,44 @@ This system provides intelligent access to German social law for:
 
 ### Key Features
 
-✅ **Complete SGB Coverage:** All 13 social law books (SGB I-XIV) imported with 4,213 legal norms  
+✅ **Complete SGB Structure:** All 13 social law books (SGB I-XIV) with 4,213 legal norms  
 ✅ **RAG-Optimized:** 41,747 text chunks with embeddings for semantic search  
-✅ **Amendment Tracking:** 21 amendments with historical dates  
+✅ **7 SGBs with Chunks:** II, III, IV, V, VI, VIII, XI (16,922 chunks accessible, 40.5%)  
+⚠️ **5 SGBs need Chunks:** I, VII, IX, X, XII (structural data only)  
+✅ **Amendment Tracking:** 21 amendments with historical dates (0.5% coverage)  
 ✅ **Fachliche Weisungen:** 36 PDF guidelines integrated  
 ✅ **Graph Database:** Neo4j with hierarchical legal structure  
-✅ **60% Use Case Coverage:** 12/20 Sachbearbeiter workflows ready  
+✅ **60% Use Case Coverage:** 12/20 user journeys production-ready
 
 ---
 
-## 📊 Current Statistics
+## 📊 Current Statistics (January 2025)
 
 ### Database Content
 
 | Component | Count | Status |
 |-----------|-------|--------|
 | **Legal Norms** | 4,213 | ✅ Complete |
-| **Chunks (RAG)** | 41,747 | ✅ Complete |
+| **Chunks (Total)** | 41,747 | ✅ Imported |
+| **Chunks (Accessible)** | 16,922 (40.5%) | ⚠️ Partial |
+| **Orphaned Chunks** | 24,825 (59.5%) | ⚠️ Need import/linking |
 | **TextUnits** | 11,145 | ✅ Complete |
-| **SGB Books** | 13 | ✅ Complete |
+| **SGB Books** | 13 | ✅ Structure complete |
+| **SGBs with Chunks** | 7 (II, III, IV, V, VI, VIII, XI) | ✅ Production-ready |
+| **SGBs without Chunks** | 5 (I, VII, IX, X, XII) | ❌ Import needed |
 | **Structural Units** | 458 | ✅ Complete |
 | **PDF Documents** | 50 | ✅ Complete |
-| **Amendments** | 21 | ⚠️ Partial |
+| **Amendments** | 21 (0.5% coverage) | ⚠️ Very partial |
 | **Total Nodes** | 61,901 | - |
 | **Total Relationships** | 60,511 | - |
+
+### Recent Changes (January 2025)
+
+🔧 **Orphaned Norms Repair** (✅ Completed):
+- **Fixed**: 2,227 orphaned LegalNorm nodes
+- **Result**: +9,604 chunks now accessible (23% of total)
+- **Coverage**: Increased from 17.5% to 40.5%
+- **Script**: `scripts/link_orphaned_norms.py`
 
 ### Graph Architecture
 
@@ -124,10 +140,20 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 
 ### Core Documents
 
-1. **[COMPLETE_IMPORT_SUMMARY.md](COMPLETE_IMPORT_SUMMARY.md)** - Comprehensive import report
-2. **[USER_JOURNEYS.md](USER_JOURNEYS.md)** - 20 user journeys for Sachbearbeiter & Prozessberater
-3. **[QUICKSTART.md](QUICKSTART.md)** - Original quickstart guide
-4. **logs/graph_analysis/** - Latest analysis reports
+1. **[docs/SGB_COVERAGE_ANALYSIS.md](docs/SGB_COVERAGE_ANALYSIS.md)** ⭐ - Comprehensive SGB coverage report & repair strategy
+2. **[docs/BENUTZER_JOURNEYS_DE.md](docs/BENUTZER_JOURNEYS_DE.md)** ⭐ - 20 German user journeys with BPMN diagrams
+3. **[docs/USE_CASE_VALIDATION.md](docs/USE_CASE_VALIDATION.md)** ⭐ - Use case validation against data quality
+4. **[docs/AKTIONSPLAN_NACH_ANALYSE.md](docs/AKTIONSPLAN_NACH_ANALYSE.md)** ⭐ - Action plan & roadmap
+5. **[COMPLETE_IMPORT_SUMMARY.md](COMPLETE_IMPORT_SUMMARY.md)** - Original import report
+6. **[USER_JOURNEYS.md](USER_JOURNEYS.md)** - English user journeys (older version)
+7. **[QUICKSTART.md](QUICKSTART.md)** - Quick start guide
+8. **logs/graph_analysis/** - Analysis reports (Sachbearbeiter & Prozessberater)
+
+### Repair & Maintenance Scripts
+
+- **`scripts/link_orphaned_norms.py`** - Fix orphaned norms (✅ executed successfully)
+- **`scripts/fix_sgb_coverage.py`** - Alternative repair via StructuralUnits
+- **`scripts/analyze_graph_relationships.py`** - Comprehensive graph analysis
 
 ### Cypher Query Collections
 
