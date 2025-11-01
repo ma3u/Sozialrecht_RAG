@@ -1,16 +1,16 @@
 # Inhaltsverzeichnis: Benutzer-Journeys
 
 **Dokument**: [BENUTZER_JOURNEYS_DE.md](BENUTZER_JOURNEYS_DE.md)  
-**Status**: 12/20 produktionsreif ✅
+**Status**: 13/20 produktionsreif ✅ (+UC10 nach Phase 1)
 
 ---
 
 ## Schnellnavigation
 
 ### Nach Status
-- [✅ Produktionsreife Journeys (12)](#produktionsreife-journeys)
+- [✅ Produktionsreife Journeys (13)](#produktionsreife-journeys)
 - [⚠️ Eingeschränkte Journeys (5)](#eingeschränkte-journeys)
-- [❌ Nicht verfügbare Journeys (3)](#nicht-verfügbare-journeys)
+- [❌ Nicht verfügbare Journeys (2)](#nicht-verfügbare-journeys)
 
 ### Nach Zielgruppe
 - [👔 Sachbearbeiter-Journeys (1-12)](#sachbearbeiter-journeys-1-12)
@@ -25,7 +25,7 @@
 
 ## Produktionsreife Journeys
 
-### ✅ MVP-Ready: Sofort einsetzbar (12 Journeys)
+### ✅ MVP-Ready: Sofort einsetzbar (13 Journeys)
 
 #### Regelbedarfe & Leistungen
 1. **[UC01: Regelbedarfsermittlung für Familie](#uc01-regelbedarfsermittlung)** ⭐⭐⭐⭐⭐
@@ -81,6 +81,13 @@
    - **Tool**: Neo4j Browser
 
 #### Verwaltungsverfahren
+10. **[UC10: Widerspruch bearbeiten](#uc10-widerspruch)** ⭐⭐⭐⭐⭐ 🆕
+    - **Status**: Vollständig funktionsfähig
+    - **SGB**: X (§§ 79, 80, 84, 85)
+    - **Daten**: 4 Normen, 32 Chunks (100% Coverage)
+    - **Tool**: Neo4j Browser + Python
+    - **Note**: ✅ Nach Phase 1 verfügbar!
+
 11. **[UC11: Weiterbewilligungsantrag nach 1 Jahr](#uc11-weiterbewilligung)** ⭐⭐⭐⭐
     - **Status**: Vollständig funktionsfähig
     - **SGB**: II (§ 41)
@@ -127,21 +134,14 @@
    - **Tool**: Neo4j Browser (eingeschränkt)
    - **Fix**: SGB V Chunks importieren
 
-10. **[UC10: Widerspruch bearbeiten](#uc10-widerspruch)** ⭐
-    - **Status**: Nicht funktionsfähig
-    - **SGB**: X ❌ (§§ 79, 80, 84, 85 fehlen komplett)
-    - **Problem**: SGB X komplett ohne Chunks
-    - **Priorität**: **P0 - CRITICAL**
-    - **Tool**: -
-    - **Fix**: SGB X Import zwingend erforderlich
-
-14. **[UC14: Compliance-Check Datenschutz](#uc14-compliance)** ⭐
-    - **Status**: Nicht funktionsfähig
-    - **SGB**: X ❌ (§§ 67-85 fehlen)
-    - **Problem**: Sozialdatenschutz nicht abgedeckt
+14. **[UC14: Compliance-Check Datenschutz](#uc14-compliance)** ⭐⭐
+    - **Status**: Teilweise funktionsfähig
+    - **SGB**: X ⚠️ (§§ 78-85 verfügbar, §§ 67-69, 76 fehlen)
+    - **Daten**: 8 Normen, 48 Chunks (42% Coverage)
+    - **Problem**: Kern-Paragraphen fehlen (Sozialdaten-Grundlagen)
     - **Priorität**: **P1 - HIGH**
-    - **Tool**: -
-    - **Fix**: SGB X Import
+    - **Tool**: Neo4j Browser (eingeschränkt)
+    - **Fix**: §§ 67-69, 76 importieren
 
 15. **[UC15: Schnittstellenanalyse SGB II ↔ III](#uc15-schnittstellen)** ⭐⭐⭐
     - **Status**: Manuelle Analyse möglich
@@ -160,7 +160,7 @@
 
 ## Nicht verfügbare Journeys
 
-### ❌ Erfordern zusätzliche Daten (3 Journeys)
+### ❌ Erfordern zusätzliche Daten (2 Journeys)
 
 19. **[UC19: Schulungskonzept Gesetzesänderungen](#uc19-schulungskonzept)** ⭐
     - **Status**: Nicht funktionsfähig
@@ -169,6 +169,8 @@
     - **Priorität**: **P1 - HIGH**
     - **Tool**: -
     - **Fix**: Amendment-Import + Bürgergeld-Reform 2023 erfassen
+
+**Note**: UC10 wurde nach Phase 1 zu ✅ Produktionsreif verschoben!
 
 **Verbleibende Journeys**: Siehe [USE_CASE_VALIDATION.md](USE_CASE_VALIDATION.md) für Details
 
@@ -187,7 +189,7 @@
 | 7 | [Eingliederungsvereinbarung](#uc07-eingliederungsvereinbarung) | II | ✅ | 12N / 88C |
 | 8 | [Erstausstattung](#uc08-erstausstattung) | II | ✅ | 18N / 144C |
 | 9 | [Krankenversicherung](#uc09-krankenversicherung) | II+V | ⚠️ | 13N / 92C |
-| 10 | [Widerspruch](#uc10-widerspruch) | X | ❌ | 0N / 0C |
+|| 10 | [Widerspruch](#uc10-widerspruch) | X | ✅ | 4N / 32C |
 | 11 | [Weiterbewilligung](#uc11-weiterbewilligung) | II | ✅ | 8N / 64C |
 | 12 | [Hausbesuch](#uc12-hausbesuch) | II | ✅ | Vorhanden |
 
@@ -200,7 +202,7 @@
 | # | Journey | SGB | Status | Tool |
 |---|---------|-----|--------|------|
 | 13 | [Prozessanalyse Durchlaufzeiten](#uc13-prozessanalyse) | II | ✅ | Analytics |
-| 14 | [Compliance Datenschutz](#uc14-compliance) | X | ❌ | - |
+|| 14 | [Compliance Datenschutz](#uc14-compliance) | X | ⚠️ | Partial |
 | 15 | [Schnittstellenanalyse II↔III](#uc15-schnittstellen) | II+III | ⚠️ | Manual |
 | 16 | [Qualitätssicherung Fehlerquellen](#uc16-qualitätssicherung) | II | ✅ | Analytics |
 | 17 | [Benchmark Ablehnungsgründe](#uc17-benchmark) | II | ✅ | BI |
@@ -223,10 +225,10 @@
 - UC20 (II + X): SGB X fehlt
 
 ### SGB X Verfahrensrecht
-❌ **Nicht funktionsfähig** (0 Chunks):
-- UC10: Widerspruchsverfahren
-- UC14: Datenschutz-Compliance
-- **Priorität P0**: Blocking für Produktion!
+✅ **Teilweise funktionsfähig** (270 Chunks, 68.6% Coverage):
+- ✅ UC10: Widerspruchsverfahren (100% Coverage - produktionsreif!)
+- ⚠️ UC14: Datenschutz-Compliance (42% Coverage - teilweise funktionsfähig)
+- **Phase 1 Update**: UC10 jetzt verfügbar! 🎉
 
 ---
 
@@ -248,13 +250,18 @@
 
 → **8 Use Cases = Kompletter Sachbearbeiter-MVP**
 
-### Phase 3: Prozessberater-Tools (Woche 5-6)
-9. ✅ UC18: Prozessmodellierung ⭐⭐⭐⭐⭐
-10. ✅ UC16: Qualitätssicherung
-11. ✅ UC13: Prozessanalyse
-12. ✅ UC17: Benchmark
+### Phase 3: Verwaltungsverfahren (Woche 5) 🆕
+9. ✅ UC11: Weiterbewilligung
+10. ✅ UC12: Hausbesuch
+11. ✅ UC10: Widerspruch 🆕 (Nach Phase 1 verfügbar!)
 
-→ **12 Use Cases = Vollständiger MVP**
+### Phase 4: Prozessberater-Tools (Woche 6)
+12. ✅ UC18: Prozessmodellierung ⭐⭐⭐⭐⭐
+13. ✅ UC16: Qualitätssicherung
+14. ✅ UC13: Prozessanalyse
+15. ✅ UC17: Benchmark
+
+→ **15 Use Cases = Erweiterter MVP (75% aller Use Cases!)**
 
 ---
 
@@ -280,13 +287,14 @@
 - Python-Integration aufbauen
 - UI-Prototyp entwickeln
 
-### 2. SGB X Chunks importieren 🔴 P0
-**Blocking für**:
-- UC10: Widerspruchsverfahren
-- UC14: Datenschutz-Compliance
+### 2. SGB X Chunks für UC14 vervollständigen 🟡 P1
+**Status nach Phase 1**: ✅ UC10 vollständig, ⚠️ UC14 teilweise
+
+**Noch erforderlich für**:
+- UC14: Datenschutz-Compliance (§§ 67-69, 76 fehlen)
 - UC20: Risikomanagement (vollständig)
 
-**Action**: Siehe [AKTIONSPLAN_NACH_ANALYSE.md](AKTIONSPLAN_NACH_ANALYSE.md) Phase 1.1
+**Action**: Siehe [AKTIONSPLAN_NACH_ANALYSE.md](AKTIONSPLAN_NACH_ANALYSE.md) Phase 2
 
 ### 3. Amendment-Daten für Schulungen erfassen 🟡 P1
 **Erforderlich für**:
