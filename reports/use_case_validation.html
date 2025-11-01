@@ -1,0 +1,474 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Use Case Validation Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+                .header { background: #2196F3; color: white; padding: 20px; border-radius: 8px; }
+                .summary { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+                .use-case { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+                .pass { color: green; font-weight: bold; }
+                .fail { color: red; font-weight: bold; }
+                .partial { color: orange; font-weight: bold; }
+                pre { background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto; }
+                .metric { display: inline-block; margin: 10px 20px 10px 0; }
+                .metric-value { font-size: 24px; font-weight: bold; color: #2196F3; }
+                .metric-label { font-size: 12px; color: #666; }
+                table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+                th { background-color: #f2f2f2; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>🧪 Use Case Validation Report</h1>
+                <p>Sozialrecht RAG Knowledge Graph - Comprehensive Use Case Testing</p>
+                <p>Generated: 2025-11-01 18:41:15</p>
+            </div>
+            
+            <div class="summary">
+                <h2>📊 Summary</h2>
+                <div class="metric">
+                    <div class="metric-value">1/10</div>
+                    <div class="metric-label">Use Cases Passed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">10.0%</div>
+                    <div class="metric-label">Success Rate</div>
+                </div>
+            </div>
+        
+            <div class="use-case">
+                <h3>UC01: Regelbedarfsermittlung für Familie <span class="fail">❌ ERROR: {code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: norm (line 11, column 30 (offset: 555))
+"                    ORDER BY norm.order_index"
+                              ^}</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 20, 21, 22, 23 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 0 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 0
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>N/A</pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>N/A</pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>No data</th>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC02: Sanktionsprüfung bei Meldeversäumnis <span class="partial">⚠️ Partial (Chunks fehlen)</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 32 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 8 | 
+                    <strong>Records:</strong> 1
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer = '32'
+                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE chunk.text CONTAINS 'Meldeversäumnis' 
+                       OR chunk.text CONTAINS 'Minderung'
+                       OR chunk.text CONTAINS 'Sanktion'
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        count(DISTINCT chunk) as relevante_chunks,
+                        collect(DISTINCT chunk.text)[0..1] as beispiele
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm {paragraph_nummer: '32'})
+                                 -[:HAS_CHUNK]->(chunk:Chunk)
+                    RETURN path LIMIT 30
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.paragraph_nummer</th><th>norm.enbez</th><th>relevante_chunks</th><th>beispiele</th>
+                    </tr>
+            <tr><td>32</td><td>§ 32</td><td>8</td><td>['(1) Kommen Leistungsberechtigte trotz schriftlicher Belehrung über die Rechtsfolgen oder deren Ken</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC03: Einkommensanrechnung mit Freibeträgen <span class="fail">❌ FAIL</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 11, 11b | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser + Python Berechnungsmodul</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 104 | 
+                    <strong>Records:</strong> 14
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['11', '11b']
+                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WITH norm, collect(chunk.text) as chunks
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        size(chunks) as chunk_count,
+                        chunks[0..2] as beispiele
+                    ORDER BY norm.paragraph_nummer
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm)
+                                 -[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE norm.paragraph_nummer IN ['11', '11b']
+                    RETURN path LIMIT 50
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.paragraph_nummer</th><th>norm.enbez</th><th>chunk_count</th><th>beispiele</th>
+                    </tr>
+            <tr><td>11</td><td>§ 11</td><td>16</td><td>['(1) Als Einkommen zu berücksichtigen sind Einnahmen in Geld abzüglich der nach § 11b abzusetzenden</td></tr><tr><td>11</td><td>§ 11</td><td>2</td><td>['Gegenstand der sozialen Rechte sind die in diesem Gesetzbuch vorgesehenen Dienst-, Sach- und Geldl</td></tr><tr><td>11</td><td>§ 11</td><td>0</td><td>[]</td></tr><tr><td>11</td><td>§ 11</td><td>2</td><td>['(1) Die Vorschriften über den Beschäftigungsort gelten für selbständige Tätigkeiten entsprechend, </td></tr><tr><td>11</td><td>§ 11</td><td>12</td><td>['(1) Versicherte haben nach den folgenden Vorschriften Anspruch auf Leistungen  1. bei Schwangersch</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC06: Bedarfsgemeinschaft vs. Haushaltsgemeinschaft <span class="fail">❌ ERROR: {code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: chunk (line 11, column 30 (offset: 506))
+"                    ORDER BY chunk.chunk_index"
+                              ^}</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 7 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser + Bloom (Graph Exploration)</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 0 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 0
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>N/A</pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>N/A</pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>No data</th>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC08: Darlehen für Erstausstattung <span class="pass">✅ PASS</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 24 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 32 | 
+                    <strong>Records:</strong> 1
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (norm:LegalNorm)
+                    WHERE norm.paragraph_nummer = '24'
+                      AND EXISTS {
+                          MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})
+                      }
+                    MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE chunk.text CONTAINS 'Erstausstattung' 
+                       OR chunk.text CONTAINS 'Schwangerschaft'
+                       OR chunk.text CONTAINS 'Darlehen'
+                    RETURN 
+                        norm.enbez,
+                        count(chunk) as relevante_chunks,
+                        collect(chunk.text)[0..2] as beispiele
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm {paragraph_nummer: '24'})
+                                 -[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE chunk.text CONTAINS 'Erstausstattung'
+                    RETURN path LIMIT 30
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.enbez</th><th>relevante_chunks</th><th>beispiele</th>
+                    </tr>
+            <tr><td>§ 24</td><td>32</td><td>['(1) Kann im Einzelfall ein vom Regelbedarf zur Sicherung des Lebensunterhalts umfasster und nach d</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC10: Widerspruch bearbeiten <span class="fail">❌ Expected FAIL</span></h3>
+                <p><strong>SGB:</strong> X | <strong>Paragraphen:</strong> 79, 80, 84, 85 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> N/A (SGB X import required)</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 0 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 0
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'X'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['79', '80', '84', '85']
+                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        count(chunk) as chunks
+                    ORDER BY norm.paragraph_nummer
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'X'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['79', '80', '84', '85']
+                    RETURN path LIMIT 20
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>No data</th>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC13: Prozessanalyse - Durchlaufzeiten Erstantrag <span class="fail">❌ FAIL</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 37, 41, 44 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser + Python Analytics</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 3
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['37', '41', '44']
+                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE chunk.text CONTAINS 'Frist' 
+                       OR chunk.text CONTAINS 'unverzüglich'
+                       OR chunk.text CONTAINS 'Monat'
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        count(DISTINCT chunk) as fristen_chunks,
+                        collect(DISTINCT chunk.text)[0..2] as beispiel_fristen
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm)
+                                 -[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE norm.paragraph_nummer IN ['37', '41', '44']
+                      AND (chunk.text CONTAINS 'Frist' OR chunk.text CONTAINS 'Monat')
+                    RETURN path LIMIT 30
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.paragraph_nummer</th><th>norm.enbez</th><th>fristen_chunks</th><th>beispiel_fristen</th>
+                    </tr>
+            <tr><td>37</td><td>§ 37</td><td>22</td><td>['(2) Leistungen nach diesem Buch werden nicht für Zeiten vor der Antragstellung erbracht. Der Antra</td></tr><tr><td>41</td><td>§ 41</td><td>18</td><td>['(1) Anspruch auf Leistungen zur Sicherung des Lebensunterhalts besteht für jeden Kalendertag. Der </td></tr><tr><td>44</td><td>§ 44</td><td>6</td><td>['(2) Das Pflegegeld ist unter Berücksichtigung der Art oder Schwere des Gesundheitsschadens sowie d</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC16: Qualitätssicherung - Fehlerquellen in Bescheiden <span class="fail">❌ FAIL</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> * | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser + Cypher Analytics</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 10
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (norm:LegalNorm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE EXISTS {
+                        MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})
+                    }
+                    WITH norm, count(chunk) as chunk_count
+                    WHERE chunk_count > 10
+                    MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE chunk.text CONTAINS 'Ausnahme' 
+                       OR chunk.text CONTAINS 'abweichend'
+                       OR chunk.text CONTAINS 'jedoch'
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        chunk_count as komplexitaet,
+                        count(DISTINCT chunk) as ausnahmen
+                    ORDER BY komplexitaet DESC, ausnahmen DESC
+                    LIMIT 10
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH (norm:LegalNorm)-[:HAS_CHUNK]->(chunk:Chunk)
+                    WHERE EXISTS {
+                        MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})
+                    }
+                    WITH norm, count(chunk) as chunk_count
+                    WHERE chunk_count > 15
+                    MATCH path = (norm)-[:HAS_CHUNK]->(chunk)
+                    RETURN path LIMIT 50
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.paragraph_nummer</th><th>norm.enbez</th><th>komplexitaet</th><th>ausnahmen</th>
+                    </tr>
+            <tr><td>16i</td><td>§ 16i</td><td>72</td><td>8</td></tr><tr><td>46</td><td>§ 46</td><td>64</td><td>8</td></tr><tr><td>21</td><td>§ 21</td><td>56</td><td>24</td></tr><tr><td>16d</td><td>§ 16d</td><td>48</td><td>8</td></tr><tr><td>44d</td><td>§ 44d</td><td>40</td><td>24</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC18: Prozessmodellierung - Ideal-Prozess Antragsprüfung <span class="fail">❌ FAIL</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> 7, 11, 11b, 12, 37, 33 | <strong>Priority:</strong> P0</p>
+                <p><strong>Tool:</strong> Neo4j Browser + BPMN Modeler</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 1 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 65
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['7', '11', '11b', '12', '37', '33']
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        'Phase: ' + 
+                        CASE 
+                            WHEN norm.paragraph_nummer = '7' THEN '2 - Anspruchsprüfung'
+                            WHEN norm.paragraph_nummer IN ['11', '11b', '12'] THEN '2 - Bedürftigkeitsprüfung'
+                            WHEN norm.paragraph_nummer IN ['37', '33'] THEN '3 - Entscheidung'
+                        END as prozessphase
+                    ORDER BY prozessphase, norm.paragraph_nummer
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm)
+                    WHERE norm.paragraph_nummer IN ['7', '11', '11b', '12', '37', '33']
+                    RETURN path
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>norm.paragraph_nummer</th><th>norm.enbez</th><th>prozessphase</th>
+                    </tr>
+            <tr><td>7</td><td>§ 7</td><td>Phase: 2 - Anspruchsprüfung</td></tr><tr><td>7</td><td>§ 7</td><td>Phase: 2 - Anspruchsprüfung</td></tr><tr><td>7</td><td>§ 7</td><td>Phase: 2 - Anspruchsprüfung</td></tr><tr><td>7</td><td>§ 7</td><td>Phase: 2 - Anspruchsprüfung</td></tr><tr><td>7</td><td>§ 7</td><td>Phase: 2 - Anspruchsprüfung</td></tr>
+                </table>
+            </div>
+            
+            <div class="use-case">
+                <h3>UC19: Schulungskonzept - Gesetzesänderungen <span class="fail">❌ Expected FAIL</span></h3>
+                <p><strong>SGB:</strong> II | <strong>Paragraphen:</strong> * | <strong>Priority:</strong> P1</p>
+                <p><strong>Tool:</strong> N/A (Amendment data import required)</p>
+                
+                <h4>📈 Metrics</h4>
+                <p>
+                    <strong>Normen gefunden:</strong> 0 | 
+                    <strong>Chunks gefunden:</strong> 0 | 
+                    <strong>Records:</strong> 0
+                </p>
+                
+                <h4>🔍 Query (Data Validation)</h4>
+                <pre>
+                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})
+                          -[:CONTAINS_NORM]->(norm:LegalNorm)
+                          -[:AMENDED_BY]->(amendment:Amendment)
+                    WHERE amendment.date >= date('2023-01-01')
+                    RETURN 
+                        norm.paragraph_nummer,
+                        norm.enbez,
+                        amendment.title,
+                        amendment.date,
+                        amendment.summary
+                    ORDER BY amendment.date DESC
+                    LIMIT 10
+                </pre>
+                
+                <h4>📊 Visualization Query (Neo4j Browser)</h4>
+                <pre>
+                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
+                                 -[:CONTAINS_NORM]->(norm:LegalNorm)
+                                 -[:AMENDED_BY]->(amendment:Amendment)
+                    RETURN path LIMIT 20
+                </pre>
+                
+                <h4>📦 Sample Data</h4>
+                <table>
+                    <tr>
+                        <th>No data</th>
+                    </tr>
+            
+                </table>
+            </div>
+            
+        </body>
+        </html>
+        

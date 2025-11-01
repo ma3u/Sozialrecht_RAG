@@ -1,0 +1,753 @@
+{
+  "UC01": {
+    "id": "UC01",
+    "name": "Regelbedarfsermittlung für Familie",
+    "sgb": "II",
+    "paragraphen": [
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser",
+    "timestamp": "2025-11-01T18:41:14.721493",
+    "status": "❌ ERROR: {code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: norm (line 11, column 30 (offset: 555))\n\"                    ORDER BY norm.order_index\"\n                              ^}",
+    "passed": false,
+    "error": "{code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: norm (line 11, column 30 (offset: 555))\n\"                    ORDER BY norm.order_index\"\n                              ^}"
+  },
+  "UC02": {
+    "id": "UC02",
+    "name": "Sanktionsprüfung bei Meldeversäumnis",
+    "sgb": "II",
+    "paragraphen": [
+      "32"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser",
+    "timestamp": "2025-11-01T18:41:14.733939",
+    "records_found": 1,
+    "data": [
+      {
+        "norm.paragraph_nummer": "32",
+        "norm.enbez": "§ 32",
+        "relevante_chunks": 8,
+        "beispiele": [
+          "(1) Kommen Leistungsberechtigte trotz schriftlicher Belehrung über die Rechtsfolgen oder deren Kenntnis einer Aufforderung des zuständigen Trägers, sich bei ihm zu melden oder bei einem ärztlichen oder psychologischen Untersuchungstermin zu erscheinen, nicht nach, mindert sich das Bürgergeld jeweils um 10 Prozent des für sie nach § 20 maßgebenden Regelbedarfs. Dies gilt nicht, wenn Leistungsberechtigte einen wichtigen Grund für ihr Verhalten darlegen und nachweisen. (2) § 31a Absatz 2 bis 5 und § 31b Absatz 1 und 4 gelten entsprechend. Der Minderungszeitraum beträgt einen Monat."
+        ]
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 8,
+    "status": "⚠️ Partial (Chunks fehlen)",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer = '32'\n                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE chunk.text CONTAINS 'Meldeversäumnis' \n                       OR chunk.text CONTAINS 'Minderung'\n                       OR chunk.text CONTAINS 'Sanktion'\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        count(DISTINCT chunk) as relevante_chunks,\n                        collect(DISTINCT chunk.text)[0..1] as beispiele\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm {paragraph_nummer: '32'})\n                                 -[:HAS_CHUNK]->(chunk:Chunk)\n                    RETURN path LIMIT 30\n                "
+  },
+  "UC03": {
+    "id": "UC03",
+    "name": "Einkommensanrechnung mit Freibeträgen",
+    "sgb": "II",
+    "paragraphen": [
+      "11",
+      "11b"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser + Python Berechnungsmodul",
+    "timestamp": "2025-11-01T18:41:14.787005",
+    "records_found": 14,
+    "data": [
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 16,
+        "beispiele": [
+          "(1) Als Einkommen zu berücksichtigen sind Einnahmen in Geld abzüglich der nach § 11b abzusetzenden Beträge mit Ausnahme der in § 11a genannten Einnahmen sowie Einnahmen, die nach anderen Vorschriften des Bundesrechts nicht als Einkommen im Sinne dieses Buches zu berücksichtigen sind. Dies gilt auch für Einnahmen in Geldeswert, die im Rahmen einer Erwerbstätigkeit, des Bundesfreiwilligendienstes oder eines Jugendfreiwilligendienstes zufließen. Als Einkommen zu berücksichtigen sind auch Zuflüsse aus darlehensweise gewährten Sozialleistungen, soweit sie dem Lebensunterhalt dienen. Der Kinderzuschlag nach § 6a des Bundeskindergeldgesetzes ist als Einkommen dem jeweiligen Kind zuzurechnen. Dies gilt auch für das Kindergeld für zur Bedarfsgemeinschaft gehörende Kinder, soweit es bei dem jeweilig",
+          "(2) Einnahmen sind für den Monat zu berücksichtigen, in dem sie zufließen. Dies gilt auch für Einnahmen, die an einzelnen Tagen eines Monats aufgrund von kurzzeitigen Beschäftigungsverhältnissen erzielt werden. (3) Würde der Leistungsanspruch durch die Berücksichtigung einer als Nachzahlung zufließenden Einnahme, die nicht für den Monat des Zuflusses erbracht wird, in diesem Monat entfallen, so ist diese Einnahme auf einen Zeitraum von sechs Monaten gleichmäßig aufzuteilen und monatlich ab dem Monat des Zuflusses mit einem entsprechenden monatlichen Teilbetrag zu berücksichtigen."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 2,
+        "beispiele": [
+          "Gegenstand der sozialen Rechte sind die in diesem Gesetzbuch vorgesehenen Dienst-, Sach- und Geldleistungen (Sozialleistungen). Die persönliche und erzieherische Hilfe gehört zu den Dienstleistungen.",
+          "Gegenstand der sozialen Rechte sind die in diesem Gesetzbuch vorgesehenen Dienst-, Sach- und Geldleistungen (Sozialleistungen). Die persönliche und erzieherische Hilfe gehört zu den Dienstleistungen."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 0,
+        "beispiele": []
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 2,
+        "beispiele": [
+          "(1) Die Vorschriften über den Beschäftigungsort gelten für selbständige Tätigkeiten entsprechend, soweit sich nicht aus Absatz 2 Abweichendes ergibt. (2) Ist eine feste Arbeitsstätte nicht vorhanden und wird die selbständige Tätigkeit an verschiedenen Orten ausgeübt, gilt als Tätigkeitsort der Ort des Wohnsitzes oder des gewöhnlichen Aufenthalts.",
+          "(1) Die Vorschriften über den Beschäftigungsort gelten für selbständige Tätigkeiten entsprechend, soweit sich nicht aus Absatz 2 Abweichendes ergibt. (2) Ist eine feste Arbeitsstätte nicht vorhanden und wird die selbständige Tätigkeit an verschiedenen Orten ausgeübt, gilt als Tätigkeitsort der Ort des Wohnsitzes oder des gewöhnlichen Aufenthalts."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 12,
+        "beispiele": [
+          "(1) Versicherte haben nach den folgenden Vorschriften Anspruch auf Leistungen  1. bei Schwangerschaft und Mutterschaft (§§ 24c bis 24i), 2. zur Verhütung von Krankheiten und von deren Verschlimmerung sowie zur Empfängnisverhütung, bei Sterilisation und bei Schwangerschaftsabbruch (§§ 20 bis 24b), 3. zur Erfassung von gesundheitlichen Risiken und Früherkennung von Krankheiten (§§ 25 und 26), 4. zur Behandlung einer Krankheit (§§ 27 bis 52), 5. des Persönlichen Budgets nach § 29 des Neunten Buches.",
+          "(2) Versicherte haben auch Anspruch auf Leistungen zur medizinischen Rehabilitation sowie auf unterhaltssichernde und andere ergänzende Leistungen, die notwendig sind, um eine Behinderung oder Pflegebedürftigkeit abzuwenden, zu beseitigen, zu mindern, auszugleichen, ihre Verschlimmerung zu verhüten oder ihre Folgen zu mildern. Leistungen der aktivierenden Pflege nach Eintritt von Pflegebedürftigkeit werden von den Pflegekassen erbracht. Die Leistungen nach Satz 1 werden unter Beachtung des Neunten Buches erbracht, soweit in diesem Buch nichts anderes bestimmt ist."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 6,
+        "beispiele": [
+          "(1) Für Leistungen zur Teilhabe haben Versicherte die versicherungsrechtlichen Voraussetzungen erfüllt, die bei Antragstellung  1. die Wartezeit von 15 Jahren erfüllt haben oder 2. eine Rente wegen verminderter Erwerbsfähigkeit beziehen.",
+          "(2) Für die Leistungen zur Prävention und zur medizinischen Rehabilitation haben Versicherte die versicherungsrechtlichen Voraussetzungen auch erfüllt, die  1. in den letzten zwei Jahren vor der Antragstellung sechs Kalendermonate mit Pflichtbeiträgen für eine versicherte Beschäftigung oder Tätigkeit haben, 2. innerhalb von zwei Jahren nach Beendigung einer Ausbildung eine versicherte Beschäftigung oder selbständige Tätigkeit aufgenommen und bis zum Antrag ausgeübt haben oder nach einer solchen Beschäftigung oder Tätigkeit bis zum Antrag arbeitsunfähig oder arbeitslos gewesen sind oder 3. vermindert erwerbsfähig sind oder bei denen dies in absehbarer Zeit zu erwarten ist, wenn sie die allgemeine Wartezeit erfüllt haben. § 55 Abs. 2 ist entsprechend anzuwenden. Der Zeitraum von zwei Jahren nach Nummer 1 verlängert sich um Anrechnungszeiten wegen des Bezugs von Bürgergeld nach § 19 Absatz 1 Satz 1 des Zweiten Buches. Für die Leistungen nach § 15a an Kinder von Versicherten sind die versicherungsrechtlichen Voraussetzungen erfüllt, wenn der Versicherte die allgemeine Wartezeit oder die in Satz 1 oder in Absatz 1 genannten versicherungsrechtlichen Voraussetzungen erfüllt hat."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 4,
+        "beispiele": [
+          "(1) Folgen eines Versicherungsfalls sind auch Gesundheitsschäden oder der Tod von Versicherten infolge  1. der Durchführung einer Heilbehandlung, von Leistungen zur Teilhabe am Arbeitsleben oder einer Maßnahme nach § 3 der Berufskrankheiten-Verordnung,   2. der Wiederherstellung oder Erneuerung eines Hilfsmittels,   3. der zur Aufklärung des Sachverhalts eines Versicherungsfalls angeordneten Untersuchung einschließlich der dazu notwendigen Wege.",
+          "(2) Absatz 1 gilt entsprechend, wenn die Versicherten auf Aufforderung des Unfallversicherungsträgers diesen oder eine von ihm bezeichnete Stelle zur Vorbereitung von Maßnahmen der Heilbehandlung, der Leistungen zur Teilhabe am Arbeitsleben oder von Maßnahmen nach § 3 der Berufskrankheiten-Verordnung aufsuchen. Der Aufforderung durch den Unfallversicherungsträger nach Satz 1 steht eine Aufforderung durch eine mit der Durchführung der genannten Maßnahmen beauftragte Stelle gleich."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 4,
+        "beispiele": [
+          "(1) Jungen Menschen sind die zur Förderung ihrer Entwicklung erforderlichen Angebote der Jugendarbeit zur Verfügung zu stellen. Sie sollen an den Interessen junger Menschen anknüpfen und von ihnen mitbestimmt und mitgestaltet werden, sie zur Selbstbestimmung befähigen und zu gesellschaftlicher Mitverantwortung und zu sozialem Engagement anregen und hinführen. Dabei sollen die Zugänglichkeit und Nutzbarkeit der Angebote für junge Menschen mit Behinderungen sichergestellt werden. (2) Jugendarbeit wird angeboten von Verbänden, Gruppen und Initiativen der Jugend, von anderen Trägern der Jugendarbeit und den Trägern der öffentlichen Jugendhilfe. Sie umfasst für Mitglieder bestimmte Angebote, die offene Jugendarbeit und gemeinwesenorientierte Angebote.",
+          "(3) Zu den Schwerpunkten der Jugendarbeit gehören:  1. außerschulische Jugendbildung mit allgemeiner, politischer, sozialer, gesundheitlicher, kultureller, naturkundlicher und technischer Bildung, 2. Jugendarbeit in Sport, Spiel und Geselligkeit, 3. arbeitswelt-, schul- und familienbezogene Jugendarbeit, 4. internationale Jugendarbeit, 5. Kinder- und Jugenderholung, 6. Jugendberatung. (4) Angebote der Jugendarbeit können auch Personen, die das 27. Lebensjahr vollendet haben, in angemessenem Umfang einbeziehen."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 4,
+        "beispiele": [
+          "(1) Fähig zur Vornahme von Verfahrenshandlungen sind  1. natürliche Personen, die nach bürgerlichem Recht geschäftsfähig sind, 2. natürliche Personen, die nach bürgerlichem Recht in der Geschäftsfähigkeit beschränkt sind, soweit sie für den Gegenstand des Verfahrens durch Vorschriften des bürgerlichen Rechts als geschäftsfähig oder durch Vorschriften des öffentlichen Rechts als handlungsfähig anerkannt sind, 3. juristische Personen und Vereinigungen (§ 10 Nr. 2) durch ihre gesetzlichen Vertreter oder durch besonders Beauftragte, 4. Behörden durch ihre Leiter, deren Vertreter oder Beauftragte.",
+          "(2) Betrifft ein Einwilligungsvorbehalt nach § 1825 des Bürgerlichen Gesetzbuches den Gegenstand des Verfahrens, so ist ein geschäftsfähiger Betreuter nur insoweit zur Vornahme von Verfahrenshandlungen fähig, als er nach den Vorschriften des bürgerlichen Rechts ohne Einwilligung des Betreuers handeln kann oder durch Vorschriften des öffentlichen Rechts als handlungsfähig anerkannt ist. (3) Die §§ 53 und 55 der Zivilprozessordnung gelten entsprechend."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 4,
+        "beispiele": [
+          "(1) Die Pflegeeinrichtungen pflegen, versorgen und betreuen die Pflegebedürftigen, die ihre Leistungen in Anspruch nehmen, entsprechend dem allgemein anerkannten Stand medizinisch-pflegerischer Erkenntnisse. Inhalt und Organisation der Leistungen haben eine humane und aktivierende Pflege unter Achtung der Menschenwürde zu gewährleisten.",
+          "(2) Bei der Durchführung dieses Buches sind die Vielfalt der Träger von Pflegeeinrichtungen zu wahren sowie deren Selbständigkeit, Selbstverständnis und Unabhängigkeit zu achten. Dem Auftrag kirchlicher und sonstiger Träger der freien Wohlfahrtspflege, kranke, gebrechliche und pflegebedürftige Menschen zu pflegen, zu betreuen, zu trösten und sie im Sterben zu begleiten, ist Rechnung zu tragen. Freigemeinnützige und private Träger haben Vorrang gegenüber öffentlichen Trägern. (3) Die Bestimmungen des Wohn- und Betreuungsvertragsgesetzes bleiben unberührt."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 8,
+        "beispiele": [
+          "(1) Zur Erfüllung der Aufgaben dieses Buches werden die Leistungsberechtigten beraten und, soweit erforderlich, unterstützt.",
+          "(2) Die Beratung betrifft die persönliche Situation, den Bedarf sowie die eigenen Kräfte und Mittel sowie die mögliche Stärkung der Selbsthilfe zur aktiven Teilnahme am Leben in der Gemeinschaft und zur Überwindung der Notlage. Die aktive Teilnahme am Leben in der Gemeinschaft umfasst auch ein gesellschaftliches Engagement. Zur Überwindung der Notlage gehört auch, die Leistungsberechtigten für den Erhalt von Sozialleistungen zu befähigen. Die Beratung umfasst auch eine gebotene Budgetberatung nach § 29 des Neunten Buches. Leistungsberechtigte nach dem Dritten und Vierten Kapitel erhalten die gebotene Beratung für den Umgang mit dem durch den Regelsatz zur Verfügung gestellten monatlichen Pauschalbetrag (§ 27a Absatz 3 Satz 2)."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 4,
+        "beispiele": [
+          "(1) Leistungen, die auf Antrag erbracht werden, sind ab dem Monat zu erbringen, in dem die Voraussetzungen für die Inanspruchnahme vorliegen, frühestens ab dem Monat, in dem der Antrag auf diese Leistungen gestellt wird. (2) Abweichend von Absatz 1 sind für Zeiträume vor der Antragstellung Leistungen zu erbringen, wenn der Antrag innerhalb eines Jahres nach dem schädigenden Ereignis gestellt war. War die anspruchsberechtigte Person ohne ihr Verschulden an der Antragstellung verhindert, so verlängert sich diese Frist um den Zeitraum der Verhinderung. (3) Leistungen, die von Amts wegen erbracht werden, sind frühestens ab dem Monat zu erbringen, in dem der zuständigen Behörde die der Leistung zugrundeliegenden Tatsachen bekannt geworden sind.",
+          "(4) Leistungen der Schnellen Hilfen werden für Zeiträume vor der Antragstellung nicht erbracht. Dies gilt nicht für die Inanspruchnahme der ersten beiden Sitzungen in der Traumaambulanz sowie die Kontaktaufnahme des Fallmanagements mit möglicherweise berechtigten Personen. (5) Die Kosten für die ersten beiden Sitzungen in der Traumaambulanz sowie die erste Kontaktaufnahme durch das Fallmanagement werden auch dann getragen, wenn Ansprüche nach diesem Buch nicht bestehen, auch nicht im Erleichterten Verfahren nach § 115."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "chunk_count": 6,
+        "beispiele": [
+          "(1) Das Bundesministerium für Arbeit und Soziales fördert im Rahmen der für diesen Zweck zur Verfügung stehenden Haushaltsmittel im Aufgabenbereich der Grundsicherung für Arbeitsuchende und der gesetzlichen Rentenversicherung Modellvorhaben, die den Vorrang von Leistungen zur Teilhabe nach § 9 und die Sicherung der Erwerbsfähigkeit nach § 10 unterstützen. (2) Das Nähere regeln Förderrichtlinien des Bundesministeriums für Arbeit und Soziales. Die Förderdauer der Modellvorhaben beträgt fünf Jahre. Die Förderrichtlinien enthalten ein Datenschutzkonzept.",
+          "(3) Das Bundesministerium für Arbeit und Soziales kann durch Rechtsverordnung ohne Zustimmung des Bundesrates regeln, ob und inwieweit die Jobcenter nach § 6d des Zweiten Buches, die Bundesagentur für Arbeit und die Träger der gesetzlichen Rentenversicherung bei der Durchführung eines Modellvorhabens nach Absatz 1 von den für sie geltenden Leistungsgesetzen sachlich und zeitlich begrenzt abweichen können."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "11b",
+        "norm.enbez": "§ 11b",
+        "chunk_count": 32,
+        "beispiele": [
+          "(1) Vom Einkommen abzusetzen sind  1. auf das Einkommen entrichtete Steuern, 2. Pflichtbeiträge zur Sozialversicherung einschließlich der Beiträge zur Arbeitsförderung, 3. Beiträge zu öffentlichen oder privaten Versicherungen oder ähnlichen Einrichtungen, soweit diese Beiträge gesetzlich vorgeschrieben oder nach Grund und Höhe angemessen sind; hierzu gehören Beiträge  a) zur Vorsorge für den Fall der Krankheit und der Pflegebedürftigkeit für Personen, die in der gesetzlichen Krankenversicherung nicht versicherungspflichtig sind, b) zur Altersvorsorge von Personen, die von der Versicherungspflicht in der gesetzlichen Rentenversicherung befreit sind, soweit die Beiträge nicht nach § 26 bezuschusst werden, 4. geförderte Altersvorsorgebeiträge nach § 82 des Einkommensteuergesetzes, soweit sie ",
+          "(2) Bei erwerbsfähigen Leistungsberechtigten, die erwerbstätig sind, ist anstelle der Beträge nach Absatz 1 Satz 1 Nummer 3 bis 5 ein Betrag von insgesamt 100 Euro monatlich von dem Einkommen aus Erwerbstätigkeit abzusetzen. Beträgt das monatliche Einkommen aus Erwerbstätigkeit mehr als 400 Euro, gilt Satz 1 nicht, wenn die oder der erwerbsfähige Leistungsberechtigte nachweist, dass die Summe der Beträge nach Absatz 1 Satz 1 Nummer 3 bis 5 den Betrag von 100 Euro übersteigt. (2a) § 82a des Zwölften Buches gilt entsprechend."
+        ]
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 104,
+    "status": "❌ FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['11', '11b']\n                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WITH norm, collect(chunk.text) as chunks\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        size(chunks) as chunk_count,\n                        chunks[0..2] as beispiele\n                    ORDER BY norm.paragraph_nummer\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm)\n                                 -[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE norm.paragraph_nummer IN ['11', '11b']\n                    RETURN path LIMIT 50\n                "
+  },
+  "UC06": {
+    "id": "UC06",
+    "name": "Bedarfsgemeinschaft vs. Haushaltsgemeinschaft",
+    "sgb": "II",
+    "paragraphen": [
+      "7"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser + Bloom (Graph Exploration)",
+    "timestamp": "2025-11-01T18:41:14.819301",
+    "status": "❌ ERROR: {code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: chunk (line 11, column 30 (offset: 506))\n\"                    ORDER BY chunk.chunk_index\"\n                              ^}",
+    "passed": false,
+    "error": "{code: Neo.ClientError.Statement.SyntaxError} {message: In a WITH/RETURN with DISTINCT or an aggregation, it is not possible to access variables declared before the WITH/RETURN: chunk (line 11, column 30 (offset: 506))\n\"                    ORDER BY chunk.chunk_index\"\n                              ^}"
+  },
+  "UC08": {
+    "id": "UC08",
+    "name": "Darlehen für Erstausstattung",
+    "sgb": "II",
+    "paragraphen": [
+      "24"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser",
+    "timestamp": "2025-11-01T18:41:14.822758",
+    "records_found": 1,
+    "data": [
+      {
+        "norm.enbez": "§ 24",
+        "relevante_chunks": 32,
+        "beispiele": [
+          "(1) Kann im Einzelfall ein vom Regelbedarf zur Sicherung des Lebensunterhalts umfasster und nach den Umständen unabweisbarer Bedarf nicht gedeckt werden, erbringt die Agentur für Arbeit bei entsprechendem Nachweis den Bedarf als Sachleistung oder als Geldleistung und gewährt der oder dem Leistungsberechtigten ein entsprechendes Darlehen. Bei Sachleistungen wird das Darlehen in Höhe des für die Agentur für Arbeit entstandenen Anschaffungswertes gewährt. Weiter gehende Leistungen sind ausgeschlossen.",
+          "(3) Nicht vom Regelbedarf nach § 20 umfasst sind Bedarfe für  1. Erstausstattungen für die Wohnung einschließlich Haushaltsgeräten, 2. Erstausstattungen für Bekleidung und Erstausstattungen bei Schwangerschaft und Geburt sowie 3. Anschaffung und Reparaturen von orthopädischen Schuhen, Reparaturen von therapeutischen Geräten und Ausrüstungen sowie die Miete von therapeutischen Geräten. Leistungen für diese Bedarfe werden gesondert erbracht. Leistungen nach Satz 2 werden auch erbracht, wenn Leistungsberechtigte keine Leistungen zur Sicherung des Lebensunterhalts einschließlich der angemessenen Kosten für Unterkunft und Heizung benötigen, den Bedarf nach Satz 1 jedoch aus eigenen Kräften und Mitteln nicht voll decken können. In diesem Fall kann das Einkommen berücksichtigt werden, das Leistungsberechtigte innerhalb eines Zeitraumes von bis zu sechs Monaten nach Ablauf des Monats erwerben, in dem über die Leistung entschieden wird. Die Leistungen für Bedarfe nach Satz 1 Nummer 1 und 2 können als Sachleistung oder Geldleistung, auch in Form von Pauschalbeträgen, erbracht werden. Bei der Bemessung der Pauschalbeträge sind geeignete Angaben über die erforderlichen Aufwendungen und nachvollziehbare Erfahrungswerte zu berücksichtigen."
+        ]
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 32,
+    "status": "✅ PASS",
+    "passed": true,
+    "query": "\n                    MATCH (norm:LegalNorm)\n                    WHERE norm.paragraph_nummer = '24'\n                      AND EXISTS {\n                          MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})\n                      }\n                    MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE chunk.text CONTAINS 'Erstausstattung' \n                       OR chunk.text CONTAINS 'Schwangerschaft'\n                       OR chunk.text CONTAINS 'Darlehen'\n                    RETURN \n                        norm.enbez,\n                        count(chunk) as relevante_chunks,\n                        collect(chunk.text)[0..2] as beispiele\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm {paragraph_nummer: '24'})\n                                 -[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE chunk.text CONTAINS 'Erstausstattung'\n                    RETURN path LIMIT 30\n                "
+  },
+  "UC10": {
+    "id": "UC10",
+    "name": "Widerspruch bearbeiten",
+    "sgb": "X",
+    "paragraphen": [
+      "79",
+      "80",
+      "84",
+      "85"
+    ],
+    "priority": "P0",
+    "tool": "N/A (SGB X import required)",
+    "timestamp": "2025-11-01T18:41:14.858829",
+    "records_found": 0,
+    "data": [],
+    "norms_found": 0,
+    "chunks_found": 0,
+    "status": "❌ Expected FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'X'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['79', '80', '84', '85']\n                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        count(chunk) as chunks\n                    ORDER BY norm.paragraph_nummer\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'X'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['79', '80', '84', '85']\n                    RETURN path LIMIT 20\n                "
+  },
+  "UC13": {
+    "id": "UC13",
+    "name": "Prozessanalyse - Durchlaufzeiten Erstantrag",
+    "sgb": "II",
+    "paragraphen": [
+      "37",
+      "41",
+      "44"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser + Python Analytics",
+    "timestamp": "2025-11-01T18:41:14.884941",
+    "records_found": 3,
+    "data": [
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "fristen_chunks": 22,
+        "beispiel_fristen": [
+          "(2) Leistungen nach diesem Buch werden nicht für Zeiten vor der Antragstellung erbracht. Der Antrag auf Leistungen zur Sicherung des Lebensunterhalts wirkt auf den Ersten des Monats zurück. Wird ein Antrag auf Leistungen zur Sicherung des Lebensunterhalts für einen einzelnen Monat gestellt, in dem aus Jahresabrechnungen von Heizenergiekosten oder aus der angemessenen Bevorratung mit Heizmitteln resultierende Aufwendungen für die Heizung fällig sind, wirkt dieser Antrag, wenn er bis zum Ablauf des dritten Monats nach dem Fälligkeitsmonat gestellt wird, auf den Ersten des Fälligkeitsmonats zurück. Satz 3 gilt nur für Anträge, die bis zum 31. Dezember 2023 gestellt werden.",
+          "(1) Die Agentur für Arbeit hat unverzüglich nach der Ausbildungsuchendmeldung oder Arbeitsuchendmeldung zusammen mit der oder dem Ausbildungsuchenden oder der oder dem Arbeitsuchenden die für die Vermittlung erforderlichen beruflichen und persönlichen Merkmale, beruflichen Fähigkeiten und die Eignung festzustellen (Potenzialanalyse). Die Potenzialanalyse erstreckt sich auch auf die Feststellung, ob und durch welche Umstände die berufliche Eingliederung voraussichtlich erschwert sein wird."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "41",
+        "norm.enbez": "§ 41",
+        "fristen_chunks": 18,
+        "beispiel_fristen": [
+          "(1) Anspruch auf Leistungen zur Sicherung des Lebensunterhalts besteht für jeden Kalendertag. Der Monat wird mit 30 Tagen berechnet. Stehen die Leistungen nicht für einen vollen Monat zu, wird die Leistung anteilig erbracht. (2) Berechnungen werden auf zwei Dezimalstellen durchgeführt, wenn nichts Abweichendes bestimmt ist. Bei einer auf Dezimalstellen durchgeführten Berechnung wird die letzte Dezimalstelle um eins erhöht, wenn sich in der folgenden Dezimalstelle eine der Ziffern 5 bis 9 ergeben würde.",
+          "(3) Über den Anspruch auf Leistungen zur Sicherung des Lebensunterhalts ist in der Regel für ein Jahr zu entscheiden (Bewilligungszeitraum). Der Bewilligungszeitraum soll insbesondere in den Fällen regelmäßig auf sechs Monate verkürzt werden, in denen  1. über den Leistungsanspruch vorläufig entschieden wird (§ 41a) oder 2. die Aufwendungen für die Unterkunft und Heizung unangemessen sind. Die Festlegung des Bewilligungszeitraums erfolgt einheitlich für die Entscheidung über die Leistungsansprüche aller Mitglieder einer Bedarfsgemeinschaft. Wird mit dem Bescheid über Leistungen zur Sicherung des Lebensunterhalts nicht auch über die Leistungen zur Deckung der Bedarfe nach § 28 Absatz 2, 4, 6 und 7 entschieden, ist die oder der Leistungsberechtigte in dem Bescheid über Leistungen zur Sicherung des Lebensunterhalts darauf hinzuweisen, dass die Entscheidung über Leistungen zur Deckung der Bedarfe nach § 28 Absatz 2, 4, 6 und 7 gesondert erfolgt."
+        ]
+      },
+      {
+        "norm.paragraph_nummer": "44",
+        "norm.enbez": "§ 44",
+        "fristen_chunks": 6,
+        "beispiel_fristen": [
+          "(2) Das Pflegegeld ist unter Berücksichtigung der Art oder Schwere des Gesundheitsschadens sowie des Umfangs der erforderlichen Hilfe auf einen Monatsbetrag zwischen 300 Euro und 1 199 Euro (Beträge am 1. Juli 2008) festzusetzen. Diese Beträge werden jeweils zum gleichen Zeitpunkt, zu dem die Renten der gesetzlichen Rentenversicherung angepasst werden, entsprechend dem Faktor angepasst, der für die Anpassung der vom Jahresarbeitsverdienst abhängigen Geldleistungen maßgebend ist. Übersteigen die Aufwendungen für eine Pflegekraft das Pflegegeld, kann es angemessen erhöht werden.",
+          "(5) Die Pflegekasse und das private Versicherungsunternehmen haben in den Fällen, in denen eine nicht erwerbsmäßig tätige Pflegeperson einen Pflegebedürftigen mit mindestens Pflegegrad 2 pflegt, der Anspruch auf Beihilfeleistungen oder Leistungen der Heilfürsorge hat, und für die die Beiträge an die gesetzliche Rentenversicherung nach § 170 Absatz 1 Nummer 6 Buchstabe c des Sechsten Buches oder an die Bundesagentur für Arbeit nach § 347 Nummer 10 Buchstabe c des Dritten Buches anteilig getragen werden, im Antragsverfahren auf Leistungen der Pflegeversicherung von dem Pflegebedürftigen die zuständige Festsetzungsstelle für die Beihilfe oder den Dienstherrn unter Hinweis auf die beabsichtigte Weiterleitung der in Satz 2 genannten Angaben an diese Stelle zu erfragen. Der angegebenen Festsetzungsstelle für die Beihilfe oder dem Dienstherrn sind bei Feststellung der Beitragspflicht sowie bei Änderungen in den Verhältnissen des Pflegebedürftigen oder der Pflegeperson, insbesondere bei einer Änderung des Pflegegrades, einer Unterbrechung der Pflegetätigkeit oder einem Wechsel der Pflegeperson, die in Absatz 3 Satz 2 genannten Angaben mitzuteilen. Absatz 4 findet auf Satz 2 entsprechende Anwendung. Für die Mitteilungen nach Satz 2 haben die Pflegekassen und privaten Versicherungsunternehmen spätestens zum 1. Januar 2020 ein elektronisches Verfahren vorzusehen, bei dem die Mitteilungen an die Beihilfefestsetzungsstellen oder die Dienstherren automatisch erfolgen. Die Pflegekassen und privaten Versicherungsunternehmen haben technisch sicherzustellen, dass die Meldungen nach Absatz 3 an die Träger der gesetzlichen Rentenversicherung erst erfolgen, wenn die erforderliche Mitteilung an die Beihilfefestsetzungsstelle oder den Dienstherrn erfolgt ist. Für Beiträge, die von den Beihilfestellen und Dienstherren nicht bis zum Ablauf des Fälligkeitstages gezahlt worden sind, weil die Pflegekassen und privaten Versicherungsunternehmen die Mitteilungen nach Satz 2 nicht, nicht unverzüglich, nicht vollständig oder fehlerhaft durchgeführt haben, ist von den Pflegekassen und privaten Versicherungsunternehmen ein Säumniszuschlag entsprechend § 24 Absatz 1 Satz 1 des Vierten Buches zu zahlen; dies gilt nicht, wenn im Einzelfall kein Verschulden der Pflegekassen und privaten Versicherungsunternehmen vorliegt."
+        ]
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 0,
+    "status": "❌ FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['37', '41', '44']\n                    OPTIONAL MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE chunk.text CONTAINS 'Frist' \n                       OR chunk.text CONTAINS 'unverzüglich'\n                       OR chunk.text CONTAINS 'Monat'\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        count(DISTINCT chunk) as fristen_chunks,\n                        collect(DISTINCT chunk.text)[0..2] as beispiel_fristen\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm)\n                                 -[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE norm.paragraph_nummer IN ['37', '41', '44']\n                      AND (chunk.text CONTAINS 'Frist' OR chunk.text CONTAINS 'Monat')\n                    RETURN path LIMIT 30\n                "
+  },
+  "UC16": {
+    "id": "UC16",
+    "name": "Qualitätssicherung - Fehlerquellen in Bescheiden",
+    "sgb": "II",
+    "paragraphen": [
+      "*"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser + Cypher Analytics",
+    "timestamp": "2025-11-01T18:41:14.918398",
+    "records_found": 10,
+    "data": [
+      {
+        "norm.paragraph_nummer": "16i",
+        "norm.enbez": "§ 16i",
+        "komplexitaet": 72,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "46",
+        "norm.enbez": "§ 46",
+        "komplexitaet": 64,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "21",
+        "norm.enbez": "§ 21",
+        "komplexitaet": 56,
+        "ausnahmen": 24
+      },
+      {
+        "norm.paragraph_nummer": "16d",
+        "norm.enbez": "§ 16d",
+        "komplexitaet": 48,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "44d",
+        "norm.enbez": "§ 44d",
+        "komplexitaet": 40,
+        "ausnahmen": 24
+      },
+      {
+        "norm.paragraph_nummer": "6c",
+        "norm.enbez": "§ 6c",
+        "komplexitaet": 40,
+        "ausnahmen": 16
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "komplexitaet": 40,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "24",
+        "norm.enbez": "§ 24",
+        "komplexitaet": 40,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "11a",
+        "norm.enbez": "§ 11a",
+        "komplexitaet": 40,
+        "ausnahmen": 8
+      },
+      {
+        "norm.paragraph_nummer": "52",
+        "norm.enbez": "§ 52",
+        "komplexitaet": 40,
+        "ausnahmen": 8
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 0,
+    "status": "❌ FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (norm:LegalNorm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE EXISTS {\n                        MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})\n                    }\n                    WITH norm, count(chunk) as chunk_count\n                    WHERE chunk_count > 10\n                    MATCH (norm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE chunk.text CONTAINS 'Ausnahme' \n                       OR chunk.text CONTAINS 'abweichend'\n                       OR chunk.text CONTAINS 'jedoch'\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        chunk_count as komplexitaet,\n                        count(DISTINCT chunk) as ausnahmen\n                    ORDER BY komplexitaet DESC, ausnahmen DESC\n                    LIMIT 10\n                ",
+    "visualization_query": "\n                    MATCH (norm:LegalNorm)-[:HAS_CHUNK]->(chunk:Chunk)\n                    WHERE EXISTS {\n                        MATCH (norm)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})\n                    }\n                    WITH norm, count(chunk) as chunk_count\n                    WHERE chunk_count > 15\n                    MATCH path = (norm)-[:HAS_CHUNK]->(chunk)\n                    RETURN path LIMIT 50\n                "
+  },
+  "UC18": {
+    "id": "UC18",
+    "name": "Prozessmodellierung - Ideal-Prozess Antragsprüfung",
+    "sgb": "II",
+    "paragraphen": [
+      "7",
+      "11",
+      "11b",
+      "12",
+      "37",
+      "33"
+    ],
+    "priority": "P0",
+    "tool": "Neo4j Browser + BPMN Modeler",
+    "timestamp": "2025-11-01T18:41:14.974219",
+    "records_found": 65,
+    "data": [
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "7",
+        "norm.enbez": "§ 7",
+        "prozessphase": "Phase: 2 - Anspruchsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11",
+        "norm.enbez": "§ 11",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "11b",
+        "norm.enbez": "§ 11b",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "12",
+        "norm.enbez": "§ 12",
+        "prozessphase": "Phase: 2 - Bedürftigkeitsprüfung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "33",
+        "norm.enbez": "§ 33",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      },
+      {
+        "norm.paragraph_nummer": "37",
+        "norm.enbez": "§ 37",
+        "prozessphase": "Phase: 3 - Entscheidung"
+      }
+    ],
+    "norms_found": 1,
+    "chunks_found": 0,
+    "status": "❌ FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['7', '11', '11b', '12', '37', '33']\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        'Phase: ' + \n                        CASE \n                            WHEN norm.paragraph_nummer = '7' THEN '2 - Anspruchsprüfung'\n                            WHEN norm.paragraph_nummer IN ['11', '11b', '12'] THEN '2 - Bedürftigkeitsprüfung'\n                            WHEN norm.paragraph_nummer IN ['37', '33'] THEN '3 - Entscheidung'\n                        END as prozessphase\n                    ORDER BY prozessphase, norm.paragraph_nummer\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm)\n                    WHERE norm.paragraph_nummer IN ['7', '11', '11b', '12', '37', '33']\n                    RETURN path\n                "
+  },
+  "UC19": {
+    "id": "UC19",
+    "name": "Schulungskonzept - Gesetzesänderungen",
+    "sgb": "II",
+    "paragraphen": [
+      "*"
+    ],
+    "priority": "P1",
+    "tool": "N/A (Amendment data import required)",
+    "timestamp": "2025-11-01T18:41:15.004394",
+    "records_found": 0,
+    "data": [],
+    "norms_found": 0,
+    "chunks_found": 0,
+    "status": "❌ Expected FAIL",
+    "passed": false,
+    "query": "\n                    MATCH (doc:LegalDocument {sgb_nummer: 'II'})\n                          -[:CONTAINS_NORM]->(norm:LegalNorm)\n                          -[:AMENDED_BY]->(amendment:Amendment)\n                    WHERE amendment.date >= date('2023-01-01')\n                    RETURN \n                        norm.paragraph_nummer,\n                        norm.enbez,\n                        amendment.title,\n                        amendment.date,\n                        amendment.summary\n                    ORDER BY amendment.date DESC\n                    LIMIT 10\n                ",
+    "visualization_query": "\n                    MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})\n                                 -[:CONTAINS_NORM]->(norm:LegalNorm)\n                                 -[:AMENDED_BY]->(amendment:Amendment)\n                    RETURN path LIMIT 20\n                "
+  }
+}

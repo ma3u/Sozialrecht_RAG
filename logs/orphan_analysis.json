@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-11-01T18:59:59.944548",
+  "total_orphans": 603,
+  "total_orphan_chunks": 2475,
+  "patterns": {
+    "doknr": {
+      "BJNR323410016": {
+        "norms": 171,
+        "chunks": 778
+      },
+      "BJNR125410996": {
+        "norms": 163,
+        "chunks": 670
+      },
+      "BJNR302300003": {
+        "norms": 113,
+        "chunks": 418
+      },
+      "BJNR265210019": {
+        "norms": 83,
+        "chunks": 318
+      },
+      "BJNR114690980": {
+        "norms": 59,
+        "chunks": 270
+      },
+      "BJNR030150975": {
+        "norms": 5,
+        "chunks": 12
+      },
+      "BJNR104600001": {
+        "norms": 9,
+        "chunks": 9
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "type": "doknr_mapping",
+      "description": "Largest doknr pattern: BJNR323410016 (778 chunks)",
+      "action": "Research which SGB/law corresponds to BJNR323410016 and create mapping"
+    },
+    {
+      "priority": "LOW",
+      "type": "reference_norms",
+      "description": "603 norms with no connection path",
+      "action": "Mark as reference norms (external laws, historical versions) and create separate index"
+    }
+  ],
+  "norms_without_doknr": 0,
+  "chunks_without_doknr": 0,
+  "connection_status": {
+    "no_path": {
+      "norms": 603,
+      "chunks": 2475
+    }
+  },
+  "sample_orphans": [
+    {
+      "doknr": "BJNR265210019BJNE009002126",
+      "enbez": "§ 89",
+      "paragraph": "89",
+      "titel": "Voraussetzung und Höhe",
+      "chunks": 18
+    },
+    {
+      "doknr": "BJNR323410016BJNE018000000",
+      "enbez": "§ 179",
+      "paragraph": "179",
+      "titel": "Persönliche Rechte und Pflichten der Vertrauenspersonen der schwerbehinderten Menschen",
+      "chunks": 16
+    },
+    {
+      "doknr": "BJNR323410016BJNE022903377",
+      "enbez": "§ 228",
+      "paragraph": "228",
+      "titel": "Unentgeltliche Beförderung, Anspruch auf Erstattung der Fahrgeldausfälle",
+      "chunks": 14
+    },
+    {
+      "doknr": "BJNR302300003BJNE008328126",
+      "enbez": "§ 82",
+      "paragraph": "82",
+      "titel": "Begriff des Einkommens",
+      "chunks": 14
+    },
+    {
+      "doknr": "BJNR323410016BJNE018603126",
+      "enbez": "§ 185",
+      "paragraph": "185",
+      "titel": "Aufgaben des Integrationsamtes",
+      "chunks": 14
+    },
+    {
+      "doknr": "BJNR323410016BJNE016101126",
+      "enbez": "§ 160",
+      "paragraph": "160",
+      "titel": "Ausgleichsabgabe",
+      "chunks": 14
+    },
+    {
+      "doknr": "BJNR114690980BJNE015211126",
+      "enbez": "§ 116",
+      "paragraph": "116",
+      "titel": "Ansprüche gegen Schadenersatzpflichtige",
+      "chunks": 14
+    },
+    {
+      "doknr": "BJNR125410996BJNE020009126",
+      "enbez": "§ 193",
+      "paragraph": "193",
+      "titel": "Pflicht zur Anzeige eines Versicherungsfalls durch die Unternehmer",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR302300003BJNE009507377",
+      "enbez": "§ 94",
+      "paragraph": "94",
+      "titel": "Übergang von Ansprüchen gegen einen nach bürgerlichem Recht Unterhaltspflichtigen",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR265210019BJNE010202126",
+      "enbez": "§ 101",
+      "paragraph": "101",
+      "titel": "Leistungen bei Wohnsitz oder gewöhnlichem Aufenthalt im Ausland",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR323410016BJNE017800000",
+      "enbez": "§ 177",
+      "paragraph": "177",
+      "titel": "Wahl und Amtszeit der Schwerbehindertenvertretung",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR265210019BJNE016000126",
+      "enbez": "§ 60a",
+      "paragraph": "60a",
+      "titel": "Datenerhebung",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR114690980BJNE018100126",
+      "enbez": "§ 67c",
+      "paragraph": "67c",
+      "titel": "Zweckbindung sowie Speicherung, Veränderung und Nutzung von Sozialdaten zu anderen Zwecken",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR125410996BJNE021206360",
+      "enbez": "§ 204",
+      "paragraph": "204",
+      "titel": "Errichtung eines Dateisystems für mehrere Unfallversicherungsträger",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR125410996BJNE018802360",
+      "enbez": "§ 182",
+      "paragraph": "182",
+      "titel": "Berechnungsgrundlagen",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR323410016BJNE017901311",
+      "enbez": "§ 178",
+      "paragraph": "178",
+      "titel": "Aufgaben der Schwerbehindertenvertretung",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR114690980BJNE010112119",
+      "enbez": "§ 79",
+      "paragraph": "79",
+      "titel": "Einrichtung automatisierter Verfahren auf Abruf",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR125410996BJNE009609308",
+      "enbez": "§ 93",
+      "paragraph": "93",
+      "titel": "Jahresarbeitsverdienst für landwirtschaftliche Unternehmer, ihre Ehegatten und Familienangehörigen",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR125410996BJNE009907360",
+      "enbez": "§ 96",
+      "paragraph": "96",
+      "titel": "Fälligkeit, Auszahlung und Berechnungsgrundsätze",
+      "chunks": 12
+    },
+    {
+      "doknr": "BJNR323410016BJNE023400000",
+      "enbez": "§ 233",
+      "paragraph": "233",
+      "titel": "Erstattungsverfahren",
+      "chunks": 12
+    }
+  ]
+}
