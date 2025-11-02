@@ -370,14 +370,14 @@ WHERE norm_ii.paragraph_nummer = '5'
   AND EXISTS {
       MATCH (norm_ii)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'II'})
   }
-RETURN norm_ii.content_text
+RETURN norm_ii.content_text AS content_text
 UNION
 MATCH (norm_v:LegalNorm)
 WHERE norm_v.paragraph_nummer = '5'
   AND EXISTS {
       MATCH (norm_v)<-[:CONTAINS_NORM]-(doc:LegalDocument {sgb_nummer: 'V'})
   }
-RETURN norm_v.content_text
+RETURN norm_v.content_text AS content_text
 ```
 
 ---
@@ -432,12 +432,12 @@ Verdacht auf nicht angegebene Bedarfsgemeinschaft, Hausbesuch angeordnet.
 MATCH (doc:LegalDocument {sgb_nummer: 'II'})
       -[:CONTAINS_NORM]->(norm:LegalNorm)
 WHERE norm.paragraph_nummer IN ['60', '61', '62']
-RETURN norm.paragraph_nummer, norm.enbez
+RETURN norm.paragraph_nummer AS paragraph_nummer, norm.enbez AS enbez
 UNION
 MATCH (doc:LegalDocument {sgb_nummer: 'X'})
       -[:CONTAINS_NORM]->(norm:LegalNorm)
 WHERE norm.paragraph_nummer IN ['60', '61', '62']
-RETURN norm.paragraph_nummer, norm.enbez
+RETURN norm.paragraph_nummer AS paragraph_nummer, norm.enbez AS enbez
 ```
 
 ---
