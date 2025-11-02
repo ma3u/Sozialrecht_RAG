@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-11-02T08:51:18.957144",
+  "sgbs": {
+    "I": {
+      "structures": 9,
+      "norms": 34,
+      "chunks": 12,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "II": {
+      "structures": 21,
+      "norms": 1192,
+      "chunks": 7854,
+      "status": "\u2705 COMPLETE"
+    },
+    "III": {
+      "structures": 107,
+      "norms": 726,
+      "chunks": 1168,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "IV": {
+      "structures": 31,
+      "norms": 199,
+      "chunks": 588,
+      "status": "\u2705 COMPLETE"
+    },
+    "IX": {
+      "structures": 44,
+      "norms": 261,
+      "chunks": 778,
+      "status": "\u2705 COMPLETE"
+    },
+    "V": {
+      "structures": 107,
+      "norms": 1000,
+      "chunks": 4298,
+      "status": "\u2705 COMPLETE"
+    },
+    "VI": {
+      "structures": 111,
+      "norms": 785,
+      "chunks": 1768,
+      "status": "\u2705 COMPLETE"
+    },
+    "VII": {
+      "structures": 66,
+      "norms": 475,
+      "chunks": 670,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "VIII": {
+      "structures": 39,
+      "norms": 291,
+      "chunks": 318,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "X": {
+      "structures": 26,
+      "norms": 191,
+      "chunks": 304,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "XI": {
+      "structures": 61,
+      "norms": 408,
+      "chunks": 928,
+      "status": "\u2705 COMPLETE"
+    },
+    "XII": {
+      "structures": 42,
+      "norms": 343,
+      "chunks": 418,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    },
+    "XIV": {
+      "structures": 53,
+      "norms": 205,
+      "chunks": 318,
+      "status": "\u26a0\ufe0f  LOW COVERAGE"
+    }
+  },
+  "orphaned_norms": 10,
+  "orphaned_chunks": 9,
+  "total_chunks": 41781,
+  "accessible_chunks": 19422
+}
