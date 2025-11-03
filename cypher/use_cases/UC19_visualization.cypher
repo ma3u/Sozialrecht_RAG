@@ -4,6 +4,6 @@
 
                     MATCH path = (doc:LegalDocument {sgb_nummer: 'II'})
                                  -[:CONTAINS_NORM]->(norm:LegalNorm)
-                                 -[:AMENDED_BY]->(amendment:Amendment)
+                                 -[:HAS_AMENDMENT]->(amendment:Amendment)
                     RETURN path LIMIT 20
                 

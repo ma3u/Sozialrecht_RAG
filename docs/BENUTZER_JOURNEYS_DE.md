@@ -698,15 +698,15 @@ Bürgergeld-Reform: Prozessberater entwickelt Schulungsunterlagen für Sachbearb
 // UC19: Änderungen durch Bürgergeld-Reform identifizieren
 MATCH (doc:LegalDocument {sgb_nummer: 'II'})
       -[:CONTAINS_NORM]->(norm:LegalNorm)
-      -[:AMENDED_BY]->(amendment:Amendment)
-WHERE amendment.date >= date('2023-01-01')
+      -[:HAS_AMENDMENT]->(amendment:Amendment)
+WHERE amendment.amendment_date >= date('2023-01-01')
 RETURN 
   norm.paragraph_nummer,
   norm.enbez,
-  amendment.title,
-  amendment.date,
-  amendment.summary
-ORDER BY amendment.date DESC
+  amendment.raw_text as title,
+  amendment.amendment_date as date,
+  amendment.amendment_type as summary
+ORDER BY amendment.amendment_date DESC
 ```
 
 ---
