@@ -12,8 +12,8 @@ from lxml import etree
 import hashlib
 
 # Import existing parser and new amendment parser
-from xml_legal_parser import LegalXMLParser, LegalDocument, LegalNorm
-from amendment_parser import AmendmentParser, ParsedAmendment, ParsedBGBl, ParsedFussnote
+from src.xml_legal_parser import LegalXMLParser, LegalDocument, LegalNorm
+from src.amendment_parser import AmendmentParser, ParsedAmendment, ParsedBGBl, ParsedFussnote
 
 try:
     from neo4j import GraphDatabase

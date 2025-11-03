@@ -1,0 +1,173 @@
+{
+  "timestamp": "2025-11-03T19:08:58.760743",
+  "summary": {
+    "total_sgb": 13,
+    "successful": 13,
+    "failed": 0,
+    "skipped": 0,
+    "total_norms": 4203,
+    "total_amendments": 21,
+    "total_bgbl": 13,
+    "total_fussnoten": 16,
+    "total_superseded": 10,
+    "duration_seconds": 52.811074
+  },
+  "individual_results": [
+    {
+      "document": "SGB 1",
+      "norms": 94,
+      "amendments": 2,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 1,
+      "success": true,
+      "duration_seconds": 0.559554,
+      "sgb_name": "SGB I",
+      "sgb_number": 1
+    },
+    {
+      "document": "SGB 2",
+      "norms": 175,
+      "amendments": 2,
+      "bgbl_refs": 1,
+      "fussnoten": 2,
+      "superseded_rels": 1,
+      "success": true,
+      "duration_seconds": 1.597986,
+      "sgb_name": "SGB II",
+      "sgb_number": 2
+    },
+    {
+      "document": "SGB 3",
+      "norms": 510,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 4.648544,
+      "sgb_name": "SGB III",
+      "sgb_number": 3
+    },
+    {
+      "document": "SGB 4",
+      "norms": 243,
+      "amendments": 2,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 1,
+      "success": true,
+      "duration_seconds": 2.525454,
+      "sgb_name": "SGB IV",
+      "sgb_number": 4
+    },
+    {
+      "document": "SGB 5",
+      "norms": 810,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 14.296925,
+      "sgb_name": "SGB V",
+      "sgb_number": 5
+    },
+    {
+      "document": "SGB 6",
+      "norms": 632,
+      "amendments": 4,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 2,
+      "success": true,
+      "duration_seconds": 11.983252,
+      "sgb_name": "SGB VI",
+      "sgb_number": 6
+    },
+    {
+      "document": "SGB 7",
+      "norms": 323,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 2,
+      "superseded_rels": 2,
+      "success": true,
+      "duration_seconds": 1.614473,
+      "sgb_name": "SGB VII",
+      "sgb_number": 7
+    },
+    {
+      "document": "SGB 8",
+      "norms": 207,
+      "amendments": 2,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 2,
+      "success": true,
+      "duration_seconds": 2.166056,
+      "sgb_name": "SGB VIII",
+      "sgb_number": 8
+    },
+    {
+      "document": "SGB 9 2018",
+      "norms": 295,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 3.472494,
+      "sgb_name": "SGB IX",
+      "sgb_number": 9
+    },
+    {
+      "document": "SGB 10",
+      "norms": 164,
+      "amendments": 2,
+      "bgbl_refs": 1,
+      "fussnoten": 2,
+      "superseded_rels": 1,
+      "success": true,
+      "duration_seconds": 1.805293,
+      "sgb_name": "SGB X",
+      "sgb_number": 10
+    },
+    {
+      "document": "SGB 11",
+      "norms": 293,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 3.585062,
+      "sgb_name": "SGB XI",
+      "sgb_number": 11
+    },
+    {
+      "document": "SGB 12",
+      "norms": 241,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 2.302584,
+      "sgb_name": "SGB XII",
+      "sgb_number": 12
+    },
+    {
+      "document": "SGB 14",
+      "norms": 216,
+      "amendments": 1,
+      "bgbl_refs": 1,
+      "fussnoten": 1,
+      "superseded_rels": 0,
+      "success": true,
+      "duration_seconds": 2.253397,
+      "sgb_name": "SGB XIV",
+      "sgb_number": 14
+    }
+  ]
+}
