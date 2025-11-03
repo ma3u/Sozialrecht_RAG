@@ -23,10 +23,14 @@
 ### Phase 1: Early Document Pipeline (v1.0)
 
 **Architecture:**
-```
-┌─────────┐     ┌──────────┐     ┌────────┐     ┌──────────┐
-│ PDF/XML │ --> │  Parser  │ --> │ Chunks │ --> │ Vector DB│
-└─────────┘     └──────────┘     └────────┘     └──────────┘
+```mermaid
+graph LR
+    A[PDF/XML] --> B[Parser]
+    B --> C[Chunks]
+    C --> D[Vector DB]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
 ```
 
 **Characteristics:**
@@ -50,12 +54,13 @@
 ### Phase 2: Basic GraphRAG (v2.0)
 
 **Architecture:**
-```
-┌─────────┐     ┌──────────┐     ┌────────────────┐
-│ PDF/XML │ --> │  Parser  │ --> │  Knowledge     │
-└─────────┘     └──────────┘     │  Graph         │
-                                  │  (Hierarchical)│
-                                  └────────────────┘
+```mermaid
+graph LR
+    A[PDF/XML] --> B[Parser]
+    B --> C[Knowledge Graph<br/>Hierarchical]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#9f9,stroke:#333,stroke-width:2px
 ```
 
 **Improvements:**
@@ -72,25 +77,22 @@
 ### Phase 3: GraphRAG + Cloud Embeddings (v3.0 - Current)
 
 **Architecture:**
-```
-┌─────────┐     ┌────────────┐     ┌─────────────────────┐
-│ PDF/XML │ --> │  Docling/  │ --> │  GraphRAG Builder   │
-└─────────┘     │  XML       │     └─────────────────────┘
-                │  Parser    │              │
-                └────────────┘              │
-                                           ▼
-                ┌────────────────────────────────────────┐
-                │     Neo4j Knowledge Graph              │
-                │  + Azure OpenAI Embeddings (3072-dim) │
-                └────────────────────────────────────────┘
-                            │
-                            ▼
-                ┌────────────────────────┐
-                │  Hybrid Retrieval:     │
-                │  • Vector Similarity   │
-                │  • Graph Traversal     │
-                │  • Trust Scoring       │
-                └────────────────────────┘
+```mermaid
+graph TD
+    A[PDF/XML] --> B[Docling/XML Parser]
+    B --> C[GraphRAG Builder]
+    C --> D[Neo4j Knowledge Graph<br/>+ Azure OpenAI Embeddings<br/>3072-dim]
+    D --> E[Hybrid Retrieval]
+    E --> F[Vector Similarity]
+    E --> G[Graph Traversal]
+    E --> H[Trust Scoring]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#9f9,stroke:#333,stroke-width:2px
+    style E fill:#ff9,stroke:#333,stroke-width:2px
+    style F fill:#bbf,stroke:#333,stroke-width:2px
+    style G fill:#bbf,stroke:#333,stroke-width:2px
+    style H fill:#bbf,stroke:#333,stroke-width:2px
 ```
 
 **Improvements:**
@@ -109,121 +111,54 @@
 
 ### Data Flow
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    DATA SOURCES                              │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. XML Files (Primary - 4,223 norms)                      │
-│     Source: gesetze-im-internet.de                          │
-│     Parser: xml_legal_parser.py                             │
-│     Status: ✅ 100% of legal norms                          │
-│                                                              │
-│  2. PDF Files (Supplementary - 36 documents)                │
-│     Source: Fachliche Weisungen, Rundschreiben             │
-│     Parser: sozialrecht_docling_loader.py                   │
-│     Status: ✅ All imported                                  │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   PARSING LAYER                              │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  XML Parser:                                                │
-│  • Extracts hierarchical structure                          │
-│  • Parses metadata (BGBl, amendments)                       │
-│  • Preserves paragraph numbering                            │
-│                                                              │
-│  Docling Parser:                                            │
-│  • Converts PDF → Markdown                                  │
-│  • Extracts tables and structure                            │
-│  • Handles multi-column layouts                             │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                 GRAPHRAG BUILDER                             │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Stage 1: Create Graph Structure                            │
-│  ┌──────────────────────────────────────────┐              │
-│  │ LegalDocument (13 SGBs)                  │              │
-│  │   ├─ HAS_STRUCTURE → StructuralUnit (458)│              │
-│  │   └─ CONTAINS_NORM → LegalNorm (4,223)   │              │
-│  │                        └─ HAS_CONTENT →   │              │
-│  │                           TextUnit (11,145)│              │
-│  └──────────────────────────────────────────┘              │
-│                                                              │
-│  Stage 2: Generate Chunks                                   │
-│  • RecursiveCharacterTextSplitter                           │
-│  • chunk_size: 800 (legal paragraphs)                       │
-│  • chunk_overlap: 100                                       │
-│  • Separators: §, \n\n, \n, .                               │
-│  • Result: 41,781 chunks                                    │
-│                                                              │
-│  Stage 3: Generate Embeddings (Cloud)                       │
-│  • Model: Azure text-embedding-3-large                      │
-│  • Dimensions: 3072                                         │
-│  • Token limit: 8191 (auto-truncation)                      │
-│  • Batch processing: 16 at a time                           │
-│  • Coverage: 100% (41,781 chunks)                           │
-│                                                              │
-│  Stage 4: Link Relationships                                │
-│  • Document → Structure → Norm → Chunk                      │
-│  • Cross-references (planned)                               │
-│  • Amendment tracking                                       │
-│  • Trust score assignment                                   │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   NEO4J KNOWLEDGE GRAPH                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Nodes: 61,945                                              │
-│  ├─ LegalDocument: 13                                       │
-│  ├─ StructuralUnit: 458                                     │
-│  ├─ LegalNorm: 4,223                                        │
-│  ├─ TextUnit: 11,145                                        │
-│  ├─ Chunk: 41,781 (with embeddings)                        │
-│  └─ Amendment: 21                                           │
-│                                                              │
-│  Relationships: 63,722                                      │
-│  ├─ HAS_STRUCTURE: 717                                      │
-│  ├─ CONTAINS_NORM: 5,008                                    │
-│  ├─ HAS_CONTENT: 11,145                                     │
-│  ├─ HAS_CHUNK: 41,781                                       │
-│  └─ HAS_AMENDMENT: 21                                       │
-│                                                              │
-│  Indexes:                                                   │
-│  ✅ Vector Index (chunk_embeddings)                         │
-│  ✅ Property Indexes (paragraph, sgb, enbez)                │
-│  ✅ Fulltext Index (chunk_text_search)                      │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  HYBRID RETRIEVAL                            │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Query Processing:                                          │
-│  1. Generate query embedding (Azure)                        │
-│  2. Vector similarity search (top-k chunks)                 │
-│  3. Graph traversal (get legal context)                     │
-│  4. Trust score filtering (≥85)                             │
-│  5. Rank and return results                                 │
-│                                                              │
-│  Performance:                                               │
-│  • Query time: 3-5ms average                                │
-│  • Test pass rate: 100% (20/20)                             │
-│  • Quality score: 100%                                      │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Sources["📁 DATA SOURCES"]
+        XML["XML Files<br/>4,223 norms<br/>gesetze-im-internet.de<br/>✅ 100%"]
+        PDF["PDF Files<br/>36 documents<br/>Fachliche Weisungen<br/>✅ All imported"]
+    end
+    
+    subgraph Parsing["🔍 PARSING LAYER"]
+        XMLParser["XML Parser<br/>• Hierarchical structure<br/>• Metadata BGBl<br/>• Paragraph numbering"]
+        DoclingParser["Docling Parser<br/>• PDF → Markdown<br/>• Tables extraction<br/>• Multi-column layouts"]
+    end
+    
+    subgraph Builder["⚙️ GRAPHRAG BUILDER"]
+        Stage1["Stage 1: Graph Structure<br/>LegalDocument → StructuralUnit<br/>→ LegalNorm → TextUnit"]
+        Stage2["Stage 2: Chunking<br/>800 chars, 100 overlap<br/>41,781 chunks"]
+        Stage3["Stage 3: Embeddings<br/>Azure text-embedding-3-large<br/>3072-dim, 100% coverage"]
+        Stage4["Stage 4: Relationships<br/>Link all nodes<br/>Trust scores"]
+    end
+    
+    subgraph Neo4j["🗄️ NEO4J KNOWLEDGE GRAPH"]
+        Nodes["Nodes: 61,945<br/>LegalDocument: 13<br/>StructuralUnit: 458<br/>LegalNorm: 4,223<br/>TextUnit: 11,145<br/>Chunk: 41,781<br/>Amendment: 21"]
+        Rels["Relationships: 63,722<br/>HAS_STRUCTURE: 717<br/>CONTAINS_NORM: 5,008<br/>HAS_CONTENT: 11,145<br/>HAS_CHUNK: 41,781<br/>HAS_AMENDMENT: 21"]
+        Indexes["Indexes<br/>✅ Vector chunk_embeddings<br/>✅ Property indexes<br/>✅ Fulltext search"]
+    end
+    
+    subgraph Retrieval["🔎 HYBRID RETRIEVAL"]
+        Query["Query Processing<br/>1. Generate embedding Azure<br/>2. Vector similarity<br/>3. Graph traversal<br/>4. Trust filtering ≥85<br/>5. Rank results"]
+        Perf["Performance<br/>⚡ 3-5ms query time<br/>✅ 100% test pass<br/>📊 100% quality"]
+    end
+    
+    XML --> XMLParser
+    PDF --> DoclingParser
+    XMLParser --> Stage1
+    DoclingParser --> Stage1
+    Stage1 --> Stage2
+    Stage2 --> Stage3
+    Stage3 --> Stage4
+    Stage4 --> Nodes
+    Nodes --> Rels
+    Rels --> Indexes
+    Indexes --> Query
+    Query --> Perf
+    
+    style Sources fill:#f9f,stroke:#333,stroke-width:2px
+    style Parsing fill:#fcf,stroke:#333,stroke-width:2px
+    style Builder fill:#ff9,stroke:#333,stroke-width:2px
+    style Neo4j fill:#9f9,stroke:#333,stroke-width:2px
+    style Retrieval fill:#9ff,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -473,39 +408,33 @@ FOR (c:Chunk) ON EACH [c.text, c.paragraph_context]
 
 ### Hierarchical Graph Schema
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              Legal Knowledge Graph                       │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  LegalDocument (13 SGBs)                                │
-│  • doknr: "BJNR164510003"                               │
-│  • sgb_nummer: "II"                                     │
-│  • trust_score: 100                                     │
-│  • source_type: "gesetze-im-internet.de"               │
-│      │                                                   │
-│      ├──[:HAS_STRUCTURE]──> StructuralUnit (458)       │
-│      │                       • gliederungsbez: "Kapitel 1" │
-│      │                       • level: 1-3               │
-│      │                           │                       │
-│      │                           └──[:CONTAINS_NORM]──> LegalNorm (4,223) │
-│      │                                                   • enbez: "§ 20 SGB II" │
-│      │                                                   • paragraph_nummer: "20" │
-│      │                                                   • titel: "Regelbedarf..." │
-│      │                                                       │                       │
-│      └──[:CONTAINS_NORM]─────────────────────────────────┘ (optimization)          │
-│                                                              │                       │
-│                                                              ├──[:HAS_CONTENT]──> TextUnit (11,145) │
-│                                                              │                     (Absätze)           │
-│                                                              │                                          │
-│                                                              ├──[:HAS_CHUNK]────> Chunk (41,781)      │
-│                                                              │                     • text: "..."         │
-│                                                              │                     • embedding: [3072d]  │
-│                                                              │                                          │
-│                                                              └──[:HAS_AMENDMENT]> Amendment (21)      │
-│                                                                                  • amendment_date       │
-│                                                                                  • bgbl_reference       │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    LD["LegalDocument 13<br/>doknr: BJNR164510003<br/>sgb_nummer: II<br/>trust_score: 100<br/>source: gesetze-im-internet.de"]
+    
+    SU["StructuralUnit 458<br/>gliederungsbez: Kapitel 1<br/>level: 1-3"]
+    
+    LN["LegalNorm 4,223<br/>enbez: § 20 SGB II<br/>paragraph_nummer: 20<br/>titel: Regelbedarf..."]
+    
+    TU["TextUnit 11,145<br/>Absätze"]
+    
+    CH["Chunk 41,781<br/>text: ...<br/>embedding: [3072d]"]
+    
+    AM["Amendment 21<br/>amendment_date<br/>bgbl_reference"]
+    
+    LD -->|HAS_STRUCTURE| SU
+    LD -.->|CONTAINS_NORM<br/>optimization| LN
+    SU -->|CONTAINS_NORM| LN
+    LN -->|HAS_CONTENT| TU
+    LN -->|HAS_CHUNK| CH
+    LN -->|HAS_AMENDMENT| AM
+    
+    style LD fill:#f9f,stroke:#333,stroke-width:3px
+    style SU fill:#fcf,stroke:#333,stroke-width:2px
+    style LN fill:#ff9,stroke:#333,stroke-width:2px
+    style TU fill:#9f9,stroke:#333,stroke-width:2px
+    style CH fill:#9ff,stroke:#333,stroke-width:2px
+    style AM fill:#fcc,stroke:#333,stroke-width:2px
 ```
 
 ### Hybrid Retrieval Strategy
