@@ -179,56 +179,41 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 
 📖 **Master Index:** [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md) - Complete guide with testing & configuration
 
-### Core Documents
+### Essential Documents
 
-1. **[scripts/README.md](scripts/README.md)** ⭐ - Scripts directory organization & usage guide
-2. **[docs/BENUTZER_JOURNEYS_DE.md](docs/BENUTZER_JOURNEYS_DE.md)** ⭐ - 20 German user journeys with BPMN diagrams
-3. **[docs/USE_CASE_VALIDATION.md](docs/USE_CASE_VALIDATION.md)** ⭐ - Use case validation (100% passing)
-4. **[docs/SGB_COVERAGE_ANALYSIS.md](docs/SGB_COVERAGE_ANALYSIS.md)** - SGB coverage analysis
-5. **[COMPLETE_IMPORT_SUMMARY.md](COMPLETE_IMPORT_SUMMARY.md)** - Original import report
-6. **[QUICKSTART.md](QUICKSTART.md)** - Quick start guide
-7. **logs/sachbearbeiter_evaluation.json** - Latest test results
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| **[docs/BENUTZER_JOURNEYS_DE.md](docs/BENUTZER_JOURNEYS_DE.md)** | 20 real-world scenarios with BPMN | Case Workers & Consultants |
+| **[docs/USE_CASE_VALIDATION.md](docs/USE_CASE_VALIDATION.md)** | Test results (100% passing) | Developers & QA |
+| **[scripts/README.md](scripts/README.md)** | Scripts organization & usage | Developers |
+| **[docs/SGB_COVERAGE_ANALYSIS.md](docs/SGB_COVERAGE_ANALYSIS.md)** | Data coverage by SGB | Analysts |
 
-### Scripts Directory
+### Key Resources
 
-See **[scripts/README.md](scripts/README.md)** for complete documentation.
+**Scripts:** See [scripts/README.md](scripts/README.md) for complete guide. Key scripts:
+- `evaluate_sachbearbeiter_use_cases.py` - Run all tests
+- `complete_knowledge_graph_import.py` - Full import
+- `setup_neo4j_indexes.py` - Create indexes
 
-Key scripts:
-- **`evaluate_sachbearbeiter_use_cases.py`** - Run all 20 use case tests
-- **`dashboard.py`** - Start monitoring dashboard
-- **`analyze_graph_schema.py`** - Analyze graph structure
-- **`setup_neo4j_indexes.py`** - Create database indexes
-
-### Cypher Query Collections
-
-All queries are in `cypher/` directory:
-
-- `01_graph_statistics.cypher` - Database statistics and metrics
-- `02_gesetze_weisungen_beziehungen.cypher` - Law-guideline relationships
-- `03_sachbearbeiter_workflows.cypher` - Case worker workflows
-- `04_graph_visualisierung.cypher` - Graph visualizations
-- `05_rag_sachbearbeiter_queries.cypher` - RAG queries for case workers
+**Cypher Queries:** Ready-to-use queries in `cypher/` directory  
+**Test Results:** `logs/sachbearbeiter_evaluation.json`  
+**Archives:** Historical docs in `archive/` directory
 
 ---
 
 ## 5. Testing & Validation
 
-📖 **Detailed Testing Guide:** [docs/DOCUMENTATION_INDEX.md#testing--validation](docs/DOCUMENTATION_INDEX.md#testing--validation)
-
-### 5.1 Evaluation Tests
+### Run Tests
 
 ```bash
-# Run 20 Sachbearbeiter use case tests
+# Run all 20 use case tests
 python scripts/evaluate_sachbearbeiter_use_cases.py
 
+# Expected: 100% pass rate (20/20), avg 4.32ms
 # Output: logs/sachbearbeiter_evaluation.json
-# Metrics:
-# - Pass rate: 100% (20/20) ✅
-# - Avg query time: 4.32ms ⚡
-# - Quality score: 100%
 ```
 
-### 5.2 Test Results
+### Test Results
 
 **Current Status (November 1, 2025):**
 
@@ -260,51 +245,20 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 - UC19: Fachliche Weisungen
 - UC20: Änderungshistorie
 
-### 5.3 Graph Analysis
+### Additional Analysis
 
 ```bash
-# Comprehensive relationship analysis
+# Graph relationship analysis
 python scripts/analyze_graph_relationships.py
 
-# Generates:
-# - logs/graph_analysis/sachbearbeiter_report_*.md
-# - logs/graph_analysis/prozessberater_report_*.md
-# - logs/graph_analysis/improvement_suggestions_*.json
-# - logs/graph_analysis/analysis_data_*.json
-```
+# Schema analysis
+python scripts/analyze_graph_schema.py
 
-### 5.4 Cypher Script Runner
-
-```bash
-# Run all Cypher queries from files
-python -c "
-from pathlib import Path
-from neo4j import GraphDatabase
-import os
-
-driver = GraphDatabase.driver(
-    os.getenv('NEO4J_URI'),
-    auth=(os.getenv('NEO4J_USERNAME'), os.getenv('NEO4J_PASSWORD'))
-)
-
-for cypher_file in Path('cypher').glob('*.cypher'):
-    print(f'Running {cypher_file.name}...')
-    # Execute queries...
-"
-```
-
-### 5.5 GraphRAG Status
-
-```bash
-# Check import status and quality metrics
+# GraphRAG status
 python scripts/graphrag_status.py
-
-# Shows:
-# - Node/relationship counts
-# - Chunk coverage
-# - Missing chunks per SGB
-# - Amendment coverage
 ```
+
+📖 **Detailed testing guide:** [docs/DOCUMENTATION_INDEX.md#testing--validation](docs/DOCUMENTATION_INDEX.md#testing--validation)
 
 ---
 

@@ -6,57 +6,47 @@ Scripts for managing the Sozialrecht RAG knowledge graph in Neo4j.
 
 ### 🔧 Active Production Scripts
 
-#### Evaluation & Testing
-- **`evaluate_sachbearbeiter_use_cases.py`** - Validates all 20 real-world use cases for case workers
-  - Tests: SGB II (Grundsicherung), Cross-SGB queries, workflow scenarios
-  - Status: ✅ All 20 tests passing (100% success rate)
+These scripts are actively maintained and used in regular operations:
 
-#### Neo4j Database Management
-- **`setup_neo4j_indexes.py`** - Creates necessary indexes and constraints
-- **`generate_embeddings.py`** - Generates vector embeddings for semantic search
-- **`fix_vector_index.py`** - Repairs vector index if corrupted
+#### Evaluation & Testing
+- **`evaluate_sachbearbeiter_use_cases.py`** ⭐ - Validates all 20 real-world use cases
+  - Status: ✅ 100% passing (20/20 tests), avg 4.32ms
+  - Output: `logs/sachbearbeiter_evaluation.json`
 
 #### Data Import & Processing
-- **`complete_knowledge_graph_import.py`** - Full knowledge graph import from XML/JSON
-- **`upload_sozialrecht_to_neo4j.py`** - Initial data upload script
+- **`complete_knowledge_graph_import.py`** ⭐ - Full knowledge graph import
+  - Imports all 13 SGBs, PDFs, embeddings, and relationships
+  - Duration: ~15 minutes
+- **`upload_sozialrecht_to_neo4j.py`** - Legacy data upload script
 
-#### Dashboard & Monitoring
-- **`dashboard.py`** - Flask dashboard for graph visualization and monitoring
+#### Neo4j Database Management
+- **`setup_neo4j_indexes.py`** - Creates indexes and constraints
+- **`generate_embeddings.py`** - Generates vector embeddings
+- **`generate_embeddings_azure.py`** - Azure OpenAI embeddings
+- **`fix_vector_index.py`** - Repairs vector index
 
-#### Analysis & Debugging
-- **`analyze_graph_schema.py`** - Analyzes Neo4j graph schema
-- **`analyze_graph_relationships.py`** - Detailed relationship analysis
-- **`graphrag_query.py`** - Query interface for GraphRAG
-- **`graphrag_status.py`** - Check GraphRAG setup status
+#### Analysis & Monitoring
+- **`analyze_graph_schema.py`** - Analyzes graph schema
+- **`analyze_graph_relationships.py`** - Relationship pattern analysis
+- **`graphrag_query.py`** - GraphRAG query interface
+- **`graphrag_status.py`** - Status and health checks
+- **`verify_sgb_coverage.py`** - Verify SGB data coverage
+- **`dashboard.py`** - Flask monitoring dashboard
 
-### 🗄️ Archive / Specialized Scripts
+### 📦 Archived Scripts
 
-#### Data Repair (Run as needed)
-- **`fix_sgb_coverage.py`** - Fixes missing SGB coverage
-- **`link_orphaned_norms.py`** - Links orphaned legal norms
-- **`analyze_remaining_orphans.py`** - Analyzes unlinked norms
-- **`import_sgb_x_from_json.py`** - Import SGB X from JSON
-- **`import_sgb_x_missing_paragraphs.py`** - Add missing SGB X paragraphs
-- **`parse_sgb_x_xml.py`** - Parse SGB X XML files
+Moved to `archive/` - superseded by newer implementations:
+- Legacy test scripts (replaced by `evaluate_sachbearbeiter_use_cases.py`)
+- One-time setup scripts (historical)
+- See `archive/README.md` for details
 
-#### Testing (Superseded by evaluate_sachbearbeiter_use_cases.py)
-- `test_uc10_uc14.py` - Legacy: specific use case tests
-- `test_graphrag_efficiency.py` - Legacy: GraphRAG performance tests
-- `test_vector_search.py` - Legacy: vector search tests
-- `validate_and_visualize_use_cases.py` - Legacy: visualization tests
+### 🔧 Maintenance Scripts
 
-#### One-time Setup (Historical)
-- `fix_graphrag_setup.py` - Legacy: initial GraphRAG setup
-- `reimport_all_with_graphrag.py` - Legacy: bulk reimport
-- `optimize_graph_relations.py` - Legacy: relationship optimization
-- `find_doknr_patterns.py` - Legacy: document number analysis
-
-### 🛠️ Utility Scripts
-- **`cypher_query.sh`** - Shell script for quick Cypher queries
-
-### 📂 Subdirectories
-- `dev/` - Development/experimental scripts
-- `maintenance/` - Maintenance utilities
+Moved to `maintenance/` - run only when repairs are needed:
+- Orphaned node linking scripts
+- Coverage fix scripts
+- SGB-specific import scripts
+- See `maintenance/README.md` for details and warnings
 
 ## 🚀 Quick Start
 
@@ -100,17 +90,11 @@ python scripts/dashboard.py
 
 ## 🔮 Recommended Workflow
 
-1. **For new features**: Use `evaluate_sachbearbeiter_use_cases.py` as template
-2. **For data issues**: Run relevant repair scripts (link_orphaned_norms, fix_sgb_coverage)
-3. **For monitoring**: Use `dashboard.py` or `graphrag_status.py`
-4. **For debugging**: Use `analyze_graph_*.py` scripts
-
-## 🗑️ Deprecated Scripts
-
-Consider removing these after verification:
-- `test_uc10_uc14.py` (replaced by comprehensive evaluator)
-- `test_graphrag_efficiency.py` (functionality in evaluator)
-- `validate_and_visualize_use_cases.py` (replaced by evaluator)
+1. **Development**: Use `evaluate_sachbearbeiter_use_cases.py` for testing
+2. **Data Issues**: Check `maintenance/` directory for repair scripts
+3. **Monitoring**: Use `graphrag_status.py` or `dashboard.py`
+4. **Debugging**: Use `analyze_graph_*.py` scripts
+5. **Historical Reference**: Check `archive/` for legacy implementations
 
 ## 📝 Notes
 

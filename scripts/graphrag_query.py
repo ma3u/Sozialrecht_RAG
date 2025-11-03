@@ -22,9 +22,17 @@ NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USERNAME = os.getenv("NEO4J_USERNAME", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password")
 
+# Azure OpenAI Configuration
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT", "")
+AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "")
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
+AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
+AZURE_OPENAI_DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
+
+# Fallback to standard OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
-EMBEDDING_DIMENSIONS = int(os.getenv("EMBEDDING_DIMENSIONS", "1536"))
+EMBEDDING_DIMENSIONS = int(os.getenv("AZURE_OPENAI_EMBEDDING_DIMENSIONS", "3072"))
 
 
 def get_query_embedding(query: str, use_mock: bool = False) -> Optional[List[float]]:
@@ -36,8 +44,32 @@ def get_query_embedding(query: str, use_mock: bool = False) -> Optional[List[flo
         vec = vec / np.linalg.norm(vec)
         return vec.tolist()
     
+    # Try Azure OpenAI first
+    if AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY:
+        try:
+            from openai import AzureOpenAI
+            
+            client = AzureOpenAI(
+                api_key=AZURE_OPENAI_API_KEY,
+                api_version=AZURE_OPENAI_API_VERSION,
+                azure_endpoint=AZURE_OPENAI_ENDPOINT
+            )
+            
+            response = client.embeddings.create(
+                model=AZURE_OPENAI_EMBEDDING_DEPLOYMENT,
+                input=query,
+                dimensions=EMBEDDING_DIMENSIONS
+            )
+            
+            return response.data[0].embedding
+            
+        except Exception as e:
+            print(f"⚠️  Azure OpenAI Fehler: {e}")
+            # Fall through to standard OpenAI
+    
+    # Fallback to standard OpenAI
     if not OPENAI_API_KEY or OPENAI_API_KEY == "sk-your-openai-api-key-here":
-        print("⚠️  Kein OpenAI API Key - verwende Mock-Embedding")
+        print("⚠️  Kein API Key - verwende Mock-Embedding")
         return get_query_embedding(query, use_mock=True)
     
     try:
@@ -129,8 +161,62 @@ def graphrag_search(driver, query_embedding: List[float], limit: int = 5, sgb_fi
 def generate_llm_response(query: str, graph_results: List[Dict], use_mock: bool = False):
     """Generiert LLM-Antwort basierend auf Graph-Kontext"""
     
-    if use_mock or not OPENAI_API_KEY or OPENAI_API_KEY == "sk-your-openai-api-key-here":
+    if use_mock:
         print("\n💡 Mock-Modus: Keine LLM-Generierung")
+        return None
+    
+    # Try Azure OpenAI first
+    if AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY:
+        try:
+            from openai import AzureOpenAI
+            
+            client = AzureOpenAI(
+                api_key=AZURE_OPENAI_API_KEY,
+                api_version=AZURE_OPENAI_API_VERSION,
+                azure_endpoint=AZURE_OPENAI_ENDPOINT
+            )
+            
+            # Baue Context aus Graph-Results
+            context_parts = []
+            for i, result in enumerate(graph_results[:3], 1):
+                sgb = result['sgb']
+                para = result['paragraph']
+                titel = result['norm_titel']
+                text = result['chunk_text']
+                
+                context_parts.append(f"\n[{i}] SGB {sgb} {para} ({titel}):\n{text[:300]}...")
+            
+            context = "\n".join(context_parts)
+            
+            prompt = f"""Du bist ein Experte für deutsches Sozialrecht. 
+Beantworte die folgende Frage basierend AUSSCHLIESSLICH auf dem bereitgestellten Kontext.
+
+KONTEXT:
+{context}
+
+FRAGE: {query}
+
+ANTWORT (kurz und präzise, mit Quellenangaben):"""
+            
+            response = client.chat.completions.create(
+                model=AZURE_OPENAI_DEPLOYMENT_NAME,
+                messages=[
+                    {"role": "system", "content": "Du bist ein Sozialrechtsexperte."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=500
+            )
+            
+            return response.choices[0].message.content
+            
+        except Exception as e:
+            print(f"⚠️  Azure OpenAI LLM Fehler: {e}")
+            # Fall through to standard OpenAI
+    
+    # Fallback to standard OpenAI
+    if not OPENAI_API_KEY or OPENAI_API_KEY == "sk-your-openai-api-key-here":
+        print("\n💡 Kein API Key: Keine LLM-Generierung")
         return None
     
     try:

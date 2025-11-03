@@ -1,0 +1,1124 @@
+INFO:src.sozialrecht_neo4j_rag:Loading German embedding model...
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-mpnet-base-v2
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE CONSTRAINT IF NOT EXISTS FOR (e:Document) REQUIRE (e.id) IS UNIQUE` has no effect.} {description: `CONSTRAINT constraint_3a9f7910 FOR (e:Document) REQUIRE (e.id) IS UNIQUE` already exists.} {position: None} for query: '\n                CREATE CONSTRAINT IF NOT EXISTS FOR (d:Document) REQUIRE d.id IS UNIQUE\n            '
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE CONSTRAINT IF NOT EXISTS FOR (e:Paragraph) REQUIRE (e.id) IS UNIQUE` has no effect.} {description: `CONSTRAINT constraint_5765c73d FOR (e:Paragraph) REQUIRE (e.id) IS UNIQUE` already exists.} {position: None} for query: '\n                CREATE CONSTRAINT IF NOT EXISTS FOR (p:Paragraph) REQUIRE p.id IS UNIQUE\n            '
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE RANGE INDEX IF NOT EXISTS FOR (e:Document) ON (e.sgb_nummer)` has no effect.} {description: `RANGE INDEX index_fc4ab31c FOR (e:Document) ON (e.sgb_nummer)` already exists.} {position: None} for query: '\n                    CREATE INDEX IF NOT EXISTS FOR (d:Document) ON (d.sgb_nummer)\n                '
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE RANGE INDEX IF NOT EXISTS FOR (e:Paragraph) ON (e.paragraph_nummer)` has no effect.} {description: `RANGE INDEX index_aa1e9b0c FOR (e:Paragraph) ON (e.paragraph_nummer)` already exists.} {position: None} for query: '\n                    CREATE INDEX IF NOT EXISTS FOR (p:Paragraph) ON (p.paragraph_nummer)\n                '
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE RANGE INDEX IF NOT EXISTS FOR (e:Document) ON (e.trust_score)` has no effect.} {description: `RANGE INDEX index_7da7bc80 FOR (e:Document) ON (e.trust_score)` already exists.} {position: None} for query: '\n                    CREATE INDEX IF NOT EXISTS FOR (d:Document) ON (d.trust_score)\n                '
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE RANGE INDEX IF NOT EXISTS FOR (e:Document) ON (e.document_type)` has no effect.} {description: `RANGE INDEX index_fb000e2c FOR (e:Document) ON (e.document_type)` already exists.} {position: None} for query: '\n                    CREATE INDEX IF NOT EXISTS FOR (d:Document) ON (d.document_type)\n                '
+INFO:src.sozialrecht_neo4j_rag:✅ Sozialrecht-specific Neo4j schema initialized
+INFO:neo4j.notifications:Received notification from DBMS server: {severity: INFORMATION} {code: Neo.ClientNotification.Schema.IndexOrConstraintAlreadyExists} {category: SCHEMA} {title: `CREATE FULLTEXT INDEX sozialrecht_fulltext IF NOT EXISTS FOR (e:Chunk) ON EACH [e.text, e.paragraph_context]` has no effect.} {description: `FULLTEXT INDEX sozialrecht_fulltext FOR (e:Chunk) ON EACH [e.text, e.paragraph_context]` already exists.} {position: None} for query: '\n                        CREATE FULLTEXT INDEX sozialrecht_fulltext IF NOT EXISTS\n                        FOR (c:Chunk) ON EACH [c.text, c.paragraph_context]\n                    '
+INFO:src.sozialrecht_neo4j_rag:✅ Sozialrecht RAG System initialized with URI: bolt://localhost:7687
+
+📚 Sozialrecht Neo4j Upload System
+============================================================
+
+📊 Gefundene Dokumente:
+  Gesetze: 13 PDFs
+  Fachliche_Weisungen: 36 PDFs
+  Rundschreiben_BMAS: 1 PDFs
+  Gesamt: 50 PDFs
+
+🔗 Verbinde zu Neo4j...
+✅ Verbunden mit Neo4j
+📊 Datenbank: 8 Dokumente, 11713 Chunks
+
+🚀 Starte Upload...
+============================================================
+
+
+📁 Kategorie: Gesetze
+Gesetze:   0%|          | 0/13 [00:00<?, ?it/s]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.utils.accelerator_utils:Accelerator device: 'mps'
+INFO:docling.utils.accelerator_utils:Accelerator device: 'mps'
+INFO:docling.utils.accelerator_utils:Accelerator device: 'mps'
+INFO:docling.pipeline.base_pipeline:Processing document SGB_12_Sozialhilfe.pdf
+INFO:docling.document_converter:Finished converting document SGB_12_Sozialhilfe.pdf in 33.29 sec.
+
+Batches:   0%|          | 0/20 [00:00<?, ?it/s][A
+Batches:   5%|▌         | 1/20 [00:00<00:09,  1.98it/s][A
+Batches:  10%|█         | 2/20 [00:00<00:07,  2.44it/s][A
+Batches:  15%|█▌        | 3/20 [00:01<00:06,  2.60it/s][A
+Batches:  20%|██        | 4/20 [00:01<00:06,  2.65it/s][A
+Batches:  25%|██▌       | 5/20 [00:01<00:05,  2.66it/s][A
+Batches:  30%|███       | 6/20 [00:02<00:05,  2.67it/s][A
+Batches:  35%|███▌      | 7/20 [00:02<00:04,  2.67it/s][A
+Batches:  40%|████      | 8/20 [00:03<00:04,  2.66it/s][A
+Batches:  45%|████▌     | 9/20 [00:03<00:04,  2.65it/s][A
+Batches:  50%|█████     | 10/20 [00:03<00:03,  2.64it/s][A
+Batches:  55%|█████▌    | 11/20 [00:04<00:03,  2.62it/s][A
+Batches:  60%|██████    | 12/20 [00:04<00:03,  2.59it/s][A
+Batches:  65%|██████▌   | 13/20 [00:05<00:02,  2.58it/s][A
+Batches:  70%|███████   | 14/20 [00:05<00:02,  2.69it/s][A
+Batches:  75%|███████▌  | 15/20 [00:05<00:01,  2.62it/s][A
+Batches:  80%|████████  | 16/20 [00:06<00:01,  2.85it/s][A
+Batches:  85%|████████▌ | 17/20 [00:06<00:00,  3.10it/s][A
+Batches:  90%|█████████ | 18/20 [00:06<00:00,  3.53it/s][A
+Batches:  95%|█████████▌| 19/20 [00:06<00:00,  3.87it/s][ABatches: 100%|██████████| 20/20 [00:06<00:00,  2.95it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: XII Gesetz (ID: 3d200cd3dd37a76b, Trust: 100%)
+INFO:__main__:  ✅ SGB_12_Sozialhilfe.pdf: 1051 chunks
+Gesetze:   8%|▊         | 1/13 [00:41<08:14, 41.17s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_03_Arbeitsfoerderung.pdf
+INFO:docling.document_converter:Finished converting document SGB_03_Arbeitsfoerderung.pdf in 51.93 sec.
+
+Batches:   0%|          | 0/36 [00:00<?, ?it/s][A
+Batches:   3%|▎         | 1/36 [00:00<00:16,  2.13it/s][A
+Batches:   6%|▌         | 2/36 [00:00<00:13,  2.47it/s][A
+Batches:   8%|▊         | 3/36 [00:01<00:13,  2.52it/s][A
+Batches:  11%|█         | 4/36 [00:01<00:12,  2.54it/s][A
+Batches:  14%|█▍        | 5/36 [00:01<00:12,  2.57it/s][A
+Batches:  17%|█▋        | 6/36 [00:02<00:11,  2.57it/s][A
+Batches:  19%|█▉        | 7/36 [00:02<00:11,  2.57it/s][A
+Batches:  22%|██▏       | 8/36 [00:03<00:10,  2.55it/s][A
+Batches:  25%|██▌       | 9/36 [00:03<00:10,  2.51it/s][A
+Batches:  28%|██▊       | 10/36 [00:03<00:10,  2.49it/s][A
+Batches:  31%|███       | 11/36 [00:04<00:10,  2.47it/s][A
+Batches:  33%|███▎      | 12/36 [00:04<00:09,  2.44it/s][A
+Batches:  36%|███▌      | 13/36 [00:05<00:09,  2.42it/s][A
+Batches:  39%|███▉      | 14/36 [00:05<00:09,  2.42it/s][A
+Batches:  42%|████▏     | 15/36 [00:06<00:08,  2.41it/s][A
+Batches:  44%|████▍     | 16/36 [00:06<00:08,  2.40it/s][A
+Batches:  47%|████▋     | 17/36 [00:06<00:08,  2.37it/s][A
+Batches:  50%|█████     | 18/36 [00:07<00:07,  2.38it/s][A
+Batches:  53%|█████▎    | 19/36 [00:07<00:07,  2.40it/s][A
+Batches:  56%|█████▌    | 20/36 [00:08<00:06,  2.41it/s][A
+Batches:  58%|█████▊    | 21/36 [00:08<00:06,  2.42it/s][A
+Batches:  61%|██████    | 22/36 [00:09<00:05,  2.35it/s][A
+Batches:  64%|██████▍   | 23/36 [00:09<00:05,  2.30it/s][A
+Batches:  67%|██████▋   | 24/36 [00:10<00:06,  1.83it/s][A
+Batches:  69%|██████▉   | 25/36 [00:11<00:06,  1.60it/s][A
+Batches:  72%|███████▏  | 26/36 [00:11<00:06,  1.49it/s][A
+Batches:  75%|███████▌  | 27/36 [00:12<00:05,  1.52it/s][A
+Batches:  78%|███████▊  | 28/36 [00:13<00:05,  1.46it/s][A
+Batches:  81%|████████  | 29/36 [00:13<00:04,  1.48it/s][A
+Batches:  83%|████████▎ | 30/36 [00:14<00:03,  1.63it/s][A
+Batches:  86%|████████▌ | 31/36 [00:14<00:02,  1.85it/s][A
+Batches:  89%|████████▉ | 32/36 [00:14<00:01,  2.20it/s][A
+Batches:  92%|█████████▏| 33/36 [00:15<00:01,  2.60it/s][A
+Batches:  94%|█████████▍| 34/36 [00:15<00:00,  2.99it/s][A
+Batches:  97%|█████████▋| 35/36 [00:15<00:00,  3.55it/s][A
+Batches: 100%|██████████| 36/36 [00:15<00:00,  4.38it/s][ABatches: 100%|██████████| 36/36 [00:15<00:00,  2.29it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III Gesetz (ID: 25481af41a99bed1, Trust: 100%)
+INFO:__main__:  ✅ SGB_03_Arbeitsfoerderung.pdf: 1960 chunks
+Gesetze:  15%|█▌        | 2/13 [01:52<10:46, 58.73s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_01_Allgemeiner_Teil.pdf
+INFO:docling.document_converter:Finished converting document SGB_01_Allgemeiner_Teil.pdf in 10.48 sec.
+
+Batches:   0%|          | 0/5 [00:00<?, ?it/s][A
+Batches:  20%|██        | 1/5 [00:01<00:05,  1.33s/it][A
+Batches:  40%|████      | 2/5 [00:02<00:03,  1.28s/it][A
+Batches:  60%|██████    | 3/5 [00:03<00:02,  1.18s/it][A
+Batches:  80%|████████  | 4/5 [00:04<00:01,  1.16s/it][A
+Batches: 100%|██████████| 5/5 [00:05<00:00,  1.21it/s][ABatches: 100%|██████████| 5/5 [00:05<00:00,  1.00s/it]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I Gesetz (ID: 6aeb799ef65865fc, Trust: 100%)
+INFO:__main__:  ✅ SGB_01_Allgemeiner_Teil.pdf: 310 chunks
+Gesetze:  23%|██▎       | 3/13 [02:08<06:32, 39.29s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_14_Soziale_Entschaedigung.pdf
+INFO:docling.document_converter:Finished converting document SGB_14_Soziale_Entschaedigung.pdf in 37.72 sec.
+
+Batches:   0%|          | 0/15 [00:00<?, ?it/s][A
+Batches:   7%|▋         | 1/15 [00:00<00:09,  1.40it/s][A
+Batches:  13%|█▎        | 2/15 [00:01<00:08,  1.56it/s][A
+Batches:  20%|██        | 3/15 [00:02<00:08,  1.42it/s][A
+Batches:  27%|██▋       | 4/15 [00:02<00:08,  1.31it/s][A
+Batches:  33%|███▎      | 5/15 [00:03<00:07,  1.28it/s][A
+Batches:  40%|████      | 6/15 [00:04<00:06,  1.31it/s][A
+Batches:  47%|████▋     | 7/15 [00:05<00:05,  1.40it/s][A
+Batches:  53%|█████▎    | 8/15 [00:05<00:04,  1.46it/s][A
+Batches:  60%|██████    | 9/15 [00:06<00:04,  1.47it/s][A
+Batches:  67%|██████▋   | 10/15 [00:07<00:03,  1.46it/s][A
+Batches:  73%|███████▎  | 11/15 [00:07<00:02,  1.55it/s][A
+Batches:  80%|████████  | 12/15 [00:08<00:01,  1.62it/s][A
+Batches:  87%|████████▋ | 13/15 [00:08<00:01,  1.78it/s][A
+Batches:  93%|█████████▎| 14/15 [00:08<00:00,  2.15it/s][ABatches: 100%|██████████| 15/15 [00:08<00:00,  1.68it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: XIV Gesetz (ID: eb330df56108b077, Trust: 100%)
+INFO:__main__:  ✅ SGB_14_Soziale_Entschaedigung.pdf: 1273 chunks
+Gesetze:  31%|███       | 4/13 [02:55<06:22, 42.49s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_02_Buergergeld.pdf
+INFO:docling.document_converter:Finished converting document SGB_02_Buergergeld.pdf in 25.01 sec.
+
+Batches:   0%|          | 0/19 [00:00<?, ?it/s][A
+Batches:   5%|▌         | 1/19 [00:00<00:13,  1.33it/s][A
+Batches:  11%|█         | 2/19 [00:01<00:10,  1.64it/s][A
+Batches:  16%|█▌        | 3/19 [00:01<00:08,  1.85it/s][A
+Batches:  21%|██        | 4/19 [00:02<00:07,  1.98it/s][A
+Batches:  26%|██▋       | 5/19 [00:02<00:06,  2.08it/s][A
+Batches:  32%|███▏      | 6/19 [00:03<00:06,  2.06it/s][A
+Batches:  37%|███▋      | 7/19 [00:03<00:05,  2.06it/s][A
+Batches:  42%|████▏     | 8/19 [00:04<00:05,  2.00it/s][A
+Batches:  47%|████▋     | 9/19 [00:04<00:04,  2.01it/s][A
+Batches:  53%|█████▎    | 10/19 [00:05<00:04,  1.85it/s][A
+Batches:  58%|█████▊    | 11/19 [00:05<00:04,  1.79it/s][A
+Batches:  63%|██████▎   | 12/19 [00:06<00:03,  1.75it/s][A
+Batches:  68%|██████▊   | 13/19 [00:07<00:03,  1.73it/s][A
+Batches:  74%|███████▎  | 14/19 [00:07<00:02,  1.68it/s][A
+Batches:  79%|███████▉  | 15/19 [00:07<00:02,  2.00it/s][A
+Batches:  84%|████████▍ | 16/19 [00:08<00:01,  2.34it/s][A
+Batches:  89%|████████▉ | 17/19 [00:08<00:00,  2.90it/s][A
+Batches:  95%|█████████▍| 18/19 [00:08<00:00,  3.66it/s][ABatches: 100%|██████████| 19/19 [00:08<00:00,  2.23it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II Gesetz (ID: 4d5970010a8ff5cc, Trust: 100%)
+INFO:__main__:  ✅ SGB_02_Buergergeld.pdf: 725 chunks
+Gesetze:  38%|███▊      | 5/13 [03:30<05:16, 39.59s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_05_Krankenversicherung.pdf
+INFO:docling.document_converter:Finished converting document SGB_05_Krankenversicherung.pdf in 231.38 sec.
+
+Batches:   0%|          | 0/176 [00:00<?, ?it/s][A
+Batches:   1%|          | 1/176 [00:00<01:26,  2.02it/s][A
+Batches:   1%|          | 2/176 [00:00<01:13,  2.36it/s][A
+Batches:   2%|▏         | 3/176 [00:01<01:13,  2.37it/s][A
+Batches:   2%|▏         | 4/176 [00:01<01:15,  2.28it/s][A
+Batches:   3%|▎         | 5/176 [00:02<01:21,  2.09it/s][A
+Batches:   3%|▎         | 6/176 [00:02<01:26,  1.97it/s][A
+Batches:   4%|▍         | 7/176 [00:03<01:30,  1.86it/s][A
+Batches:   5%|▍         | 8/176 [00:04<01:32,  1.82it/s][A
+Batches:   5%|▌         | 9/176 [00:04<01:37,  1.72it/s][A
+Batches:   6%|▌         | 10/176 [00:05<01:41,  1.63it/s][A
+Batches:   6%|▋         | 11/176 [00:06<01:44,  1.58it/s][A
+Batches:   7%|▋         | 12/176 [00:06<01:42,  1.60it/s][A
+Batches:   7%|▋         | 13/176 [00:07<01:40,  1.61it/s][A
+Batches:   8%|▊         | 14/176 [00:07<01:37,  1.67it/s][A
+Batches:   9%|▊         | 15/176 [00:08<01:32,  1.74it/s][A
+Batches:   9%|▉         | 16/176 [00:08<01:28,  1.81it/s][A
+Batches:  10%|▉         | 17/176 [00:09<01:25,  1.86it/s][A
+Batches:  10%|█         | 18/176 [00:09<01:21,  1.93it/s][A
+Batches:  11%|█         | 19/176 [00:10<01:20,  1.95it/s][A
+Batches:  11%|█▏        | 20/176 [00:10<01:21,  1.91it/s][A
+Batches:  12%|█▏        | 21/176 [00:11<01:23,  1.85it/s][A
+Batches:  12%|█▎        | 22/176 [00:12<01:23,  1.84it/s][A
+Batches:  13%|█▎        | 23/176 [00:12<01:27,  1.74it/s][A
+Batches:  14%|█▎        | 24/176 [00:13<01:26,  1.75it/s][A
+Batches:  14%|█▍        | 25/176 [00:13<01:23,  1.81it/s][A
+Batches:  15%|█▍        | 26/176 [00:14<01:23,  1.79it/s][A
+Batches:  15%|█▌        | 27/176 [00:14<01:20,  1.86it/s][A
+Batches:  16%|█▌        | 28/176 [00:15<01:17,  1.92it/s][A
+Batches:  16%|█▋        | 29/176 [00:15<01:18,  1.88it/s][A
+Batches:  17%|█▋        | 30/176 [00:16<01:26,  1.68it/s][A
+Batches:  18%|█▊        | 31/176 [00:17<01:38,  1.47it/s][A
+Batches:  18%|█▊        | 32/176 [00:18<01:35,  1.50it/s][A
+Batches:  19%|█▉        | 33/176 [00:18<01:30,  1.58it/s][A
+Batches:  19%|█▉        | 34/176 [00:19<01:25,  1.66it/s][A
+Batches:  20%|█▉        | 35/176 [00:19<01:21,  1.73it/s][A
+Batches:  20%|██        | 36/176 [00:20<01:16,  1.82it/s][A
+Batches:  21%|██        | 37/176 [00:20<01:14,  1.87it/s][A
+Batches:  22%|██▏       | 38/176 [00:21<01:12,  1.90it/s][A
+Batches:  22%|██▏       | 39/176 [00:21<01:13,  1.87it/s][A
+Batches:  23%|██▎       | 40/176 [00:22<01:14,  1.83it/s][A
+Batches:  23%|██▎       | 41/176 [00:22<01:14,  1.80it/s][A
+Batches:  24%|██▍       | 42/176 [00:23<01:13,  1.81it/s][A
+Batches:  24%|██▍       | 43/176 [00:23<01:12,  1.84it/s][A
+Batches:  25%|██▌       | 44/176 [00:24<01:11,  1.84it/s][A
+Batches:  26%|██▌       | 45/176 [00:25<01:12,  1.81it/s][A
+Batches:  26%|██▌       | 46/176 [00:25<01:12,  1.79it/s][A
+Batches:  27%|██▋       | 47/176 [00:26<01:15,  1.70it/s][A
+Batches:  27%|██▋       | 48/176 [00:26<01:16,  1.67it/s][A
+Batches:  28%|██▊       | 49/176 [00:27<01:18,  1.62it/s][A
+Batches:  28%|██▊       | 50/176 [00:28<01:21,  1.54it/s][A
+Batches:  29%|██▉       | 51/176 [00:29<01:23,  1.49it/s][A
+Batches:  30%|██▉       | 52/176 [00:29<01:19,  1.56it/s][A
+Batches:  30%|███       | 53/176 [00:30<01:15,  1.63it/s][A
+Batches:  31%|███       | 54/176 [00:30<01:11,  1.70it/s][A
+Batches:  31%|███▏      | 55/176 [00:31<01:08,  1.76it/s][A
+Batches:  32%|███▏      | 56/176 [00:31<01:06,  1.82it/s][A
+Batches:  32%|███▏      | 57/176 [00:32<01:06,  1.79it/s][A
+Batches:  33%|███▎      | 58/176 [00:32<01:06,  1.77it/s][A
+Batches:  34%|███▎      | 59/176 [00:33<01:06,  1.77it/s][A
+Batches:  34%|███▍      | 60/176 [00:33<01:05,  1.76it/s][A
+Batches:  35%|███▍      | 61/176 [00:34<01:05,  1.75it/s][A
+Batches:  35%|███▌      | 62/176 [00:35<01:05,  1.74it/s][A
+Batches:  36%|███▌      | 63/176 [00:35<01:03,  1.79it/s][A
+Batches:  36%|███▋      | 64/176 [00:36<01:04,  1.73it/s][A
+Batches:  37%|███▋      | 65/176 [00:36<01:04,  1.72it/s][A
+Batches:  38%|███▊      | 66/176 [00:37<01:03,  1.72it/s][A
+Batches:  38%|███▊      | 67/176 [00:38<01:02,  1.74it/s][A
+Batches:  39%|███▊      | 68/176 [00:38<01:03,  1.71it/s][A
+Batches:  39%|███▉      | 69/176 [00:39<01:05,  1.65it/s][A
+Batches:  40%|███▉      | 70/176 [00:40<01:10,  1.51it/s][A
+Batches:  40%|████      | 71/176 [00:40<01:12,  1.46it/s][A
+Batches:  41%|████      | 72/176 [00:41<01:08,  1.51it/s][A
+Batches:  41%|████▏     | 73/176 [00:42<01:08,  1.51it/s][A
+Batches:  42%|████▏     | 74/176 [00:42<01:06,  1.54it/s][A
+Batches:  43%|████▎     | 75/176 [00:43<01:04,  1.57it/s][A
+Batches:  43%|████▎     | 76/176 [00:43<01:01,  1.62it/s][A
+Batches:  44%|████▍     | 77/176 [00:44<00:59,  1.66it/s][A
+Batches:  44%|████▍     | 78/176 [00:44<00:57,  1.72it/s][A
+Batches:  45%|████▍     | 79/176 [00:45<00:54,  1.79it/s][A
+Batches:  45%|████▌     | 80/176 [00:46<00:55,  1.71it/s][A
+Batches:  46%|████▌     | 81/176 [00:46<00:58,  1.63it/s][A
+Batches:  47%|████▋     | 82/176 [00:47<00:59,  1.58it/s][A
+Batches:  47%|████▋     | 83/176 [00:48<00:57,  1.61it/s][A
+Batches:  48%|████▊     | 84/176 [00:48<00:55,  1.64it/s][A
+Batches:  48%|████▊     | 85/176 [00:49<00:54,  1.67it/s][A
+Batches:  49%|████▉     | 86/176 [00:49<00:54,  1.64it/s][A
+Batches:  49%|████▉     | 87/176 [00:50<00:55,  1.59it/s][A
+Batches:  50%|█████     | 88/176 [00:51<01:00,  1.45it/s][A
+Batches:  51%|█████     | 89/176 [00:52<01:02,  1.40it/s][A
+Batches:  51%|█████     | 90/176 [00:52<01:00,  1.43it/s][A
+Batches:  52%|█████▏    | 91/176 [00:53<00:55,  1.52it/s][A
+Batches:  52%|█████▏    | 92/176 [00:53<00:51,  1.63it/s][A
+Batches:  53%|█████▎    | 93/176 [00:54<00:48,  1.70it/s][A
+Batches:  53%|█████▎    | 94/176 [00:54<00:46,  1.75it/s][A
+Batches:  54%|█████▍    | 95/176 [00:55<00:45,  1.79it/s][A
+Batches:  55%|█████▍    | 96/176 [00:56<00:45,  1.76it/s][A
+Batches:  55%|█████▌    | 97/176 [00:56<00:47,  1.67it/s][A
+Batches:  56%|█████▌    | 98/176 [00:57<00:46,  1.67it/s][A
+Batches:  56%|█████▋    | 99/176 [00:57<00:44,  1.71it/s][A
+Batches:  57%|█████▋    | 100/176 [00:58<00:44,  1.72it/s][A
+Batches:  57%|█████▋    | 101/176 [00:59<00:44,  1.69it/s][A
+Batches:  58%|█████▊    | 102/176 [00:59<00:43,  1.69it/s][A
+Batches:  59%|█████▊    | 103/176 [01:00<00:42,  1.71it/s][A
+Batches:  59%|█████▉    | 104/176 [01:00<00:41,  1.75it/s][A
+Batches:  60%|█████▉    | 105/176 [01:01<00:41,  1.73it/s][A
+Batches:  60%|██████    | 106/176 [01:02<00:43,  1.63it/s][A
+Batches:  61%|██████    | 107/176 [01:02<00:47,  1.47it/s][A
+Batches:  61%|██████▏   | 108/176 [01:03<00:47,  1.43it/s][A
+Batches:  62%|██████▏   | 109/176 [01:04<00:43,  1.55it/s][A
+Batches:  62%|██████▎   | 110/176 [01:04<00:40,  1.65it/s][A
+Batches:  63%|██████▎   | 111/176 [01:05<00:38,  1.71it/s][A
+Batches:  64%|██████▎   | 112/176 [01:05<00:35,  1.79it/s][A
+Batches:  64%|██████▍   | 113/176 [01:06<00:38,  1.62it/s][A
+Batches:  65%|██████▍   | 114/176 [01:07<00:42,  1.46it/s][A
+Batches:  65%|██████▌   | 115/176 [01:07<00:41,  1.48it/s][A
+Batches:  66%|██████▌   | 116/176 [01:08<00:40,  1.49it/s][A
+Batches:  66%|██████▋   | 117/176 [01:09<00:36,  1.63it/s][A
+Batches:  67%|██████▋   | 118/176 [01:09<00:35,  1.64it/s][A
+Batches:  68%|██████▊   | 119/176 [01:10<00:31,  1.81it/s][A
+Batches:  68%|██████▊   | 120/176 [01:10<00:29,  1.90it/s][A
+Batches:  69%|██████▉   | 121/176 [01:11<00:28,  1.90it/s][A
+Batches:  69%|██████▉   | 122/176 [01:11<00:27,  1.93it/s][A
+Batches:  70%|██████▉   | 123/176 [01:12<00:27,  1.94it/s][A
+Batches:  70%|███████   | 124/176 [01:12<00:29,  1.74it/s][A
+Batches:  71%|███████   | 125/176 [01:13<00:31,  1.63it/s][A
+Batches:  72%|███████▏  | 126/176 [01:14<00:33,  1.51it/s][A
+Batches:  72%|███████▏  | 127/176 [01:14<00:31,  1.57it/s][A
+Batches:  73%|███████▎  | 128/176 [01:15<00:27,  1.75it/s][A
+Batches:  73%|███████▎  | 129/176 [01:15<00:25,  1.81it/s][A
+Batches:  74%|███████▍  | 130/176 [01:16<00:24,  1.85it/s][A
+Batches:  74%|███████▍  | 131/176 [01:16<00:23,  1.91it/s][A
+Batches:  75%|███████▌  | 132/176 [01:17<00:21,  2.05it/s][A
+Batches:  76%|███████▌  | 133/176 [01:17<00:19,  2.17it/s][A
+Batches:  76%|███████▌  | 134/176 [01:17<00:18,  2.33it/s][A
+Batches:  77%|███████▋  | 135/176 [01:18<00:16,  2.43it/s][A
+Batches:  77%|███████▋  | 136/176 [01:18<00:16,  2.41it/s][A
+Batches:  78%|███████▊  | 137/176 [01:19<00:15,  2.44it/s][A
+Batches:  78%|███████▊  | 138/176 [01:19<00:15,  2.45it/s][A
+Batches:  79%|███████▉  | 139/176 [01:19<00:14,  2.51it/s][A
+Batches:  80%|███████▉  | 140/176 [01:20<00:14,  2.55it/s][A
+Batches:  80%|████████  | 141/176 [01:20<00:15,  2.32it/s][A
+Batches:  81%|████████  | 142/176 [01:21<00:13,  2.49it/s][A
+Batches:  81%|████████▏ | 143/176 [01:21<00:12,  2.63it/s][A
+Batches:  82%|████████▏ | 144/176 [01:21<00:11,  2.75it/s][A
+Batches:  82%|████████▏ | 145/176 [01:22<00:11,  2.71it/s][A
+Batches:  83%|████████▎ | 146/176 [01:22<00:10,  2.89it/s][A
+Batches:  84%|████████▎ | 147/176 [01:22<00:09,  3.04it/s][A
+Batches:  84%|████████▍ | 148/176 [01:23<00:10,  2.73it/s][A
+Batches:  85%|████████▍ | 149/176 [01:23<00:09,  2.85it/s][A
+Batches:  85%|████████▌ | 150/176 [01:23<00:09,  2.86it/s][A
+Batches:  86%|████████▌ | 151/176 [01:24<00:08,  2.89it/s][A
+Batches:  86%|████████▋ | 152/176 [01:24<00:07,  3.18it/s][A
+Batches:  87%|████████▋ | 153/176 [01:24<00:07,  3.27it/s][A
+Batches:  88%|████████▊ | 154/176 [01:25<00:07,  3.03it/s][A
+Batches:  88%|████████▊ | 155/176 [01:25<00:07,  2.87it/s][A
+Batches:  89%|████████▊ | 156/176 [01:26<00:07,  2.55it/s][A
+Batches:  89%|████████▉ | 157/176 [01:26<00:07,  2.65it/s][A
+Batches:  90%|████████▉ | 158/176 [01:26<00:06,  2.87it/s][A
+Batches:  90%|█████████ | 159/176 [01:26<00:05,  3.09it/s][A
+Batches:  91%|█████████ | 160/176 [01:27<00:04,  3.35it/s][A
+Batches:  91%|█████████▏| 161/176 [01:27<00:04,  3.75it/s][A
+Batches:  92%|█████████▏| 162/176 [01:27<00:03,  4.24it/s][A
+Batches:  93%|█████████▎| 163/176 [01:27<00:03,  4.33it/s][A
+Batches:  93%|█████████▎| 164/176 [01:27<00:02,  4.59it/s][A
+Batches:  94%|█████████▍| 165/176 [01:28<00:02,  4.97it/s][A
+Batches:  94%|█████████▍| 166/176 [01:28<00:01,  5.49it/s][A
+Batches:  95%|█████████▍| 167/176 [01:28<00:01,  5.83it/s][A
+Batches:  95%|█████████▌| 168/176 [01:28<00:01,  6.47it/s][A
+Batches:  96%|█████████▌| 169/176 [01:28<00:00,  7.08it/s][A
+Batches:  97%|█████████▋| 171/176 [01:28<00:00,  8.70it/s][A
+Batches:  98%|█████████▊| 173/176 [01:28<00:00, 10.01it/s][A
+Batches:  99%|█████████▉| 175/176 [01:29<00:00, 10.97it/s][ABatches: 100%|██████████| 176/176 [01:29<00:00,  1.97it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: V Gesetz (ID: 8c538ad2d94ac36a, Trust: 100%)
+INFO:__main__:  ✅ SGB_05_Krankenversicherung.pdf: 4846 chunks
+Gesetze:  46%|████▌     | 6/13 [08:57<16:01, 137.38s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_09_Rehabilitation_und_Teilhabe.pdf
+INFO:docling.document_converter:Finished converting document SGB_09_Rehabilitation_und_Teilhabe.pdf in 40.21 sec.
+
+Batches:   0%|          | 0/28 [00:00<?, ?it/s][A
+Batches:   4%|▎         | 1/28 [00:00<00:17,  1.58it/s][A
+Batches:   7%|▋         | 2/28 [00:01<00:12,  2.02it/s][A
+Batches:  11%|█         | 3/28 [00:01<00:11,  2.15it/s][A
+Batches:  14%|█▍        | 4/28 [00:01<00:10,  2.20it/s][A
+Batches:  18%|█▊        | 5/28 [00:02<00:10,  2.18it/s][A
+Batches:  21%|██▏       | 6/28 [00:02<00:10,  2.04it/s][A
+Batches:  25%|██▌       | 7/28 [00:03<00:10,  1.98it/s][A
+Batches:  29%|██▊       | 8/28 [00:04<00:10,  1.92it/s][A
+Batches:  32%|███▏      | 9/28 [00:04<00:09,  1.97it/s][A
+Batches:  36%|███▌      | 10/28 [00:04<00:08,  2.03it/s][A
+Batches:  39%|███▉      | 11/28 [00:05<00:08,  2.06it/s][A
+Batches:  43%|████▎     | 12/28 [00:05<00:07,  2.05it/s][A
+Batches:  46%|████▋     | 13/28 [00:06<00:07,  2.10it/s][A
+Batches:  50%|█████     | 14/28 [00:06<00:07,  2.00it/s][A
+Batches:  54%|█████▎    | 15/28 [00:07<00:06,  1.96it/s][A
+Batches:  57%|█████▋    | 16/28 [00:08<00:06,  1.91it/s][A
+Batches:  61%|██████    | 17/28 [00:08<00:06,  1.77it/s][A
+Batches:  64%|██████▍   | 18/28 [00:09<00:06,  1.64it/s][A
+Batches:  68%|██████▊   | 19/28 [00:10<00:05,  1.61it/s][A
+Batches:  71%|███████▏  | 20/28 [00:10<00:05,  1.59it/s][A
+Batches:  75%|███████▌  | 21/28 [00:11<00:03,  1.82it/s][A
+Batches:  79%|███████▊  | 22/28 [00:11<00:03,  1.84it/s][A
+Batches:  82%|████████▏ | 23/28 [00:11<00:02,  2.16it/s][A
+Batches:  86%|████████▌ | 24/28 [00:12<00:01,  2.39it/s][A
+Batches:  89%|████████▉ | 25/28 [00:12<00:01,  2.77it/s][A
+Batches:  93%|█████████▎| 26/28 [00:12<00:00,  3.34it/s][A
+Batches:  96%|█████████▋| 27/28 [00:12<00:00,  4.04it/s][ABatches: 100%|██████████| 28/28 [00:12<00:00,  2.20it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IX Gesetz (ID: 0c49e7129480cf8d, Trust: 100%)
+INFO:__main__:  ✅ SGB_09_Rehabilitation_und_Teilhabe.pdf: 1329 chunks
+Gesetze:  54%|█████▍    | 7/13 [09:51<11:00, 110.14s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_06_Rentenversicherung.pdf
+INFO:docling.document_converter:Finished converting document SGB_06_Rentenversicherung.pdf in 197.64 sec.
+
+Batches:   0%|          | 0/72 [00:00<?, ?it/s][A
+Batches:   1%|▏         | 1/72 [00:00<00:33,  2.10it/s][A
+Batches:   3%|▎         | 2/72 [00:00<00:28,  2.43it/s][A
+Batches:   4%|▍         | 3/72 [00:01<00:27,  2.51it/s][A
+Batches:   6%|▌         | 4/72 [00:01<00:27,  2.51it/s][A
+Batches:   7%|▋         | 5/72 [00:02<00:30,  2.22it/s][A
+Batches:   8%|▊         | 6/72 [00:02<00:36,  1.80it/s][A
+Batches:  10%|▉         | 7/72 [00:03<00:44,  1.46it/s][A
+Batches:  11%|█         | 8/72 [00:04<00:42,  1.49it/s][A
+Batches:  12%|█▎        | 9/72 [00:05<00:40,  1.56it/s][A
+Batches:  14%|█▍        | 10/72 [00:05<00:37,  1.67it/s][A
+Batches:  15%|█▌        | 11/72 [00:06<00:35,  1.74it/s][A
+Batches:  17%|█▋        | 12/72 [00:06<00:32,  1.85it/s][A
+Batches:  18%|█▊        | 13/72 [00:07<00:31,  1.88it/s][A
+Batches:  19%|█▉        | 14/72 [00:07<00:30,  1.90it/s][A
+Batches:  21%|██        | 15/72 [00:08<00:30,  1.88it/s][A
+Batches:  22%|██▏       | 16/72 [00:08<00:29,  1.87it/s][A
+Batches:  24%|██▎       | 17/72 [00:09<00:31,  1.77it/s][A
+Batches:  25%|██▌       | 18/72 [00:09<00:30,  1.77it/s][A
+Batches:  26%|██▋       | 19/72 [00:10<00:29,  1.78it/s][A
+Batches:  28%|██▊       | 20/72 [00:10<00:28,  1.82it/s][A
+Batches:  29%|██▉       | 21/72 [00:11<00:28,  1.79it/s][A
+Batches:  31%|███       | 22/72 [00:12<00:26,  1.89it/s][A
+Batches:  32%|███▏      | 23/72 [00:12<00:26,  1.87it/s][A
+Batches:  33%|███▎      | 24/72 [00:13<00:25,  1.89it/s][A
+Batches:  35%|███▍      | 25/72 [00:13<00:27,  1.72it/s][A
+Batches:  36%|███▌      | 26/72 [00:14<00:30,  1.50it/s][A
+Batches:  38%|███▊      | 27/72 [00:15<00:31,  1.44it/s][A
+Batches:  39%|███▉      | 28/72 [00:15<00:28,  1.54it/s][A
+Batches:  40%|████      | 29/72 [00:16<00:26,  1.62it/s][A
+Batches:  42%|████▏     | 30/72 [00:16<00:24,  1.71it/s][A
+Batches:  43%|████▎     | 31/72 [00:17<00:23,  1.78it/s][A
+Batches:  44%|████▍     | 32/72 [00:17<00:21,  1.86it/s][A
+Batches:  46%|████▌     | 33/72 [00:18<00:21,  1.86it/s][A
+Batches:  47%|████▋     | 34/72 [00:19<00:22,  1.71it/s][A
+Batches:  49%|████▊     | 35/72 [00:19<00:23,  1.59it/s][A
+Batches:  50%|█████     | 36/72 [00:20<00:22,  1.58it/s][A
+Batches:  51%|█████▏    | 37/72 [00:21<00:21,  1.60it/s][A
+Batches:  53%|█████▎    | 38/72 [00:21<00:20,  1.65it/s][A
+Batches:  54%|█████▍    | 39/72 [00:22<00:18,  1.74it/s][A
+Batches:  56%|█████▌    | 40/72 [00:22<00:18,  1.78it/s][A
+Batches:  57%|█████▋    | 41/72 [00:23<00:17,  1.79it/s][A
+Batches:  58%|█████▊    | 42/72 [00:23<00:17,  1.76it/s][A
+Batches:  60%|█████▉    | 43/72 [00:24<00:16,  1.75it/s][A
+Batches:  61%|██████    | 44/72 [00:25<00:18,  1.55it/s][A
+Batches:  62%|██████▎   | 45/72 [00:26<00:20,  1.34it/s][A
+Batches:  64%|██████▍   | 46/72 [00:27<00:19,  1.36it/s][A
+Batches:  65%|██████▌   | 47/72 [00:27<00:17,  1.46it/s][A
+Batches:  67%|██████▋   | 48/72 [00:28<00:15,  1.58it/s][A
+Batches:  68%|██████▊   | 49/72 [00:28<00:13,  1.68it/s][A
+Batches:  69%|██████▉   | 50/72 [00:29<00:13,  1.65it/s][A
+Batches:  71%|███████   | 51/72 [00:29<00:12,  1.64it/s][A
+Batches:  72%|███████▏  | 52/72 [00:30<00:12,  1.65it/s][A
+Batches:  74%|███████▎  | 53/72 [00:31<00:11,  1.63it/s][A
+Batches:  75%|███████▌  | 54/72 [00:31<00:11,  1.62it/s][A
+Batches:  76%|███████▋  | 55/72 [00:32<00:10,  1.61it/s][A
+Batches:  78%|███████▊  | 56/72 [00:32<00:09,  1.60it/s][A
+Batches:  79%|███████▉  | 57/72 [00:33<00:09,  1.62it/s][A
+Batches:  81%|████████  | 58/72 [00:34<00:08,  1.70it/s][A
+Batches:  82%|████████▏ | 59/72 [00:34<00:06,  1.89it/s][A
+Batches:  83%|████████▎ | 60/72 [00:35<00:06,  1.77it/s][A
+Batches:  85%|████████▍ | 61/72 [00:35<00:06,  1.73it/s][A
+Batches:  86%|████████▌ | 62/72 [00:36<00:05,  1.80it/s][A
+Batches:  88%|████████▊ | 63/72 [00:36<00:05,  1.71it/s][A
+Batches:  89%|████████▉ | 64/72 [00:37<00:04,  1.83it/s][A
+Batches:  90%|█████████ | 65/72 [00:37<00:03,  2.06it/s][A
+Batches:  92%|█████████▏| 66/72 [00:38<00:02,  2.21it/s][A
+Batches:  93%|█████████▎| 67/72 [00:38<00:01,  2.58it/s][A
+Batches:  94%|█████████▍| 68/72 [00:38<00:01,  2.91it/s][A
+Batches:  96%|█████████▌| 69/72 [00:38<00:00,  3.25it/s][A
+Batches:  97%|█████████▋| 70/72 [00:38<00:00,  3.85it/s][A
+Batches: 100%|██████████| 72/72 [00:39<00:00,  5.86it/s][ABatches: 100%|██████████| 72/72 [00:39<00:00,  1.84it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VI Gesetz (ID: c8a4989e9c705fbc, Trust: 100%)
+INFO:__main__:  ✅ SGB_06_Rentenversicherung.pdf: 3700 chunks
+Gesetze:  62%|██████▏   | 8/13 [13:51<12:36, 151.38s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_08_Kinder_und_Jugendhilfe.pdf
+INFO:docling.document_converter:Finished converting document SGB_08_Kinder_und_Jugendhilfe.pdf in 26.26 sec.
+
+Batches:   0%|          | 0/18 [00:00<?, ?it/s][A
+Batches:   6%|▌         | 1/18 [00:00<00:10,  1.66it/s][A
+Batches:  11%|█         | 2/18 [00:01<00:10,  1.59it/s][A
+Batches:  17%|█▋        | 3/18 [00:01<00:09,  1.60it/s][A
+Batches:  22%|██▏       | 4/18 [00:02<00:08,  1.63it/s][A
+Batches:  28%|██▊       | 5/18 [00:03<00:08,  1.60it/s][A
+Batches:  33%|███▎      | 6/18 [00:03<00:08,  1.46it/s][A
+Batches:  39%|███▉      | 7/18 [00:04<00:07,  1.39it/s][A
+Batches:  44%|████▍     | 8/18 [00:05<00:06,  1.45it/s][A
+Batches:  50%|█████     | 9/18 [00:05<00:05,  1.55it/s][A
+Batches:  56%|█████▌    | 10/18 [00:06<00:04,  1.65it/s][A
+Batches:  61%|██████    | 11/18 [00:06<00:04,  1.71it/s][A
+Batches:  67%|██████▋   | 12/18 [00:07<00:03,  1.69it/s][A
+Batches:  72%|███████▏  | 13/18 [00:08<00:02,  1.74it/s][A
+Batches:  78%|███████▊  | 14/18 [00:08<00:02,  1.86it/s][A
+Batches:  83%|████████▎ | 15/18 [00:08<00:01,  2.02it/s][A
+Batches:  89%|████████▉ | 16/18 [00:09<00:00,  2.36it/s][A
+Batches:  94%|█████████▍| 17/18 [00:09<00:00,  2.65it/s][A
+Batches: 100%|██████████| 18/18 [00:09<00:00,  3.26it/s][ABatches: 100%|██████████| 18/18 [00:09<00:00,  1.88it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VIII Gesetz (ID: 9ecd7144b575d7a2, Trust: 100%)
+INFO:__main__:  ✅ SGB_08_Kinder_und_Jugendhilfe.pdf: 797 chunks
+Gesetze:  69%|██████▉   | 9/13 [14:28<07:42, 115.69s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_07_Unfallversicherung.pdf
+INFO:docling.document_converter:Finished converting document SGB_07_Unfallversicherung.pdf in 34.99 sec.
+
+Batches:   0%|          | 0/24 [00:00<?, ?it/s][A
+Batches:   4%|▍         | 1/24 [00:00<00:13,  1.71it/s][A
+Batches:   8%|▊         | 2/24 [00:01<00:11,  1.88it/s][A
+Batches:  12%|█▎        | 3/24 [00:01<00:11,  1.87it/s][A
+Batches:  17%|█▋        | 4/24 [00:02<00:10,  1.88it/s][A
+Batches:  21%|██        | 5/24 [00:02<00:10,  1.82it/s][A
+Batches:  25%|██▌       | 6/24 [00:03<00:10,  1.72it/s][A
+Batches:  29%|██▉       | 7/24 [00:04<00:10,  1.63it/s][A
+Batches:  33%|███▎      | 8/24 [00:04<00:10,  1.55it/s][A
+Batches:  38%|███▊      | 9/24 [00:05<00:09,  1.56it/s][A
+Batches:  42%|████▏     | 10/24 [00:05<00:08,  1.60it/s][A
+Batches:  46%|████▌     | 11/24 [00:06<00:07,  1.73it/s][A
+Batches:  50%|█████     | 12/24 [00:06<00:06,  1.77it/s][A
+Batches:  54%|█████▍    | 13/24 [00:07<00:05,  1.87it/s][A
+Batches:  58%|█████▊    | 14/24 [00:07<00:05,  1.87it/s][A
+Batches:  62%|██████▎   | 15/24 [00:08<00:04,  1.94it/s][A
+Batches:  67%|██████▋   | 16/24 [00:08<00:04,  1.96it/s][A
+Batches:  71%|███████   | 17/24 [00:09<00:03,  2.03it/s][A
+Batches:  75%|███████▌  | 18/24 [00:09<00:02,  2.12it/s][A
+Batches:  79%|███████▉  | 19/24 [00:10<00:02,  2.14it/s][A
+Batches:  83%|████████▎ | 20/24 [00:10<00:01,  2.32it/s][A
+Batches:  88%|████████▊ | 21/24 [00:10<00:01,  2.61it/s][A
+Batches:  92%|█████████▏| 22/24 [00:11<00:00,  3.08it/s][A
+Batches:  96%|█████████▌| 23/24 [00:11<00:00,  3.67it/s][ABatches: 100%|██████████| 24/24 [00:11<00:00,  2.12it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VII Gesetz (ID: 1ff49977b30ccdb5, Trust: 100%)
+INFO:__main__:  ✅ SGB_07_Unfallversicherung.pdf: 1287 chunks
+Gesetze:  77%|███████▋  | 10/13 [15:16<04:44, 94.72s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_10_Verwaltungsverfahren.pdf
+INFO:docling.document_converter:Finished converting document SGB_10_Verwaltungsverfahren.pdf in 19.58 sec.
+
+Batches:   0%|          | 0/15 [00:00<?, ?it/s][A
+Batches:   7%|▋         | 1/15 [00:00<00:06,  2.01it/s][A
+Batches:  13%|█▎        | 2/15 [00:00<00:06,  2.09it/s][A
+Batches:  20%|██        | 3/15 [00:01<00:06,  1.97it/s][A
+Batches:  27%|██▋       | 4/15 [00:02<00:05,  1.96it/s][A
+Batches:  33%|███▎      | 5/15 [00:02<00:05,  1.86it/s][A
+Batches:  40%|████      | 6/15 [00:03<00:04,  1.82it/s][A
+Batches:  47%|████▋     | 7/15 [00:03<00:04,  1.78it/s][A
+Batches:  53%|█████▎    | 8/15 [00:04<00:03,  1.84it/s][A
+Batches:  60%|██████    | 9/15 [00:04<00:03,  1.83it/s][A
+Batches:  67%|██████▋   | 10/15 [00:05<00:02,  1.87it/s][A
+Batches:  73%|███████▎  | 11/15 [00:05<00:02,  1.97it/s][A
+Batches:  80%|████████  | 12/15 [00:06<00:01,  2.10it/s][A
+Batches:  87%|████████▋ | 13/15 [00:06<00:00,  2.35it/s][A
+Batches:  93%|█████████▎| 14/15 [00:06<00:00,  2.75it/s][ABatches: 100%|██████████| 15/15 [00:06<00:00,  2.22it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: X Gesetz (ID: aa1e7f780ca8defe, Trust: 100%)
+INFO:__main__:  ✅ SGB_10_Verwaltungsverfahren.pdf: 641 chunks
+Gesetze:  85%|████████▍ | 11/13 [15:43<02:28, 74.00s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_04_Gemeinsame_Vorschriften.pdf
+INFO:docling.document_converter:Finished converting document SGB_04_Gemeinsame_Vorschriften.pdf in 36.70 sec.
+
+Batches:   0%|          | 0/29 [00:00<?, ?it/s][A
+Batches:   3%|▎         | 1/29 [00:00<00:12,  2.33it/s][A
+Batches:   7%|▋         | 2/29 [00:00<00:13,  2.00it/s][A
+Batches:  10%|█         | 3/29 [00:01<00:13,  1.96it/s][A
+Batches:  14%|█▍        | 4/29 [00:02<00:13,  1.80it/s][A
+Batches:  17%|█▋        | 5/29 [00:02<00:13,  1.79it/s][A
+Batches:  21%|██        | 6/29 [00:03<00:13,  1.71it/s][A
+Batches:  24%|██▍       | 7/29 [00:03<00:12,  1.75it/s][A
+Batches:  28%|██▊       | 8/29 [00:04<00:12,  1.74it/s][A
+Batches:  31%|███       | 9/29 [00:05<00:11,  1.76it/s][A
+Batches:  34%|███▍      | 10/29 [00:05<00:10,  1.78it/s][A
+Batches:  38%|███▊      | 11/29 [00:06<00:10,  1.78it/s][A
+Batches:  41%|████▏     | 12/29 [00:06<00:09,  1.82it/s][A
+Batches:  45%|████▍     | 13/29 [00:07<00:09,  1.75it/s][A
+Batches:  48%|████▊     | 14/29 [00:08<00:09,  1.53it/s][A
+Batches:  52%|█████▏    | 15/29 [00:09<00:10,  1.34it/s][A
+Batches:  55%|█████▌    | 16/29 [00:09<00:09,  1.33it/s][A
+Batches:  59%|█████▊    | 17/29 [00:10<00:08,  1.41it/s][A
+Batches:  62%|██████▏   | 18/29 [00:10<00:07,  1.55it/s][A
+Batches:  66%|██████▌   | 19/29 [00:11<00:06,  1.62it/s][A
+Batches:  69%|██████▉   | 20/29 [00:11<00:05,  1.77it/s][A
+Batches:  72%|███████▏  | 21/29 [00:12<00:04,  1.91it/s][A
+Batches:  76%|███████▌  | 22/29 [00:12<00:03,  2.07it/s][A
+Batches:  79%|███████▉  | 23/29 [00:13<00:02,  2.02it/s][A
+Batches:  83%|████████▎ | 24/29 [00:13<00:02,  2.20it/s][A
+Batches:  86%|████████▌ | 25/29 [00:13<00:01,  2.39it/s][A
+Batches:  90%|████████▉ | 26/29 [00:14<00:01,  2.70it/s][A
+Batches:  93%|█████████▎| 27/29 [00:14<00:00,  3.03it/s][A
+Batches:  97%|█████████▋| 28/29 [00:14<00:00,  3.73it/s][ABatches: 100%|██████████| 29/29 [00:14<00:00,  1.98it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IV Gesetz (ID: f9183300ab3ca207, Trust: 100%)
+INFO:__main__:  ✅ SGB_04_Gemeinsame_Vorschriften.pdf: 1074 chunks
+Gesetze:  92%|█████████▏| 12/13 [16:35<01:07, 67.54s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_11_Pflegeversicherung.pdf
+INFO:docling.document_converter:Finished converting document SGB_11_Pflegeversicherung.pdf in 63.93 sec.
+
+Batches:   0%|          | 0/49 [00:00<?, ?it/s][A
+Batches:   2%|▏         | 1/49 [00:00<00:25,  1.85it/s][A
+Batches:   4%|▍         | 2/49 [00:00<00:20,  2.32it/s][A
+Batches:   6%|▌         | 3/49 [00:01<00:18,  2.52it/s][A
+Batches:   8%|▊         | 4/49 [00:01<00:17,  2.58it/s][A
+Batches:  10%|█         | 5/49 [00:02<00:16,  2.60it/s][A
+Batches:  12%|█▏        | 6/49 [00:02<00:16,  2.56it/s][A
+Batches:  14%|█▍        | 7/49 [00:02<00:17,  2.46it/s][A
+Batches:  16%|█▋        | 8/49 [00:03<00:17,  2.34it/s][A
+Batches:  18%|█▊        | 9/49 [00:03<00:17,  2.28it/s][A
+Batches:  20%|██        | 10/49 [00:04<00:18,  2.14it/s][A
+Batches:  22%|██▏       | 11/49 [00:04<00:18,  2.03it/s][A
+Batches:  24%|██▍       | 12/49 [00:05<00:17,  2.07it/s][A
+Batches:  27%|██▋       | 13/49 [00:05<00:17,  2.02it/s][A
+Batches:  29%|██▊       | 14/49 [00:06<00:16,  2.10it/s][A
+Batches:  31%|███       | 15/49 [00:06<00:15,  2.15it/s][A
+Batches:  33%|███▎      | 16/49 [00:07<00:15,  2.07it/s][A
+Batches:  35%|███▍      | 17/49 [00:07<00:16,  1.95it/s][A
+Batches:  37%|███▋      | 18/49 [00:08<00:16,  1.86it/s][A
+Batches:  39%|███▉      | 19/49 [00:09<00:16,  1.77it/s][A
+Batches:  41%|████      | 20/49 [00:09<00:15,  1.86it/s][A
+Batches:  43%|████▎     | 21/49 [00:09<00:14,  1.99it/s][A
+Batches:  45%|████▍     | 22/49 [00:10<00:13,  2.06it/s][A
+Batches:  47%|████▋     | 23/49 [00:10<00:12,  2.13it/s][A
+Batches:  49%|████▉     | 24/49 [00:11<00:11,  2.20it/s][A
+Batches:  51%|█████     | 25/49 [00:11<00:10,  2.26it/s][A
+Batches:  53%|█████▎    | 26/49 [00:12<00:09,  2.31it/s][A
+Batches:  55%|█████▌    | 27/49 [00:12<00:09,  2.33it/s][A
+Batches:  57%|█████▋    | 28/49 [00:12<00:09,  2.23it/s][A
+Batches:  59%|█████▉    | 29/49 [00:13<00:09,  2.20it/s][A
+Batches:  61%|██████    | 30/49 [00:13<00:08,  2.26it/s][A
+Batches:  63%|██████▎   | 31/49 [00:14<00:07,  2.26it/s][A
+Batches:  65%|██████▌   | 32/49 [00:14<00:07,  2.24it/s][A
+Batches:  67%|██████▋   | 33/49 [00:15<00:06,  2.35it/s][A
+Batches:  69%|██████▉   | 34/49 [00:15<00:06,  2.49it/s][A
+Batches:  71%|███████▏  | 35/49 [00:15<00:05,  2.59it/s][A
+Batches:  73%|███████▎  | 36/49 [00:16<00:05,  2.58it/s][A
+Batches:  76%|███████▌  | 37/49 [00:16<00:05,  2.40it/s][A
+Batches:  78%|███████▊  | 38/49 [00:17<00:04,  2.62it/s][A
+Batches:  80%|███████▉  | 39/49 [00:17<00:03,  2.64it/s][A
+Batches:  82%|████████▏ | 40/49 [00:17<00:03,  2.73it/s][A
+Batches:  84%|████████▎ | 41/49 [00:18<00:02,  2.85it/s][A
+Batches:  86%|████████▌ | 42/49 [00:18<00:02,  2.85it/s][A
+Batches:  88%|████████▊ | 43/49 [00:18<00:01,  3.14it/s][A
+Batches:  90%|████████▉ | 44/49 [00:18<00:01,  3.41it/s][A
+Batches:  92%|█████████▏| 45/49 [00:19<00:01,  3.84it/s][A
+Batches:  94%|█████████▍| 46/49 [00:19<00:00,  4.18it/s][A
+Batches:  96%|█████████▌| 47/49 [00:19<00:00,  4.53it/s][A
+Batches:  98%|█████████▊| 48/49 [00:19<00:00,  5.23it/s][ABatches: 100%|██████████| 49/49 [00:19<00:00,  2.50it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: XI Gesetz (ID: 591ad7eb4ab107d9, Trust: 100%)
+INFO:__main__:  ✅ SGB_11_Pflegeversicherung.pdf: 1503 chunks
+Gesetze: 100%|██████████| 13/13 [18:01<00:00, 73.02s/it]Gesetze: 100%|██████████| 13/13 [18:01<00:00, 83.19s/it]
+
+📁 Kategorie: Fachliche_Weisungen
+Fachliche_Weisungen:   0%|          | 0/36 [00:00<?, ?it/s]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_I_Par_36_Handlungsfaehigkeit.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_I_Par_36_Handlungsfaehigkeit.pdf in 1.84 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  4.34it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  4.34it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I BA_Weisung (ID: eeb3befc34e5310a, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_I_Par_36_Handlungsfaehigkeit.pdf: 83 chunks
+Fachliche_Weisungen:   3%|▎         | 1/36 [00:02<01:16,  2.18s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_I_Par_16_Antragstellung.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_I_Par_16_Antragstellung.pdf in 1.88 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.82it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I BA_Weisung (ID: 458b3b39d5b58171, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_I_Par_16_Antragstellung.pdf: 70 chunks
+Fachliche_Weisungen:   6%|▌         | 2/36 [00:04<01:17,  2.29s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_I_Par_46_Verzicht.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_I_Par_46_Verzicht.pdf in 1.92 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.80it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.80it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I BA_Weisung (ID: 38146b81e7b1d8f0, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_I_Par_46_Verzicht.pdf: 91 chunks
+Fachliche_Weisungen:   8%|▊         | 3/36 [00:06<01:16,  2.32s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_I_Par_14_Beratung.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_I_Par_14_Beratung.pdf in 2.35 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.33it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.33it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I BA_Weisung (ID: 38146b81e7b1d8f0, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_I_Par_14_Beratung.pdf: 94 chunks
+Fachliche_Weisungen:  11%|█         | 4/36 [00:09<01:19,  2.48s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_I_Par_42_Vorschuesse.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_I_Par_42_Vorschuesse.pdf in 1.87 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  4.09it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  4.09it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: I BA_Weisung (ID: 38146b81e7b1d8f0, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_I_Par_42_Vorschuesse.pdf: 79 chunks
+Fachliche_Weisungen:  14%|█▍        | 5/36 [00:11<01:13,  2.36s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_VI_RV_Leistungsberechtigte_ALG2.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_VI_RV_Leistungsberechtigte_ALG2.pdf in 2.00 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.51it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.51it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VI BA_Weisung (ID: 4e3ed2068f2c7663, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_VI_RV_Leistungsberechtigte_ALG2.pdf: 88 chunks
+Fachliche_Weisungen:  17%|█▋        | 6/36 [00:14<01:12,  2.40s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_VI_RV_Ersatz_2024.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_VI_RV_Ersatz_2024.pdf in 7.25 sec.
+
+Batches:   0%|          | 0/5 [00:00<?, ?it/s][A
+Batches:  20%|██        | 1/5 [00:00<00:01,  2.37it/s][A
+Batches:  40%|████      | 2/5 [00:00<00:01,  2.08it/s][A
+Batches:  60%|██████    | 3/5 [00:01<00:01,  1.93it/s][A
+Batches:  80%|████████  | 4/5 [00:02<00:00,  1.87it/s][A
+Batches: 100%|██████████| 5/5 [00:02<00:00,  2.55it/s][ABatches: 100%|██████████| 5/5 [00:02<00:00,  2.27it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VI BA_Weisung (ID: 4caa0afa919a7a8d, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_VI_RV_Ersatz_2024.pdf: 442 chunks
+Fachliche_Weisungen:  19%|█▉        | 7/36 [00:23<02:18,  4.79s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_165_Insolvenzgeld.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_165_Insolvenzgeld.pdf in 35.60 sec.
+
+Batches:   0%|          | 0/11 [00:00<?, ?it/s][A
+Batches:   9%|▉         | 1/11 [00:00<00:05,  1.77it/s][A
+Batches:  18%|█▊        | 2/11 [00:01<00:04,  2.00it/s][A
+Batches:  27%|██▋       | 3/11 [00:01<00:04,  1.96it/s][A
+Batches:  36%|███▋      | 4/11 [00:02<00:03,  2.00it/s][A
+Batches:  45%|████▌     | 5/11 [00:02<00:03,  1.94it/s][A
+Batches:  55%|█████▍    | 6/11 [00:03<00:02,  1.89it/s][A
+Batches:  64%|██████▎   | 7/11 [00:03<00:02,  1.79it/s][A
+Batches:  73%|███████▎  | 8/11 [00:04<00:01,  1.81it/s][A
+Batches:  82%|████████▏ | 9/11 [00:04<00:01,  1.87it/s][A
+Batches:  91%|█████████ | 10/11 [00:05<00:00,  2.05it/s][A
+Batches: 100%|██████████| 11/11 [00:05<00:00,  2.63it/s][ABatches: 100%|██████████| 11/11 [00:05<00:00,  2.08it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: 13ceccf890edd654, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_165_Insolvenzgeld.pdf: 1262 chunks
+Fachliche_Weisungen:  22%|██▏       | 8/36 [01:05<07:43, 16.54s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_88-92_Eingliederungszuschuss.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_88-92_Eingliederungszuschuss.pdf in 17.56 sec.
+
+Batches:   0%|          | 0/10 [00:00<?, ?it/s][A
+Batches:  10%|█         | 1/10 [00:00<00:04,  2.18it/s][A
+Batches:  20%|██        | 2/10 [00:00<00:03,  2.28it/s][A
+Batches:  30%|███       | 3/10 [00:01<00:03,  2.19it/s][A
+Batches:  40%|████      | 4/10 [00:01<00:02,  2.14it/s][A
+Batches:  50%|█████     | 5/10 [00:02<00:02,  2.03it/s][A
+Batches:  60%|██████    | 6/10 [00:02<00:01,  2.02it/s][A
+Batches:  70%|███████   | 7/10 [00:03<00:01,  2.07it/s][A
+Batches:  80%|████████  | 8/10 [00:03<00:00,  2.00it/s][A
+Batches:  90%|█████████ | 9/10 [00:04<00:00,  2.13it/s][A
+Batches: 100%|██████████| 10/10 [00:04<00:00,  2.59it/s][ABatches: 100%|██████████| 10/10 [00:04<00:00,  2.23it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: fa8d629cdcc91305, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_88-92_Eingliederungszuschuss.pdf: 761 chunks
+Fachliche_Weisungen:  25%|██▌       | 9/36 [01:28<08:17, 18.41s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_176_Zulassung_Traeger.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_176_Zulassung_Traeger.pdf in 0.97 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 13.08it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: fd7282fc30fda73d, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_176_Zulassung_Traeger.pdf: 32 chunks
+Fachliche_Weisungen:  28%|██▊       | 10/36 [01:29<05:39, 13.07s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_45_Massnahmen_bei_Arbeitgeber.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_45_Massnahmen_bei_Arbeitgeber.pdf in 5.14 sec.
+
+Batches:   0%|          | 0/3 [00:00<?, ?it/s][A
+Batches:  33%|███▎      | 1/3 [00:00<00:00,  2.36it/s][A
+Batches:  67%|██████▋   | 2/3 [00:00<00:00,  2.37it/s][A
+Batches: 100%|██████████| 3/3 [00:01<00:00,  2.67it/s][ABatches: 100%|██████████| 3/3 [00:01<00:00,  2.58it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: 6775b3f6a09ab81e, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_45_Massnahmen_bei_Arbeitgeber.pdf: 214 chunks
+Fachliche_Weisungen:  31%|███       | 11/36 [01:35<04:36, 11.04s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_19_Menschen_mit_Behinderung.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_19_Menschen_mit_Behinderung.pdf in 1.66 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  5.65it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  5.65it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: f5ecfba6d4389625, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_19_Menschen_mit_Behinderung.pdf: 57 chunks
+Fachliche_Weisungen:  33%|███▎      | 12/36 [01:37<03:18,  8.26s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_44_Vermittlungsbudget.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_44_Vermittlungsbudget.pdf in 4.50 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.53it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  2.87it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  2.81it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: ec2995ef71ea2c61, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_44_Vermittlungsbudget.pdf: 160 chunks
+Fachliche_Weisungen:  36%|███▌      | 13/36 [01:42<02:49,  7.36s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_III_Par_106a_Weiterbildung_Kurzarbeit.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_III_Par_106a_Weiterbildung_Kurzarbeit.pdf in 2.18 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.34it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  3.92it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: III BA_Weisung (ID: d183b5c675141dde, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_III_Par_106a_Weiterbildung_Kurzarbeit.pdf: 59 chunks
+Fachliche_Weisungen:  39%|███▉      | 14/36 [01:45<02:11,  5.98s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_VII_UV_Leistungsempfaenger.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_VII_UV_Leistungsempfaenger.pdf in 1.51 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  4.23it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  4.23it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VII BA_Weisung (ID: c7dc8ecf6a9f5f0c, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_VII_UV_Leistungsempfaenger.pdf: 86 chunks
+Fachliche_Weisungen:  42%|████▏     | 15/36 [01:47<01:39,  4.72s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_VII_Aerztevertrag_Par_34.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_VII_Aerztevertrag_Par_34.pdf in 7.76 sec.
+
+Batches:   0%|          | 0/4 [00:00<?, ?it/s][A
+Batches:  25%|██▌       | 1/4 [00:00<00:01,  2.16it/s][A
+Batches:  50%|█████     | 2/4 [00:00<00:00,  2.04it/s][A
+Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.91it/s][A
+Batches: 100%|██████████| 4/4 [00:01<00:00,  2.43it/s][ABatches: 100%|██████████| 4/4 [00:01<00:00,  2.25it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: VII Fachverband (ID: 5b7cbdb29ba38030, Trust: 85%)
+INFO:__main__:  ✅ FW_SGB_VII_Aerztevertrag_Par_34.pdf: 208 chunks
+Fachliche_Weisungen:  44%|████▍     | 16/36 [01:57<02:04,  6.25s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf in 3.08 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.61it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  3.56it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  3.38it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_08_Erwerbsfaehigkeit.pdf: 123 chunks
+Fachliche_Weisungen:  47%|████▋     | 17/36 [02:01<01:44,  5.51s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_12_Vermoegen.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_12_Vermoegen.pdf in 9.62 sec.
+
+Batches:   0%|          | 0/4 [00:00<?, ?it/s][A
+Batches:  25%|██▌       | 1/4 [00:00<00:01,  2.51it/s][A
+Batches:  50%|█████     | 2/4 [00:00<00:00,  2.40it/s][A
+Batches:  75%|███████▌  | 3/4 [00:01<00:00,  2.15it/s][A
+Batches: 100%|██████████| 4/4 [00:01<00:00,  2.48it/s][ABatches: 100%|██████████| 4/4 [00:01<00:00,  2.41it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 8df402ffbb1f259b, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_12_Vermoegen.pdf: 352 chunks
+Fachliche_Weisungen:  50%|█████     | 18/36 [02:12<02:11,  7.30s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_19_Buergergeld_2023.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_19_Buergergeld_2023.pdf in 2.32 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.09it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.09it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 2f26103d8ec4cc5b, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_19_Buergergeld_2023.pdf: 78 chunks
+Fachliche_Weisungen:  53%|█████▎    | 19/36 [02:15<01:40,  5.93s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf in 3.31 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.57it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  3.59it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  3.38it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_05_Verhaeltnis_zu_anderen_Leistungen.pdf: 141 chunks
+Fachliche_Weisungen:  56%|█████▌    | 20/36 [02:19<01:25,  5.35s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_11_11a_11b_Einkommen.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_11_11a_11b_Einkommen.pdf in 22.00 sec.
+
+Batches:   0%|          | 0/13 [00:00<?, ?it/s][A
+Batches:   8%|▊         | 1/13 [00:00<00:05,  2.30it/s][A
+Batches:  15%|█▌        | 2/13 [00:00<00:04,  2.31it/s][A
+Batches:  23%|██▎       | 3/13 [00:01<00:04,  2.33it/s][A
+Batches:  31%|███       | 4/13 [00:01<00:03,  2.25it/s][A
+Batches:  38%|███▊      | 5/13 [00:02<00:03,  2.10it/s][A
+Batches:  46%|████▌     | 6/13 [00:02<00:03,  2.02it/s][A
+Batches:  54%|█████▍    | 7/13 [00:03<00:02,  2.05it/s][A
+Batches:  62%|██████▏   | 8/13 [00:03<00:02,  2.02it/s][A
+Batches:  69%|██████▉   | 9/13 [00:04<00:02,  1.98it/s][A
+Batches:  77%|███████▋  | 10/13 [00:04<00:01,  2.01it/s][A
+Batches:  85%|████████▍ | 11/13 [00:05<00:00,  2.20it/s][A
+Batches:  92%|█████████▏| 12/13 [00:05<00:00,  2.44it/s][ABatches: 100%|██████████| 13/13 [00:05<00:00,  2.34it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_11_11a_11b_Einkommen.pdf: 1156 chunks
+Fachliche_Weisungen:  58%|█████▊    | 21/36 [02:47<03:02, 12.18s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_07_Leistungsberechtigte.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_07_Leistungsberechtigte.pdf in 35.06 sec.
+
+Batches:   0%|          | 0/18 [00:00<?, ?it/s][A
+Batches:   6%|▌         | 1/18 [00:00<00:08,  1.90it/s][A
+Batches:  11%|█         | 2/18 [00:00<00:07,  2.25it/s][A
+Batches:  17%|█▋        | 3/18 [00:01<00:06,  2.39it/s][A
+Batches:  22%|██▏       | 4/18 [00:01<00:06,  2.32it/s][A
+Batches:  28%|██▊       | 5/18 [00:02<00:05,  2.28it/s][A
+Batches:  33%|███▎      | 6/18 [00:02<00:05,  2.20it/s][A
+Batches:  39%|███▉      | 7/18 [00:03<00:05,  2.09it/s][A
+Batches:  44%|████▍     | 8/18 [00:03<00:04,  2.04it/s][A
+Batches:  50%|█████     | 9/18 [00:04<00:04,  2.06it/s][A
+Batches:  56%|█████▌    | 10/18 [00:04<00:04,  1.94it/s][A
+Batches:  61%|██████    | 11/18 [00:05<00:03,  1.97it/s][A
+Batches:  67%|██████▋   | 12/18 [00:05<00:03,  2.00it/s][A
+Batches:  72%|███████▏  | 13/18 [00:06<00:02,  2.12it/s][A
+Batches:  78%|███████▊  | 14/18 [00:06<00:01,  2.08it/s][A
+Batches:  83%|████████▎ | 15/18 [00:07<00:01,  2.06it/s][A
+Batches:  89%|████████▉ | 16/18 [00:07<00:00,  2.31it/s][A
+Batches:  94%|█████████▍| 17/18 [00:07<00:00,  2.72it/s][ABatches: 100%|██████████| 18/18 [00:07<00:00,  2.31it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 21369e7e3cbff3ff, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_07_Leistungsberechtigte.pdf: 1061 chunks
+Fachliche_Weisungen:  61%|██████    | 22/36 [03:31<05:02, 21.61s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_16_Stand_26_03_2025.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_16_Stand_26_03_2025.pdf in 8.32 sec.
+
+Batches:   0%|          | 0/5 [00:00<?, ?it/s][A
+Batches:  20%|██        | 1/5 [00:00<00:01,  2.39it/s][A
+Batches:  40%|████      | 2/5 [00:00<00:01,  2.47it/s][A
+Batches:  60%|██████    | 3/5 [00:01<00:00,  2.41it/s][A
+Batches:  80%|████████  | 4/5 [00:01<00:00,  2.25it/s][ABatches: 100%|██████████| 5/5 [00:01<00:00,  2.76it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_16_Stand_26_03_2025.pdf: 315 chunks
+Fachliche_Weisungen:  64%|██████▍   | 23/36 [03:41<03:57, 18.25s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_20_Regelbedarfe_2023.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_20_Regelbedarfe_2023.pdf in 4.05 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.03it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  3.05it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  2.83it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_20_Regelbedarfe_2023.pdf: 104 chunks
+Fachliche_Weisungen:  67%|██████▋   | 24/36 [03:46<02:50, 14.23s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_10_Zumutbarkeit.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_10_Zumutbarkeit.pdf in 6.17 sec.
+
+Batches:   0%|          | 0/4 [00:00<?, ?it/s][A
+Batches:  25%|██▌       | 1/4 [00:00<00:01,  2.56it/s][A
+Batches:  50%|█████     | 2/4 [00:00<00:00,  2.27it/s][A
+Batches:  75%|███████▌  | 3/4 [00:01<00:00,  2.21it/s][ABatches: 100%|██████████| 4/4 [00:01<00:00,  2.87it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 17a0ee6d725d1dcf, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_10_Zumutbarkeit.pdf: 300 chunks
+Fachliche_Weisungen:  69%|██████▉   | 25/36 [03:54<02:15, 12.28s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document SGB_II_Folien_Thome_20_09_2025_AKTUELLSTE.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document SGB_II_Folien_Thome_20_09_2025_AKTUELLSTE.pdf in 67.66 sec.
+
+Batches:   0%|          | 0/17 [00:00<?, ?it/s][A
+Batches:   6%|▌         | 1/17 [00:00<00:10,  1.48it/s][A
+Batches:  12%|█▏        | 2/17 [00:01<00:08,  1.87it/s][A
+Batches:  18%|█▊        | 3/17 [00:01<00:07,  1.87it/s][A
+Batches:  24%|██▎       | 4/17 [00:02<00:06,  1.90it/s][A
+Batches:  29%|██▉       | 5/17 [00:02<00:06,  1.91it/s][A
+Batches:  35%|███▌      | 6/17 [00:03<00:05,  1.98it/s][A
+Batches:  41%|████      | 7/17 [00:03<00:05,  1.98it/s][A
+Batches:  47%|████▋     | 8/17 [00:04<00:04,  2.00it/s][A
+Batches:  53%|█████▎    | 9/17 [00:04<00:04,  1.95it/s][A
+Batches:  59%|█████▉    | 10/17 [00:05<00:03,  1.85it/s][A
+Batches:  65%|██████▍   | 11/17 [00:05<00:03,  1.71it/s][A
+Batches:  71%|███████   | 12/17 [00:06<00:02,  1.68it/s][A
+Batches:  76%|███████▋  | 13/17 [00:07<00:02,  1.71it/s][A
+Batches:  82%|████████▏ | 14/17 [00:07<00:01,  1.78it/s][A
+Batches:  88%|████████▊ | 15/17 [00:08<00:01,  1.99it/s][A
+Batches:  94%|█████████▍| 16/17 [00:08<00:00,  2.34it/s][ABatches: 100%|██████████| 17/17 [00:08<00:00,  2.04it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II Harald_Thome (ID: 1fc9bc73720f6b35, Trust: 85%)
+INFO:__main__:  ✅ SGB_II_Folien_Thome_20_09_2025_AKTUELLSTE.pdf: 1761 chunks
+Fachliche_Weisungen:  72%|███████▏  | 26/36 [05:11<05:17, 31.70s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_21_Mehrbedarfe.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_21_Mehrbedarfe.pdf in 12.33 sec.
+
+Batches:   0%|          | 0/6 [00:00<?, ?it/s][A
+Batches:  17%|█▋        | 1/6 [00:00<00:01,  2.60it/s][A
+Batches:  33%|███▎      | 2/6 [00:00<00:01,  2.74it/s][A
+Batches:  50%|█████     | 3/6 [00:01<00:01,  2.78it/s][A
+Batches:  67%|██████▋   | 4/6 [00:01<00:00,  2.69it/s][A
+Batches:  83%|████████▎ | 5/6 [00:01<00:00,  2.61it/s][A
+Batches: 100%|██████████| 6/6 [00:02<00:00,  2.99it/s][ABatches: 100%|██████████| 6/6 [00:02<00:00,  2.83it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: ddcc8e66c0446cc9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_21_Mehrbedarfe.pdf: 363 chunks
+Fachliche_Weisungen:  75%|███████▌  | 27/36 [05:25<03:59, 26.63s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_06_Traeger_Aussendienst.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_06_Traeger_Aussendienst.pdf in 3.39 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.07it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  2.61it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  2.51it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 6a2087bd567a37e9, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_06_Traeger_Aussendienst.pdf: 143 chunks
+Fachliche_Weisungen:  78%|███████▊  | 28/36 [05:30<02:39, 19.93s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_II_Par_09_Hilfebeduerftigkeit.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_II_Par_09_Hilfebeduerftigkeit.pdf in 10.60 sec.
+
+Batches:   0%|          | 0/4 [00:00<?, ?it/s][A
+Batches:  25%|██▌       | 1/4 [00:00<00:01,  2.06it/s][A
+Batches:  50%|█████     | 2/4 [00:01<00:01,  1.93it/s][A
+Batches:  75%|███████▌  | 3/4 [00:01<00:00,  1.91it/s][A
+Batches: 100%|██████████| 4/4 [00:01<00:00,  2.05it/s][ABatches: 100%|██████████| 4/4 [00:01<00:00,  2.01it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: II BA_Weisung (ID: 40d4f80a52100ca2, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_II_Par_09_Hilfebeduerftigkeit.pdf: 453 chunks
+Fachliche_Weisungen:  81%|████████  | 29/36 [05:42<02:04, 17.81s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_V_KV_PV_Harald_Thome.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_V_KV_PV_Harald_Thome.pdf in 14.82 sec.
+
+Batches:   0%|          | 0/5 [00:00<?, ?it/s][A
+Batches:  20%|██        | 1/5 [00:00<00:02,  1.98it/s][A
+Batches:  40%|████      | 2/5 [00:00<00:01,  2.22it/s][A
+Batches:  60%|██████    | 3/5 [00:01<00:00,  2.20it/s][A
+Batches:  80%|████████  | 4/5 [00:01<00:00,  2.05it/s][A
+Batches: 100%|██████████| 5/5 [00:02<00:00,  2.37it/s][ABatches: 100%|██████████| 5/5 [00:02<00:00,  2.25it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: V Harald_Thome (ID: 64e60b3536973c32, Trust: 85%)
+INFO:__main__:  ✅ FW_SGB_V_KV_PV_Harald_Thome.pdf: 588 chunks
+Fachliche_Weisungen:  83%|████████▎ | 30/36 [06:00<01:46, 17.70s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_V_KV_PV_Geschaeftsanweisungen.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_V_KV_PV_Geschaeftsanweisungen.pdf in 13.81 sec.
+
+Batches:   0%|          | 0/6 [00:00<?, ?it/s][A
+Batches:  17%|█▋        | 1/6 [00:00<00:02,  1.97it/s][A
+Batches:  33%|███▎      | 2/6 [00:00<00:01,  2.21it/s][A
+Batches:  50%|█████     | 3/6 [00:01<00:01,  2.10it/s][A
+Batches:  67%|██████▋   | 4/6 [00:02<00:01,  1.90it/s][A
+Batches:  83%|████████▎ | 5/6 [00:02<00:00,  1.67it/s][A
+Batches: 100%|██████████| 6/6 [00:03<00:00,  1.57it/s][ABatches: 100%|██████████| 6/6 [00:03<00:00,  1.73it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: V BA_Weisung (ID: a2f857470f547219, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_V_KV_PV_Geschaeftsanweisungen.pdf: 624 chunks
+Fachliche_Weisungen:  86%|████████▌ | 31/36 [06:18<01:28, 17.68s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_X_Sozialgerichtsgesetz.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_X_Sozialgerichtsgesetz.pdf in 45.91 sec.
+
+Batches:   0%|          | 0/24 [00:00<?, ?it/s][A
+Batches:   4%|▍         | 1/24 [00:00<00:10,  2.29it/s][A
+Batches:   8%|▊         | 2/24 [00:00<00:09,  2.28it/s][A
+Batches:  12%|█▎        | 3/24 [00:01<00:09,  2.25it/s][A
+Batches:  17%|█▋        | 4/24 [00:01<00:08,  2.24it/s][A
+Batches:  21%|██        | 5/24 [00:02<00:08,  2.26it/s][A
+Batches:  25%|██▌       | 6/24 [00:02<00:08,  2.22it/s][A
+Batches:  29%|██▉       | 7/24 [00:03<00:08,  2.05it/s][A
+Batches:  33%|███▎      | 8/24 [00:03<00:08,  1.99it/s][A
+Batches:  38%|███▊      | 9/24 [00:04<00:07,  2.05it/s][A
+Batches:  42%|████▏     | 10/24 [00:04<00:06,  2.07it/s][A
+Batches:  46%|████▌     | 11/24 [00:05<00:06,  2.12it/s][A
+Batches:  50%|█████     | 12/24 [00:05<00:05,  2.08it/s][A
+Batches:  54%|█████▍    | 13/24 [00:06<00:05,  2.02it/s][A
+Batches:  58%|█████▊    | 14/24 [00:06<00:04,  2.10it/s][A
+Batches:  62%|██████▎   | 15/24 [00:07<00:04,  2.19it/s][A
+Batches:  67%|██████▋   | 16/24 [00:07<00:03,  2.20it/s][A
+Batches:  71%|███████   | 17/24 [00:08<00:03,  2.07it/s][A
+Batches:  75%|███████▌  | 18/24 [00:08<00:03,  1.99it/s][A
+Batches:  79%|███████▉  | 19/24 [00:09<00:02,  1.83it/s][A
+Batches:  83%|████████▎ | 20/24 [00:09<00:02,  1.86it/s][A
+Batches:  88%|████████▊ | 21/24 [00:10<00:01,  1.90it/s][A
+Batches:  92%|█████████▏| 22/24 [00:10<00:00,  2.20it/s][A
+Batches:  96%|█████████▌| 23/24 [00:10<00:00,  2.68it/s][ABatches: 100%|██████████| 24/24 [00:10<00:00,  2.22it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: X BA_Weisung (ID: 9bf47bfe704a0b99, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_X_Sozialgerichtsgesetz.pdf: 1442 chunks
+Fachliche_Weisungen:  89%|████████▉ | 32/36 [07:15<01:58, 29.71s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_IV_RV_Versicherungspflicht.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_IV_RV_Versicherungspflicht.pdf in 3.75 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.75it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  2.63it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  2.65it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IV BA_Weisung (ID: 4ac906c2639c1570, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_IV_RV_Versicherungspflicht.pdf: 210 chunks
+Fachliche_Weisungen:  92%|█████████▏| 33/36 [07:20<01:06, 22.20s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_IV_RV_Gesetzliche.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_IV_RV_Gesetzliche.pdf in 2.60 sec.
+
+Batches:   0%|          | 0/2 [00:00<?, ?it/s][A
+Batches:  50%|█████     | 1/2 [00:00<00:00,  2.01it/s][A
+Batches: 100%|██████████| 2/2 [00:00<00:00,  3.37it/s][ABatches: 100%|██████████| 2/2 [00:00<00:00,  3.06it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IV BA_Weisung (ID: d1acddb13137fc1b, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_IV_RV_Gesetzliche.pdf: 158 chunks
+Fachliche_Weisungen:  94%|█████████▍| 34/36 [07:23<00:33, 16.55s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_IX_Par_6a_Behinderung.pdf
+INFO:docling.document_converter:Finished converting document FW_SGB_IX_Par_6a_Behinderung.pdf in 1.44 sec.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  6.16it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  6.16it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IX BA_Weisung (ID: 2da8a3e333c98904, Trust: 95%)
+INFO:__main__:  ✅ FW_SGB_IX_Par_6a_Behinderung.pdf: 40 chunks
+Fachliche_Weisungen:  97%|█████████▋| 35/36 [07:25<00:12, 12.08s/it]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document FW_SGB_IX_Uebersicht_BIH.pdf
+/Users/ma3u/projects/sozialgesetze/Sozialrecht_RAG/venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+INFO:docling.document_converter:Finished converting document FW_SGB_IX_Uebersicht_BIH.pdf in 130.40 sec.
+
+Batches:   0%|          | 0/42 [00:00<?, ?it/s][A
+Batches:   2%|▏         | 1/42 [00:00<00:37,  1.10it/s][A
+Batches:   5%|▍         | 2/42 [00:01<00:34,  1.17it/s][A
+Batches:   7%|▋         | 3/42 [00:02<00:34,  1.13it/s][A
+Batches:  10%|▉         | 4/42 [00:03<00:37,  1.00it/s][A
+Batches:  12%|█▏        | 5/42 [00:05<00:40,  1.09s/it][A
+Batches:  14%|█▍        | 6/42 [00:06<00:37,  1.04s/it][A
+Batches:  17%|█▋        | 7/42 [00:06<00:32,  1.08it/s][A
+Batches:  19%|█▉        | 8/42 [00:07<00:30,  1.13it/s][A
+Batches:  21%|██▏       | 9/42 [00:08<00:27,  1.18it/s][A
+Batches:  24%|██▍       | 10/42 [00:08<00:25,  1.24it/s][A
+Batches:  26%|██▌       | 11/42 [00:09<00:25,  1.21it/s][A
+Batches:  29%|██▊       | 12/42 [00:10<00:25,  1.18it/s][A
+Batches:  31%|███       | 13/42 [00:11<00:24,  1.20it/s][A
+Batches:  33%|███▎      | 14/42 [00:12<00:23,  1.20it/s][A
+Batches:  36%|███▌      | 15/42 [00:13<00:22,  1.21it/s][A
+Batches:  38%|███▊      | 16/42 [00:14<00:22,  1.16it/s][A
+Batches:  40%|████      | 17/42 [00:14<00:21,  1.19it/s][A
+Batches:  43%|████▎     | 18/42 [00:15<00:19,  1.23it/s][A
+Batches:  45%|████▌     | 19/42 [00:16<00:18,  1.22it/s][A
+Batches:  48%|████▊     | 20/42 [00:17<00:17,  1.23it/s][A
+Batches:  50%|█████     | 21/42 [00:17<00:16,  1.30it/s][A
+Batches:  52%|█████▏    | 22/42 [00:18<00:14,  1.39it/s][A
+Batches:  55%|█████▍    | 23/42 [00:19<00:13,  1.41it/s][A
+Batches:  57%|█████▋    | 24/42 [00:19<00:12,  1.42it/s][A
+Batches:  60%|█████▉    | 25/42 [00:20<00:11,  1.49it/s][A
+Batches:  62%|██████▏   | 26/42 [00:21<00:10,  1.54it/s][A
+Batches:  64%|██████▍   | 27/42 [00:21<00:09,  1.57it/s][A
+Batches:  67%|██████▋   | 28/42 [00:22<00:08,  1.57it/s][A
+Batches:  69%|██████▉   | 29/42 [00:23<00:08,  1.54it/s][A
+Batches:  71%|███████▏  | 30/42 [00:23<00:08,  1.49it/s][A
+Batches:  74%|███████▍  | 31/42 [00:24<00:06,  1.57it/s][A
+Batches:  76%|███████▌  | 32/42 [00:24<00:06,  1.63it/s][A
+Batches:  79%|███████▊  | 33/42 [00:25<00:05,  1.61it/s][A
+Batches:  81%|████████  | 34/42 [00:26<00:05,  1.44it/s][A
+Batches:  83%|████████▎ | 35/42 [00:27<00:04,  1.46it/s][A
+Batches:  86%|████████▌ | 36/42 [00:27<00:04,  1.46it/s][A
+Batches:  88%|████████▊ | 37/42 [00:28<00:03,  1.49it/s][A
+Batches:  90%|█████████ | 38/42 [00:29<00:02,  1.50it/s][A
+Batches:  93%|█████████▎| 39/42 [00:29<00:01,  1.65it/s][A
+Batches:  95%|█████████▌| 40/42 [00:29<00:01,  1.78it/s][A
+Batches:  98%|█████████▊| 41/42 [00:30<00:00,  1.97it/s][A
+Batches: 100%|██████████| 42/42 [00:30<00:00,  2.43it/s][ABatches: 100%|██████████| 42/42 [00:30<00:00,  1.38it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: IX Fachverband (ID: 4f891e0d9b7dc573, Trust: 80%)
+INFO:__main__:  ✅ FW_SGB_IX_Uebersicht_BIH.pdf: 4301 chunks
+Fachliche_Weisungen: 100%|██████████| 36/36 [10:09<00:00, 57.75s/it]Fachliche_Weisungen: 100%|██████████| 36/36 [10:09<00:00, 16.94s/it]
+
+📁 Kategorie: Rundschreiben_BMAS
+Rundschreiben_BMAS:   0%|          | 0/1 [00:00<?, ?it/s]INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.pipeline.base_pipeline:Processing document RS_BMAS_2024_01_Par_35_SGB_XII.pdf
+INFO:docling.document_converter:Finished converting document RS_BMAS_2024_01_Par_35_SGB_XII.pdf in 16.31 sec.
+
+Batches:   0%|          | 0/7 [00:00<?, ?it/s][A
+Batches:  14%|█▍        | 1/7 [00:00<00:05,  1.13it/s][A
+Batches:  29%|██▊       | 2/7 [00:01<00:04,  1.11it/s][A
+Batches:  43%|████▎     | 3/7 [00:02<00:03,  1.17it/s][A
+Batches:  57%|█████▋    | 4/7 [00:03<00:02,  1.20it/s][A
+Batches:  71%|███████▏  | 5/7 [00:04<00:01,  1.26it/s][A
+Batches:  86%|████████▌ | 6/7 [00:04<00:00,  1.38it/s][A
+Batches: 100%|██████████| 7/7 [00:04<00:00,  1.80it/s][ABatches: 100%|██████████| 7/7 [00:04<00:00,  1.42it/s]
+INFO:src.sozialrecht_neo4j_rag:✅ Added: XII BMAS_Rundschreiben (ID: 0880f03d81a413e3, Trust: 95%)
+INFO:__main__:  ✅ RS_BMAS_2024_01_Par_35_SGB_XII.pdf: 357 chunks
+Rundschreiben_BMAS: 100%|██████████| 1/1 [00:21<00:00, 21.71s/it]Rundschreiben_BMAS: 100%|██████████| 1/1 [00:21<00:00, 21.71s/it]
+INFO:src.sozialrecht_neo4j_rag:✅ Neo4j connection closed
+INFO:src.sozialrecht_neo4j_rag:✅ Neo4j connection closed
+
+============================================================
+📊 Upload Zusammenfassung:
+
+  ✅ Erfolgreich: 50
+  ⏭️ Übersprungen: 0
+  ❌ Fehlgeschlagen: 0
+  📄 Gesamt: 50
+
+📈 Datenbank Änderungen:
+  Dokumente: 8 → 43 (+35)
+  Chunks: 11713 → 34063 (+22350)
+  Paragraphen: 4254
+  SGBs abgedeckt: XII, III, I, XIV, II, V, IX, VI, VIII, VII, X, IV, XI
+
+✨ Upload abgeschlossen!
+🔍 Teste Suche mit: python scripts/test_sozialrecht_rag.py

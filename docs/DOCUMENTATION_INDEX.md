@@ -44,18 +44,16 @@ Complete guide to all documentation in the Sozialrecht RAG project.
 
 | Document | Description | Audience |
 |----------|-------------|----------|
-| **[README.md](../README.md)** | Main project documentation | Everyone |
-| **[QUICKSTART.md](../QUICKSTART.md)** | Fast setup guide (5 minutes) | New users |
+| **[README.md](../README.md)** | Main project documentation with quick start | Everyone |
 | **[Configuration Guide](#configuration)** | Detailed configuration steps | Administrators |
-| **[Docker Deployment](../DEPLOYMENT_NEO4J_DESKTOP.md)** | Neo4j Desktop setup | Developers |
 
 ### Data Import
 
 | Document | Description | Link |
 |----------|-------------|------|
-| **Complete Import Guide** | Full data import process | [COMPLETE_IMPORT_SUMMARY.md](../COMPLETE_IMPORT_SUMMARY.md) |
-| **Import Script** | Automated import | [complete_knowledge_graph_import.py](../scripts/README.md#data-import--processing) |
+| **Import Script** | Automated full import | [complete_knowledge_graph_import.py](../scripts/README.md#data-import--processing) |
 | **SGB Coverage** | Which SGBs have data | [SGB_COVERAGE_ANALYSIS.md](SGB_COVERAGE_ANALYSIS.md) |
+| **Import History** | Historical import reports | [archive/](../archive/) |
 
 ---
 
@@ -103,8 +101,8 @@ All Cypher queries are organized in the `cypher/` directory:
 | Guide | Language | Content |
 |-------|----------|---------|
 | **[User Journeys](BENUTZER_JOURNEYS_DE.md)** | 🇩🇪 German | 20 real-world scenarios with BPMN diagrams |
-| **[User Journeys (EN)](../USER_JOURNEYS.md)** | 🇬🇧 English | Older version, 14 scenarios |
 | **[Use Case Validation](USE_CASE_VALIDATION.md)** | 🇬🇧 English | Test results for all 20 use cases |
+| **[English Version](../archive/)** | 🇬🇧 English | Older English version archived |
 
 ### Use Case Categories
 
@@ -546,16 +544,20 @@ Sozialrecht_RAG/
 
 See detailed breakdown: **[scripts/README.md](../scripts/README.md)**
 
-**Active Scripts:**
-- Evaluation & Testing (3 scripts)
-- Neo4j Management (3 scripts)  
-- Data Import (2 scripts)
-- Analysis & Debugging (4 scripts)
+**Active Scripts:** (in `scripts/` directory)
+- Evaluation & Testing
+- Neo4j Management
+- Data Import
+- Analysis & Debugging
 
-**Archive Scripts:**
-- Data Repair (6 scripts)
-- Legacy Testing (3 scripts)
-- One-time Setup (4 scripts)
+**Archived Scripts:** See `scripts/archive/README.md`
+- Legacy test scripts (superseded)
+- One-time setup scripts (historical)
+
+**Maintenance Scripts:** See `scripts/maintenance/README.md`
+- Data repair utilities (use only when needed)
+- Orphaned node linking
+- Coverage fixes
 
 ### Contributing Guidelines
 
