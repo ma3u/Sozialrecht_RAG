@@ -696,18 +696,25 @@ Bürgergeld-Reform: Prozessberater entwickelt Schulungsunterlagen für Sachbearb
 
 ```cypher
 // UC19: Änderungen durch Bürgergeld-Reform identifizieren
+// Note: In German legal XML, amendments are tracked at document level (entire law)
+// not at individual paragraph level
+
 MATCH (doc:LegalDocument {sgb_nummer: 'II'})
       -[:CONTAINS_NORM]->(norm:LegalNorm)
       -[:HAS_AMENDMENT]->(amendment:Amendment)
 WHERE amendment.amendment_date >= date('2023-01-01')
 RETURN 
-  norm.paragraph_nummer,
-  norm.enbez,
-  amendment.raw_text as title,
-  amendment.amendment_date as date,
-  amendment.amendment_type as summary
+  'SGB II' as gesetz,
+  amendment.artikel as artikel,
+  amendment.gesetz_ref as aenderndes_gesetz,
+  amendment.amendment_date as datum,
+  amendment.amendment_type as typ,
+  substring(amendment.raw_text, 0, 100) + '...' as beschreibung
 ORDER BY amendment.amendment_date DESC
+LIMIT 10
 ```
+
+**Hinweis**: Änderungen werden auf Gesetzesebene erfasst (z.B. "SGB II wurde durch Art. 4 G v. 19.7.2024 geändert"), nicht auf Paragraphenebene. Für detaillierte Paragraph-Änderungen müsste die Norm-Historie aus den Fussnoten analysiert werden.
 
 ---
 
