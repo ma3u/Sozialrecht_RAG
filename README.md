@@ -1,7 +1,7 @@
 # Sozialrecht RAG - German Social Law Knowledge Graph
 
 **Status:** ✅ Production Ready  
-**Version:** 2.3  
+**Version:** 2.4 (Amendment Features)  
 **Last Updated:** November 3, 2025
 
 Comprehensive Knowledge Graph and RAG (Retrieval-Augmented Generation) system for German Social Law (Sozialgesetzbuch I-XIV) with over 61,900 nodes and 63,700 relationships.
@@ -112,23 +112,31 @@ Neo4J SGB Graph
 
 🎉 **Major Improvements Completed:**
 
-1. **100% Embedding Coverage** (✅ Nov 3)
+1. **Amendment Tracking Infrastructure (Phase 2)** (✅ Nov 3)
+   - Enhanced amendment parser with 100% date extraction accuracy
+   - 20+ predefined Cypher queries for timeline and impact analysis
+   - 6 comprehensive user journeys for amendment features
+   - Ready for full implementation
+   - See: [PHASE_2_IMPLEMENTATION_SUMMARY.md](PHASE_2_IMPLEMENTATION_SUMMARY.md)
+
+2. **100% Embedding Coverage** (✅ Nov 3)
    - All 41,781 chunks now have Azure OpenAI embeddings
    - Vector search fully operational across all SGBs
    - Fixed token-limit issues with automatic text truncation
 
-2. **All 13 SGBs Accessible** (✅ Nov 2)
+3. **All 13 SGBs Accessible** (✅ Nov 2)
    - Increased accessible chunks from 40.5% to 46.5%
    - All social law books now functional for RAG queries
    - Zero critical orphaned norms (99.8% connected)
 
-3. **Documentation Consolidation** (✅ Nov 3)
+4. **Documentation Consolidation** (✅ Nov 3)
    - Reorganized 21 scripts into active/archive/maintenance
    - Archived 7 outdated documents
    - Eliminated duplicate content
+   - Fixed all broken documentation links
    - See: [CONSOLIDATION_SUMMARY.md](CONSOLIDATION_SUMMARY.md)
 
-4. **Full Use Case Validation** (✅ Nov 1)
+5. **Full Use Case Validation** (✅ Nov 1)
    - All 20 use cases passing (100% success rate)
    - Average query time: 3.13ms
    - See: [docs/USE_CASE_VALIDATION.md](docs/USE_CASE_VALIDATION.md)
@@ -553,8 +561,9 @@ python scripts/analyze_graph_relationships.py
 ## 12. Support & Contact
 
 ### Documentation
-- **Full Import Report:** [COMPLETE_IMPORT_SUMMARY.md](COMPLETE_IMPORT_SUMMARY.md)
-- **User Journeys:** [USER_JOURNEYS.md](USER_JOURNEYS.md)
+- **Full Import Report:** [COMPLETE_IMPORT_SUMMARY](archive/COMPLETE_IMPORT_SUMMARY_2025-11-01.md)
+- **User Journeys:** [BENUTZER_JOURNEYS_DE.md](docs/BENUTZER_JOURNEYS_DE.md)
+- **Amendment User Journeys:** [AMENDMENT_USER_JOURNEYS.md](docs/AMENDMENT_USER_JOURNEYS.md)
 - **Analysis Reports:** `logs/graph_analysis/`
 
 ### Logs

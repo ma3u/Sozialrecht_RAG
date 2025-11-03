@@ -18,7 +18,7 @@ Complete guide to all documentation in the Sozialrecht RAG project.
 
 ### 🚀 For New Users
 1. Start with **[README.md](../README.md)** - Project overview
-2. Follow **[QUICKSTART.md](../QUICKSTART.md)** - Quick installation guide
+2. Follow **[README Setup](#)** - Quick installation guide (see README.md §2-3)
 3. Read **[Configuration Guide](#configuration)** - Setup instructions
 
 ### 👨‍💼 For Case Workers (Sachbearbeiter)
@@ -34,7 +34,8 @@ Complete guide to all documentation in the Sozialrecht RAG project.
 ### 📊 For Analysts
 1. **[SGB Coverage Analysis](SGB_COVERAGE_ANALYSIS.md)** - Data quality metrics
 2. **[Graph Analysis Reports](../logs/graph_analysis/)** - Statistical insights
-3. **[Complete Import Summary](../COMPLETE_IMPORT_SUMMARY.md)** - Import details
+3. **[Complete Import Summary](../archive/COMPLETE_IMPORT_SUMMARY_2025-11-01.md)** - Import details
+4. **[Phase 2 Validation Report](../PHASE_2_VALIDATION_REPORT.md)** - Amendment import validation
 
 ---
 
@@ -662,10 +663,17 @@ RETURN norm.enbez, norm.titel
 ### Documentation Links
 
 - **Main README:** [README.md](../README.md)
-- **Quick Start:** [QUICKSTART.md](../QUICKSTART.md)
 - **Scripts Guide:** [scripts/README.md](../scripts/README.md)
 - **User Journeys:** [BENUTZER_JOURNEYS_DE.md](BENUTZER_JOURNEYS_DE.md)
+- **Amendment Journeys:** [AMENDMENT_USER_JOURNEYS.md](AMENDMENT_USER_JOURNEYS.md)
 - **Test Results:** [USE_CASE_VALIDATION.md](USE_CASE_VALIDATION.md)
+
+### Phase 2 Amendment Documentation
+
+- **Phase 2 Complete:** [PHASE_2_COMPLETE.md](../PHASE_2_COMPLETE.md)
+- **Validation Report:** [PHASE_2_VALIDATION_REPORT.md](../PHASE_2_VALIDATION_REPORT.md)
+- **Implementation Summary:** [PHASE_2_IMPLEMENTATION_SUMMARY.md](../PHASE_2_IMPLEMENTATION_SUMMARY.md)
+- **Amendment Analysis:** [AMENDMENT_ANALYSIS_SUMMARY.md](../AMENDMENT_ANALYSIS_SUMMARY.md)
 
 ### Log Files
 
@@ -682,6 +690,6 @@ RETURN norm.enbez, norm.titel
 
 ---
 
-**Last Updated:** November 1, 2025  
-**Version:** 2.2  
-**Status:** ✅ Complete and Production-Ready
+**Last Updated:** November 3, 2025  
+**Version:** 2.4  
+**Status:** ✅ Complete and Production-Ready (Phase 2 Validated)
