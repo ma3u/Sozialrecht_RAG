@@ -1,0 +1,773 @@
+{
+  "timestamp": "2025-11-03T16:02:04.138898",
+  "analyses": [
+    {
+      "sgb": "III",
+      "legal_document_path": {
+        "total_norms": 426,
+        "chunks_via_norm": 1168,
+        "norms_without_chunks": 144
+      },
+      "document_path": {
+        "chunks_via_document": 0
+      },
+      "orphaned_chunks": 169,
+      "textunits_without_chunks": {
+        "count": 0,
+        "sample_paragraphs": []
+      },
+      "sample_norms_without_chunks": [
+        {
+          "paragraph": "76a",
+          "enbez": "§ 76a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "78",
+          "enbez": "§ 78",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "79",
+          "enbez": "§ 79",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "130",
+          "enbez": "§ 130",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "131",
+          "enbez": "§ 131",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "132",
+          "enbez": "§ 132",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "134",
+          "enbez": "§ 134",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  186 bis 239",
+          "enbez": "(XXXX) §§ 186 bis 239",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  240 bis 279a",
+          "enbez": "(XXXX) §§ 240 bis 279a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  285 u. 286",
+          "enbez": "(XXXX) §§ 285 u. 286",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "291",
+          "enbez": "§ 291",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  293 bis 295",
+          "enbez": "(XXXX) §§ 293 bis 295",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "300",
+          "enbez": "§ 300",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  302 u. 303",
+          "enbez": "(XXXX) §§ 302 u. 303",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  304 bis 308",
+          "enbez": "(XXXX) §§ 304 bis 308",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "336",
+          "enbez": "§ 336",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "343",
+          "enbez": "§ 343",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "362",
+          "enbez": "§ 362",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "374a",
+          "enbez": "§ 374a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  399 bis 403",
+          "enbez": "(XXXX) §§ 399 bis 403",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        }
+      ]
+    },
+    {
+      "sgb": "V",
+      "legal_document_path": {
+        "total_norms": 717,
+        "chunks_via_norm": 4298,
+        "norms_without_chunks": 139
+      },
+      "document_path": {
+        "chunks_via_document": 0
+      },
+      "orphaned_chunks": 109,
+      "textunits_without_chunks": {
+        "count": 0,
+        "sample_paragraphs": []
+      },
+      "sample_norms_without_chunks": [
+        {
+          "paragraph": "73a",
+          "enbez": "§ 73a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "73d",
+          "enbez": "§ 73d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "85c",
+          "enbez": "§ 85c",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "87d",
+          "enbez": "§ 87d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  140b bis 140d",
+          "enbez": "(XXXX) §§ 140b bis 140d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171",
+          "enbez": "§ 171",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171a",
+          "enbez": "§ 171a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171b",
+          "enbez": "§ 171b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171c",
+          "enbez": "§ 171c",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171d",
+          "enbez": "§ 171d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171e",
+          "enbez": "§ 171e",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171f",
+          "enbez": "§ 171f",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "172",
+          "enbez": "§ 172",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "172a",
+          "enbez": "§ 172a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  178 bis 185",
+          "enbez": "(XXXX) §§ 178 bis 185",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "219c",
+          "enbez": "§ 219c",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "221b",
+          "enbez": "§ 221b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "222",
+          "enbez": "§ 222",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "242b",
+          "enbez": "§ 242b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "259",
+          "enbez": "§ 259",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        }
+      ]
+    },
+    {
+      "sgb": "VI",
+      "legal_document_path": {
+        "total_norms": 562,
+        "chunks_via_norm": 1768,
+        "norms_without_chunks": 141
+      },
+      "document_path": {
+        "chunks_via_document": 0
+      },
+      "orphaned_chunks": 55,
+      "textunits_without_chunks": {
+        "count": 0,
+        "sample_paragraphs": []
+      },
+      "sample_norms_without_chunks": [
+        {
+          "paragraph": "Inhaltsübersicht",
+          "enbez": "Inhaltsübersicht",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  18 und 19",
+          "enbez": "(XXXX) §§ 18 und 19",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "(XXXX)  22 bis 27",
+          "enbez": "(XXXX) §§ 22 bis 27",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "95",
+          "enbez": "§ 95",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "196a",
+          "enbez": "§ 196a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "208",
+          "enbez": "§ 208",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "228a",
+          "enbez": "§ 228a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "254b",
+          "enbez": "§ 254b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "254c",
+          "enbez": "§ 254c",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "255a",
+          "enbez": "§ 255a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "255b",
+          "enbez": "§ 255b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "256d",
+          "enbez": "§ 256d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "263a",
+          "enbez": "§ 263a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "264a",
+          "enbez": "§ 264a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "265a",
+          "enbez": "§ 265a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "269a",
+          "enbez": "§ 269a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "270",
+          "enbez": "§ 270",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "274d",
+          "enbez": "§ 274d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "275a",
+          "enbez": "§ 275a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "275b",
+          "enbez": "§ 275b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        }
+      ]
+    },
+    {
+      "sgb": "VII",
+      "legal_document_path": {
+        "total_norms": 247,
+        "chunks_via_norm": 670,
+        "norms_without_chunks": 84
+      },
+      "document_path": {
+        "chunks_via_document": 0
+      },
+      "orphaned_chunks": 24,
+      "textunits_without_chunks": {
+        "count": 0,
+        "sample_paragraphs": []
+      },
+      "sample_norms_without_chunks": [
+        {
+          "paragraph": "(XXXX)  36 bis 38",
+          "enbez": "(XXXX) §§ 36 bis 38",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "86",
+          "enbez": "§ 86",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "119",
+          "enbez": "§ 119",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "119a",
+          "enbez": "§ 119a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "126",
+          "enbez": "§ 126",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "127",
+          "enbez": "§ 127",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "171",
+          "enbez": "§ 171",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "184a",
+          "enbez": "§ 184a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "184b",
+          "enbez": "§ 184b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "184c",
+          "enbez": "§ 184c",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "184d",
+          "enbez": "§ 184d",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "205",
+          "enbez": "§ 205",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "216",
+          "enbez": "§ 216",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "218",
+          "enbez": "§ 218",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "219",
+          "enbez": "§ 219",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "225",
+          "enbez": "§ 225",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Anlage 2",
+          "enbez": "Anlage 2",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 0",
+          "enbez": "Norm 0",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 2",
+          "enbez": "Norm 2",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 3",
+          "enbez": "Norm 3",
+          "titel": "",
+          "has_textunits": false
+        }
+      ]
+    },
+    {
+      "sgb": "XI",
+      "legal_document_path": {
+        "total_norms": 206,
+        "chunks_via_norm": 928,
+        "norms_without_chunks": 66
+      },
+      "document_path": {
+        "chunks_via_document": 0
+      },
+      "orphaned_chunks": 77,
+      "textunits_without_chunks": {
+        "count": 0,
+        "sample_paragraphs": []
+      },
+      "sample_norms_without_chunks": [
+        {
+          "paragraph": "87b",
+          "enbez": "§ 87b",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "92",
+          "enbez": "§ 92",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "113a",
+          "enbez": "§ 113a",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "122",
+          "enbez": "§ 122",
+          "titel": "(weggefallen)",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 0",
+          "enbez": "Norm 0",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 2",
+          "enbez": "Norm 2",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 20",
+          "enbez": "Norm 20",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 33",
+          "enbez": "Norm 33",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 44",
+          "enbez": "Norm 44",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 45",
+          "enbez": "Norm 45",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 48",
+          "enbez": "Norm 48",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 58",
+          "enbez": "Norm 58",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 59",
+          "enbez": "Norm 59",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 69",
+          "enbez": "Norm 69",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 72",
+          "enbez": "Norm 72",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 74",
+          "enbez": "Norm 74",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 76",
+          "enbez": "Norm 76",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 78",
+          "enbez": "Norm 78",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 80",
+          "enbez": "Norm 80",
+          "titel": "",
+          "has_textunits": false
+        },
+        {
+          "paragraph": "Norm 82",
+          "enbez": "Norm 82",
+          "titel": "",
+          "has_textunits": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_sgbs": 5,
+    "total_norms": 2158,
+    "norms_without_chunks": 574,
+    "orphaned_chunks": 434
+  },
+  "suggestions": [
+    {
+      "sgb": "III",
+      "priority": "MEDIUM",
+      "issue": "169 verwaiste Chunks",
+      "fix": "python scripts/link_orphaned_chunks.py --sgb III",
+      "expected_impact": "Verbesserte RAG-Abdeckung"
+    },
+    {
+      "sgb": "III",
+      "priority": "LOW",
+      "issue": "144 Norms ohne Content",
+      "fix": "Manuelle Prüfung: Sind diese Norms leer oder Verweise?",
+      "expected_impact": "Dokumentation"
+    },
+    {
+      "sgb": "V",
+      "priority": "MEDIUM",
+      "issue": "109 verwaiste Chunks",
+      "fix": "python scripts/link_orphaned_chunks.py --sgb V",
+      "expected_impact": "Verbesserte RAG-Abdeckung"
+    },
+    {
+      "sgb": "V",
+      "priority": "LOW",
+      "issue": "139 Norms ohne Content",
+      "fix": "Manuelle Prüfung: Sind diese Norms leer oder Verweise?",
+      "expected_impact": "Dokumentation"
+    },
+    {
+      "sgb": "VI",
+      "priority": "MEDIUM",
+      "issue": "55 verwaiste Chunks",
+      "fix": "python scripts/link_orphaned_chunks.py --sgb VI",
+      "expected_impact": "Verbesserte RAG-Abdeckung"
+    },
+    {
+      "sgb": "VI",
+      "priority": "LOW",
+      "issue": "141 Norms ohne Content",
+      "fix": "Manuelle Prüfung: Sind diese Norms leer oder Verweise?",
+      "expected_impact": "Dokumentation"
+    },
+    {
+      "sgb": "VII",
+      "priority": "MEDIUM",
+      "issue": "24 verwaiste Chunks",
+      "fix": "python scripts/link_orphaned_chunks.py --sgb VII",
+      "expected_impact": "Verbesserte RAG-Abdeckung"
+    },
+    {
+      "sgb": "VII",
+      "priority": "LOW",
+      "issue": "84 Norms ohne Content",
+      "fix": "Manuelle Prüfung: Sind diese Norms leer oder Verweise?",
+      "expected_impact": "Dokumentation"
+    },
+    {
+      "sgb": "XI",
+      "priority": "MEDIUM",
+      "issue": "77 verwaiste Chunks",
+      "fix": "python scripts/link_orphaned_chunks.py --sgb XI",
+      "expected_impact": "Verbesserte RAG-Abdeckung"
+    },
+    {
+      "sgb": "XI",
+      "priority": "LOW",
+      "issue": "66 Norms ohne Content",
+      "fix": "Manuelle Prüfung: Sind diese Norms leer oder Verweise?",
+      "expected_impact": "Dokumentation"
+    }
+  ]
+}
