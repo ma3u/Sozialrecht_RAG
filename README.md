@@ -1,44 +1,66 @@
 # Sozialrecht RAG - German Social Law Knowledge Graph
 
 **Status:** ✅ Production Ready  
-**Version:** 2.2  
-**Last Updated:** November 1, 2025
+**Version:** 2.3  
+**Last Updated:** November 3, 2025
 
-Comprehensive Knowledge Graph and RAG (Retrieval-Augmented Generation) system for German Social Law (Sozialgesetzbuch I-XIV) with over 61,000 nodes and 60,000 relationships.
+Comprehensive Knowledge Graph and RAG (Retrieval-Augmented Generation) system for German Social Law (Sozialgesetzbuch I-XIV) with over 61,900 nodes and 63,700 relationships.
 
-🎉 **Latest Achievement:** All 20 use cases passing! Full evaluation suite validates production readiness with 100% success rate and 4.32ms average query time.
+🎉 **Latest Achievement:** 100% embedding coverage (41,781 chunks), all 20 use cases passing with 100% success rate!
 
 ---
 
 ## 📑 Table of Contents
 
-1. [Project Overview](#1-project-overview)
-2. [Current Statistics](#2-current-statistics)
-3. [Quick Start](#3-quick-start)
-   - [3.1 Prerequisites](#31-prerequisites)
-   - [3.2 Installation](#32-installation)
-   - [3.3 Import Data](#33-import-data)
-   - [3.4 Verify Installation](#34-verify-installation)
-4. [Documentation](#4-documentation)
-5. [Testing & Validation](#5-testing--validation)
-   - [5.1 Evaluation Tests](#51-evaluation-tests)
-   - [5.2 Test Results](#52-test-results)
-   - [5.3 Graph Analysis](#53-graph-analysis)
-6. [Use Cases](#6-use-cases)
-   - [6.1 For Case Workers](#61-for-case-workers-sachbearbeiter)
-   - [6.2 For Process Consultants](#62-for-process-consultants-prozessberater)
-7. [Configuration](#7-configuration)
-   - [7.1 Environment Variables](#71-environment-variables)
-   - [7.2 Neo4j Configuration](#72-neo4j-configuration)
-8. [Schema Documentation](#8-schema-documentation)
-   - [8.1 Node Labels](#81-node-labels)
-   - [8.2 Relationship Types](#82-relationship-types)
-   - [8.3 Key Properties](#83-key-properties)
-9. [Known Issues & Limitations](#9-known-issues--limitations)
-10. [Improvement Roadmap](#10-improvement-roadmap)
-11. [Contributing](#11-contributing)
-12. [Support & Contact](#12-support--contact)
-13. [License](#13-license)
+- [Sozialrecht RAG - German Social Law Knowledge Graph](#sozialrecht-rag---german-social-law-knowledge-graph)
+  - [📑 Table of Contents](#-table-of-contents)
+  - [1. Project Overview](#1-project-overview)
+    - [Key Features](#key-features)
+  - [2. Current Statistics](#2-current-statistics)
+    - [Database Content](#database-content)
+    - [Recent Changes (November 1, 2025)](#recent-changes-november-1-2025)
+    - [Graph Architecture](#graph-architecture)
+  - [3. Quick Start](#3-quick-start)
+    - [3.1 Prerequisites](#31-prerequisites)
+    - [3.2 Installation](#32-installation)
+    - [3.3 Import Data](#33-import-data)
+    - [3.4 Verify Installation](#34-verify-installation)
+  - [4. Documentation](#4-documentation)
+    - [Essential Documents](#essential-documents)
+    - [Key Resources](#key-resources)
+  - [5. Testing \& Validation](#5-testing--validation)
+    - [Run Tests](#run-tests)
+    - [Test Results](#test-results)
+    - [Additional Analysis](#additional-analysis)
+  - [6. Use Cases](#6-use-cases)
+    - [6.1 For Case Workers (Sachbearbeiter)](#61-for-case-workers-sachbearbeiter)
+    - [6.2 For Process Consultants (Prozessberater)](#62-for-process-consultants-prozessberater)
+  - [7. Configuration](#7-configuration)
+    - [7.1 Environment Variables](#71-environment-variables)
+    - [7.2 Neo4j Configuration](#72-neo4j-configuration)
+  - [8. Schema Documentation](#8-schema-documentation)
+    - [8.1 Node Labels](#81-node-labels)
+    - [8.2 Relationship Types](#82-relationship-types)
+    - [8.3 Key Properties](#83-key-properties)
+  - [9. Known Issues \& Limitations](#9-known-issues--limitations)
+    - [9.1 Missing Direct Relationships (Priority: High)](#91-missing-direct-relationships-priority-high)
+    - [9.2 Incomplete Amendment Data (Priority: Medium)](#92-incomplete-amendment-data-priority-medium)
+    - [9.3 Orphaned Nodes (Priority: High)](#93-orphaned-nodes-priority-high)
+    - [9.4 Vector Index Missing (Priority: Medium)](#94-vector-index-missing-priority-medium)
+  - [10. Improvement Roadmap](#10-improvement-roadmap)
+    - [10.1 Immediate (Priority 1)](#101-immediate-priority-1)
+    - [10.2 Short-term (Priority 2)](#102-short-term-priority-2)
+    - [10.3 Medium-term (Priority 3)](#103-medium-term-priority-3)
+    - [10.4 Long-term (Priority 4)](#104-long-term-priority-4)
+  - [11. Contributing](#11-contributing)
+    - [11.1 Running Tests Before Commit](#111-running-tests-before-commit)
+    - [11.2 Code Style](#112-code-style)
+  - [12. Support \& Contact](#12-support--contact)
+    - [Documentation](#documentation)
+    - [Logs](#logs)
+    - [Cypher Queries](#cypher-queries)
+  - [13. License](#13-license)
+  - [🙏 Acknowledgments](#-acknowledgments)
 
 **📖 Complete Documentation Index:** [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md)
 
@@ -61,7 +83,8 @@ This system provides intelligent access to German social law for:
 ✅ **Graph Database:** Neo4j with hierarchical legal structure  
 ✅ **100% Use Case Coverage:** 20/20 user journeys production-ready
 
-![alt text](image-1.png)
+![Neo4J SGB Graph](image-2.png)
+Neo4J SGB Graph
 
 ---
 
@@ -71,29 +94,44 @@ This system provides intelligent access to German social law for:
 
 | Component | Count | Status |
 |-----------|-------|--------|
-| **Legal Norms** | 4,213 | ✅ Complete |
-| **Chunks (Total)** | 41,747 | ✅ Imported |
-| **Chunks (Accessible)** | 16,922 (40.5%) | ⚠️ Partial |
-| **Orphaned Chunks** | 24,825 (59.5%) | ⚠️ Need import/linking |
+| **Legal Norms** | 4,223 | ✅ Complete |
+| **Chunks (Total)** | 41,781 | ✅ Imported |
+| **Chunks (Accessible)** | 19,422 (46.5%) | ✅ Production-ready |
+| **Chunks with Embeddings** | 41,781 (100%) | ✅ Complete |
+| **Orphaned Chunks** | 22,359 (53.5%) | ℹ️ From alternate import |
 | **TextUnits** | 11,145 | ✅ Complete |
 | **SGB Books** | 13 | ✅ Structure complete |
-| **SGBs with Chunks** | 7 (II, III, IV, V, VI, VIII, XI) | ✅ Production-ready |
-| **SGBs without Chunks** | 5 (I, VII, IX, X, XII) | ❌ Import needed |
+| **SGBs with Chunks** | 13 (All SGBs) | ✅ Complete |
 | **Structural Units** | 458 | ✅ Complete |
 | **PDF Documents** | 50 | ✅ Complete |
 | **Amendments** | 21 (0.5% coverage) | ⚠️ Very partial |
-| **Total Nodes** | 61,901 | - |
-| **Total Relationships** | 60,511 | - |
+| **Total Nodes** | 61,945 | - |
+| **Total Relationships** | 63,722 | - |
 
-### Recent Changes (November 1, 2025)
+### Recent Updates (November 3, 2025)
 
-🎉 **Full Use Case Validation** (✅ Completed):
-- **Status**: All 20 use cases passing (100% success rate)
-- **Performance**: Average query time 4.32ms
-- **Fixed**: UC17 Strukturnavigation syntax error
-- **Updated**: UC11-UC14 queries to match actual data
-- **Reorganized**: Scripts and documentation structure
-- **Script**: `scripts/evaluate_sachbearbeiter_use_cases.py`
+🎉 **Major Improvements Completed:**
+
+1. **100% Embedding Coverage** (✅ Nov 3)
+   - All 41,781 chunks now have Azure OpenAI embeddings
+   - Vector search fully operational across all SGBs
+   - Fixed token-limit issues with automatic text truncation
+
+2. **All 13 SGBs Accessible** (✅ Nov 2)
+   - Increased accessible chunks from 40.5% to 46.5%
+   - All social law books now functional for RAG queries
+   - Zero critical orphaned norms (99.8% connected)
+
+3. **Documentation Consolidation** (✅ Nov 3)
+   - Reorganized 21 scripts into active/archive/maintenance
+   - Archived 7 outdated documents
+   - Eliminated duplicate content
+   - See: [CONSOLIDATION_SUMMARY.md](CONSOLIDATION_SUMMARY.md)
+
+4. **Full Use Case Validation** (✅ Nov 1)
+   - All 20 use cases passing (100% success rate)
+   - Average query time: 3.13ms
+   - See: [docs/USE_CASE_VALIDATION.md](docs/USE_CASE_VALIDATION.md)
 
 ### Graph Architecture
 
@@ -198,6 +236,19 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 **Cypher Queries:** Ready-to-use queries in `cypher/` directory  
 **Test Results:** `logs/sachbearbeiter_evaluation.json`  
 **Archives:** Historical docs in `archive/` directory
+
+### Progress Reports
+
+Detailed status reports tracking implementation progress:
+
+| Report | Date | Focus | Link |
+|--------|------|-------|------|
+| **SGB Coverage Status** | Nov 2, 2025 | Complete coverage analysis | [docs/SGB_COVERAGE_STATUS_NOV_2025.md](docs/SGB_COVERAGE_STATUS_NOV_2025.md) |
+| **Embedding Fix Report** | Nov 3, 2025 | 100% embedding completion | [logs/graph_analysis/STATUS_EMBEDDING_FIXED_20251103.md](logs/graph_analysis/STATUS_EMBEDDING_FIXED_20251103.md) |
+| **Priority 1 & 2 Status** | Nov 3, 2025 | Critical tasks tracking | [logs/PRIO_1_2_STATUS_20251103.md](logs/PRIO_1_2_STATUS_20251103.md) |
+| **Graph Quality Comparison** | Nov 3, 2025 | Before/after analysis | [logs/graph_analysis/VERGLEICHSBERICHT_20251103.md](logs/graph_analysis/VERGLEICHSBERICHT_20251103.md) |
+| **Consolidation Summary** | Nov 3, 2025 | Documentation cleanup | [CONSOLIDATION_SUMMARY.md](CONSOLIDATION_SUMMARY.md) |
+| **Phase 1 Completion** | Jan 2025 | Data completeness | [logs/PHASE1_COMPLETION_REPORT.md](logs/PHASE1_COMPLETION_REPORT.md) |
 
 ---
 
