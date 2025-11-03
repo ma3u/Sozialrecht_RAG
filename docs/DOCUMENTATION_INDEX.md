@@ -65,6 +65,8 @@ Complete guide to all documentation in the Sozialrecht RAG project.
 
 | Topic | Document | Key Information |
 |-------|----------|-----------------|
+| **Document Pipeline** | [DOCUMENT_PIPELINE.md](DOCUMENT_PIPELINE.md) | Pipeline evolution, GraphRAG + Cloud Embeddings |
+| **GraphRAG Implementation** | [NEO4J_GRAPHRAG_LEARNINGS.md](NEO4J_GRAPHRAG_LEARNINGS.md) | Technical learnings, best practices |
 | **Graph Schema** | [README.md § Schema](../README.md#-schema-documentation) | Node labels, relationships, properties |
 | **Graph Architecture** | [README.md § Architecture](../README.md#graph-architecture) | Hierarchical structure |
 | **Data Statistics** | [README.md § Statistics](../README.md#-current-statistics-january-2025) | 61,901 nodes, 60,511 relationships |
