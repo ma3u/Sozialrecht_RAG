@@ -114,45 +114,30 @@ graph TD
 ```mermaid
 graph TD
     subgraph Sources["📁 DATA SOURCES"]
-        XML["XML Files<br/>4,223 norms<br/>gesetze-im-internet.de<br/>✅ 100%"]
-        PDF["PDF Files<br/>36 documents<br/>Fachliche Weisungen<br/>✅ All imported"]
+        XML["XML Files<br/>4,223 legal norms<br/>✅ 100%"]
+        PDF["PDF Files<br/>36 guidelines<br/>✅ Complete"]
     end
     
-    subgraph Parsing["🔍 PARSING LAYER"]
-        XMLParser["XML Parser<br/>• Hierarchical structure<br/>• Metadata BGBl<br/>• Paragraph numbering"]
-        DoclingParser["Docling Parser<br/>• PDF → Markdown<br/>• Tables extraction<br/>• Multi-column layouts"]
+    subgraph Parsing["🔍 PARSING"]
+        Parser["XML + Docling Parsers<br/>Extract structure & metadata"]
     end
     
     subgraph Builder["⚙️ GRAPHRAG BUILDER"]
-        Stage1["Stage 1: Graph Structure<br/>LegalDocument → StructuralUnit<br/>→ LegalNorm → TextUnit"]
-        Stage2["Stage 2: Chunking<br/>800 chars, 100 overlap<br/>41,781 chunks"]
-        Stage3["Stage 3: Embeddings<br/>Azure text-embedding-3-large<br/>3072-dim, 100% coverage"]
-        Stage4["Stage 4: Relationships<br/>Link all nodes<br/>Trust scores"]
+        Build["4 Stages<br/>1. Graph Structure<br/>2. Chunking 41,781<br/>3. Azure Embeddings 3072-dim<br/>4. Link Relationships"]
     end
     
-    subgraph Neo4j["🗄️ NEO4J KNOWLEDGE GRAPH"]
-        Nodes["Nodes: 61,945<br/>LegalDocument: 13<br/>StructuralUnit: 458<br/>LegalNorm: 4,223<br/>TextUnit: 11,145<br/>Chunk: 41,781<br/>Amendment: 21"]
-        Rels["Relationships: 63,722<br/>HAS_STRUCTURE: 717<br/>CONTAINS_NORM: 5,008<br/>HAS_CONTENT: 11,145<br/>HAS_CHUNK: 41,781<br/>HAS_AMENDMENT: 21"]
-        Indexes["Indexes<br/>✅ Vector chunk_embeddings<br/>✅ Property indexes<br/>✅ Fulltext search"]
+    subgraph Neo4j["🗄️ NEO4J GRAPH"]
+        Graph["61,945 Nodes<br/>63,722 Relationships<br/>✅ Vector Index"]
     end
     
     subgraph Retrieval["🔎 HYBRID RETRIEVAL"]
-        Query["Query Processing<br/>1. Generate embedding Azure<br/>2. Vector similarity<br/>3. Graph traversal<br/>4. Trust filtering ≥85<br/>5. Rank results"]
-        Perf["Performance<br/>⚡ 3-5ms query time<br/>✅ 100% test pass<br/>📊 100% quality"]
+        Hybrid["Vector + Graph + Trust<br/>⚡ 3-5ms | ✅ 100% tests"]
     end
     
-    XML --> XMLParser
-    PDF --> DoclingParser
-    XMLParser --> Stage1
-    DoclingParser --> Stage1
-    Stage1 --> Stage2
-    Stage2 --> Stage3
-    Stage3 --> Stage4
-    Stage4 --> Nodes
-    Nodes --> Rels
-    Rels --> Indexes
-    Indexes --> Query
-    Query --> Perf
+    XML & PDF --> Parser
+    Parser --> Build
+    Build --> Graph
+    Graph --> Hybrid
     
     style Sources fill:#f9f,stroke:#333,stroke-width:2px
     style Parsing fill:#fcf,stroke:#333,stroke-width:2px
