@@ -48,6 +48,11 @@ This project demonstrates **Neo4j Graph Database** combined with **GraphRAG (Gra
 
 **Performance**: Average query time < 5ms | Throughput: 79.59 norms/sec
 
+### Graph Visualization
+
+![Neo4j SGB Graph Visualization](image-2.png)  
+*Hierarchical structure of German Social Law in Neo4j - showing documents, structural units, and legal norms*
+
 ---
 
 ## 🚀 Quick Start
