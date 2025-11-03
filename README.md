@@ -113,16 +113,11 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 
 **Getting Started**:
 - 📘 [Complete Documentation Index](docs/DOCUMENTATION_INDEX.md) - Full guide to all docs
-- 📘 [Phase 2 Executive Summary](PHASE_2_EXECUTIVE_SUMMARY.md) - Project achievements and status
+- 📘 [GraphRAG Learnings](docs/NEO4J_GRAPHRAG_LEARNINGS.md) - Implementation insights and best practices
 
-**GraphRAG Features**:
-- 📗 [Graph Schema Documentation](docs/DOCUMENTATION_INDEX.md#architecture--design) - Node types, relationships, properties
-- 📗 [GraphRAG Learnings](docs/NEO4J_GRAPHRAG_LEARNINGS.md) - Implementation insights and best practices
-
-**Amendment Tracking** (Phase 2):
-- 📙 [Phase 2 Complete](PHASE_2_COMPLETE.md) - Amendment features overview
-- 📙 [Validation Report](PHASE_2_VALIDATION_REPORT.md) - Deployment results and data quality
-- 📙 [Implementation Summary](PHASE_2_IMPLEMENTATION_SUMMARY.md) - Technical details
+**Amendment Tracking**:
+- 📙 [Deployment Report](docs/reports/DEPLOYMENT_REPORT_20251103_190858.md) - Full deployment results
+- 📙 [Amendment Analysis](docs/reports/AMENDMENT_ANALYSIS_SUMMARY.md) - Coverage analysis
 
 **User Journeys**:
 - 👤 [German User Journeys](docs/BENUTZER_JOURNEYS_DE.md) - 20 case worker scenarios (German)
@@ -356,8 +351,8 @@ Sozialrecht_RAG/
 
 ### Understanding This Project
 
-1. **Start Here**: [PHASE_2_EXECUTIVE_SUMMARY.md](PHASE_2_EXECUTIVE_SUMMARY.md)
-   - Project overview and achievements
+1. **Start Here**: [Complete Documentation Index](docs/DOCUMENTATION_INDEX.md)
+   - Project overview and all documentation
    - Quick understanding of capabilities
 
 2. **GraphRAG Concepts**: [NEO4J_GRAPHRAG_LEARNINGS.md](docs/NEO4J_GRAPHRAG_LEARNINGS.md)
@@ -365,12 +360,12 @@ Sozialrecht_RAG/
    - Implementation insights
 
 3. **User Journeys**: [BENUTZER_JOURNEYS_DE.md](docs/BENUTZER_JOURNEYS_DE.md)
-   - Real-world usage examples
+   - Real-world usage examples (German)
    - Query patterns for different personas
 
-4. **Technical Deep-Dive**: [PHASE_2_IMPLEMENTATION_SUMMARY.md](PHASE_2_IMPLEMENTATION_SUMMARY.md)
-   - Implementation details
-   - Code architecture
+4. **Amendment Journeys**: [AMENDMENT_USER_JOURNEYS.md](docs/AMENDMENT_USER_JOURNEYS.md)
+   - Amendment-specific scenarios
+   - Historical tracking use cases
 
 ### Running Your Own GraphRAG
 
@@ -430,7 +425,7 @@ python scripts/evaluate_sachbearbeiter_use_cases.py
 
 ### Troubleshooting
 - Check [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md) § Configuration
-- Review [PHASE_2_VALIDATION_REPORT.md](PHASE_2_VALIDATION_REPORT.md) for validation patterns
+- Review [Deployment Report](docs/reports/DEPLOYMENT_REPORT_20251103_190858.md) for validation patterns
 - See [scripts/README.md](scripts/README.md) for script documentation
 
 ---
