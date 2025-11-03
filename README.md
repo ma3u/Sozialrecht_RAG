@@ -50,7 +50,7 @@ This project demonstrates **Neo4j Graph Database** combined with **GraphRAG (Gra
 
 ### Graph Visualization
 
-![Neo4j SGB Graph Visualization](image-2.png)  
+![Neo4j SGB Graph Visualization](docs/neo4j-graph-visualization-sgb-structure.png)  
 *Hierarchical structure of German Social Law in Neo4j - showing documents, structural units, and legal norms*
 
 ---
